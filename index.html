@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mielenterveyden häiriöt – tenttivalmennus</title>
+<title>Suvin tenttivalmennus</title>
 <style>
 :root{
   --bg: #f4f6f8;
@@ -386,6 +386,29 @@ table th{background:var(--bg-panel-alt);}
 }
 .disclaimer strong{color:var(--warn);}
 
+.course-btn{
+  display:block; width:100%; text-align:left;
+  border:1px solid var(--border); background:var(--bg-panel-alt); color:var(--text);
+  padding:8px 10px; border-radius:8px; margin-bottom:6px; cursor:pointer;
+  font-size:13px; line-height:1.3; font-family:inherit;
+}
+.course-btn small{display:block; color:var(--text-muted); font-size:11px; font-weight:400;}
+.course-btn:hover{background:var(--accent-light);}
+.course-btn.active{border-color:var(--accent); background:var(--accent-light); font-weight:600; box-shadow:inset 3px 0 0 var(--accent);}
+.mark{
+  display:inline-block; font-size:10.5px; font-weight:700; line-height:1.4;
+  padding:0 5px; border-radius:4px; margin-right:4px; vertical-align:1px; cursor:help;
+}
+.mark-v{background:var(--good-bg); color:var(--good); border:1px solid var(--good);}
+.mark-t{background:var(--warn-bg); color:var(--warn); border:1px solid var(--warn);}
+.mark-x{background:var(--bad-bg); color:var(--bad); border:1px solid var(--bad);}
+.source-status{
+  font-size:12.5px; border-radius:8px; padding:9px 12px; margin:8px 0 14px;
+  background:var(--bg-panel-alt); border:1px solid var(--border);
+}
+.ref-list li{font-size:12.5px; color:var(--text-muted);}
+.ref-list a{color:var(--accent-dark);}
+
 ::-webkit-scrollbar{width:10px; height:10px;}
 ::-webkit-scrollbar-thumb{background:var(--border); border-radius:6px;}
 
@@ -401,15 +424,21 @@ table th{background:var(--bg-panel-alt);}
   .nav-group-title{width:100%;}
   .nav-btn{width:auto;}
   #main{padding:18px 16px 60px; max-width:100%;}
-  .dev-cols{grid-template-columns:1fr;}
+  .dev-cols{grid-template-columns:1fr !important;}
+  .course-btn{display:inline-block; width:auto; margin-right:6px;}
 }
 </style>
 </head>
 <body>
 <div id="app">
   <nav id="sidebar">
-    <h1>Mielenterveyden häiriöt</h1>
-    <div class="subtitle">Tenttivalmennus · aineopinnot</div>
+    <h1 id="course-title">Mielenterveyden häiriöt</h1>
+    <div class="subtitle" id="course-subtitle">Tenttivalmennus · aineopinnot</div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Opintojakso</div>
+      <div id="course-switch-list" style="width:100%"></div>
+    </div>
 
     <div class="nav-group">
       <div class="nav-group-title">Aloitus</div>
@@ -471,9 +500,20 @@ table th{background:var(--bg-panel-alt);}
 <script>
 "use strict";
 /* =========================================================================
-   DATA — täytetään seuraavissa vaiheissa
+   AKTIIVISEN OPINTOJAKSON DATA
+   Nämä muuttujat asetetaan activateCourse()-funktiossa sen mukaan, mikä
+   opintojakso on valittuna. Kunkin opintojakson oma data on nimetty
+   etuliitteellä (MT_ = Mielenterveyden häiriöt, PP2_ = Persoonallisuuspsykologia II).
    ========================================================================= */
-const CATEGORIES = [
+let CATEGORIES = [], TOPICS = [], COMPARISON_PAIRS = [], LIFECYCLE_STAGES = [];
+let MCQ_BANK = [], TF_BANK = [], SHORT_BANK = [], ESSAY_BANK = [], VIGNETTE_BANK = [];
+let DIAGDRILL_BANK = [], FLASHCARD_BANK = [], DEVCHALLENGE_BANK = [];
+let EXAM_BLUEPRINT = {}, OVERVIEW_GROUPS = [], COURSE = null;
+
+/* =========================================================================
+   OPINTOJAKSO: MIELENTERVEYDEN HÄIRIÖT – DATA
+   ========================================================================= */
+const MT_CATEGORIES = [
   {id:"luokittelu", name:"Diagnostiikka, luokittelu ja epidemiologia", description:"Yleiskäsitteet: DSM-5 ja ICD-10 -luokitusten periaatteet, kehityksellinen psykopatologia ja lasten/nuorten häiriöiden yleisyys."},
   {id:"neurokehitys", name:"Neurokehitykselliset häiriöt", description:"Älyllinen kehitysvamma, kielelliset ja motoriset kehityshäiriöt, oppimisvaikeudet, autismikirjo, ADHD sekä tic-häiriöt."},
   {id:"varhainen_vuorovaikutus", name:"Varhaisen vuorovaikutuksen ja sosiaalisen kehityksen häiriöt", description:"Kiintymyssuhdehäiriöt ja valikoiva puhumattomuus – varhaislapsuuden suhteiden häiriöt."},
@@ -494,7 +534,7 @@ const CATEGORIES = [
   {id:"neurokognitiiviset", name:"Neurokognitiiviset häiriöt ja muistisairaudet", description:"Delirium ja etenevät muistisairaudet – tyypillisesti myöhäisemmän aikuisuuden häiriöitä."},
   {id:"itsetuho", name:"Itsetuhokäyttäytyminen", description:"Itsemurha-ajatukset, -yritykset ja viiltely/itsensä vahingoittaminen ilman itsetuhotarkoitusta, ikävaiheittain."}
 ];
-const TOPICS = [
+const MT_TOPICS = [
 {
   id:"t01_luokittelu", category:"luokittelu", chapterFi:"Mielenterveyden häiriöiden diagnostiikka ja luokittelu",
   name:"Diagnostiikka ja luokittelujärjestelmät: DSM-5 ja ICD-10", verifyFlag:true,
@@ -1622,7 +1662,7 @@ const TOPICS = [
 },
 /*__TOPICS_END__*/
 ];
-const COMPARISON_PAIRS = [
+const MT_COMPARISON_PAIRS = [
 {
   id:"cmp01", title:"Skitsofrenia vs. autismikirjon häiriö",
   topicIds:["t16_skitsofrenia","t07_autismikirjo"],
@@ -1808,7 +1848,7 @@ const COMPARISON_PAIRS = [
   note:"Kehonkuvahäiriön läsnä- tai poissaolo on ratkaiseva erottava tekijä, ei pelkkä ruoan rajoittaminen tai alipaino."
 }
 ];
-const LIFECYCLE_STAGES = [
+const MT_LIFECYCLE_STAGES = [
 {
   id:"varhaislapsuus", name:"Varhaislapsuus", ageRange:"n. 0–3 vuotta",
   description:"Kehityksen perusta rakentuu varhaisessa vuorovaikutuksessa. Suurin osa varsinaisista aikuispsykiatrisista diagnooseista ei vielä sovellu, mutta varhaiset poikkeamat vuorovaikutuksessa ja kehityksessä ovat tärkeitä ennusmerkkejä.",
@@ -1892,7 +1932,7 @@ const LIFECYCLE_STAGES = [
   keyThemes:["'Kolme D:tä' (delirium, dementia, depressio) on tämän ikävaiheen keskeisin erotusdiagnostinen kokonaisuus.","Elimellisten syiden poissulkeminen korostuu entisestään."]
 }
 ];
-const MCQ_BANK = [
+const MT_MCQ_BANK = [
 {id:"m01", category:"luokittelu", question:"Mikä väite DSM-5:n ja ICD-10:n suhteesta pitää paikkansa?",
   options:["Ne ovat sisällöltään täysin identtiset, vain nimet eroavat.","Ne ovat rinnakkaiset luokitusjärjestelmät, joiden kriteerit voivat erota saman diagnoosin sisällä.","ICD-10 on käytössä vain Yhdysvalloissa.","DSM-5 korvasi ICD-10:n virallisena luokituksena Suomessa."],
   correctIndex:1,
@@ -2014,7 +2054,7 @@ const MCQ_BANK = [
   correctIndex:0,
   optionNotes:["Oikein.","Väärin – ei edellytä psykoottisia oireita.","Väärin – ei ole tällaista muodollista ikärajoitusta kriteeristössä.","Väärin – tausta liittyy tyypillisimmin psykologiseen traumaan, ei elimelliseen vaurioon."]}
 ];
-const TF_BANK = [
+const MT_TF_BANK = [
 {id:"tf01", category:"luokittelu", statement:"DSM-5 ja ICD-10 käyttävät aina identtisiä kriteerejä samalle diagnoosinimikkeelle.", answer:false, explanation:"Väärin. Kriteerien oiremäärä, kesto tai alaryhmäjaottelu voivat erota merkittävästi saman diagnoosinimikkeen sisällä (esim. ADHD, skitsofrenia)."},
 {id:"tf02", category:"neurokehitys", statement:"Autismikirjon häiriössä esiintyy tyypillisesti harhaluuloja ja aistiharhoja.", answer:false, explanation:"Väärin. Psykoottiset ydinoireet eivät kuulu autismikirjon häiriön kuvaan; jos niitä esiintyy, kyse on samanaikaisesta erillisestä häiriöstä."},
 {id:"tf03", category:"neurokehitys", statement:"DSM-5:n mukaan ADHD:n oireiden tulee olla alkanut ennen 12 vuoden ikää.", answer:true, explanation:"Oikein. Tämä on yksi DSM-5:n ADHD-kriteereistä."},
@@ -2040,7 +2080,7 @@ const TF_BANK = [
 {id:"tf23", category:"neurokognitiiviset", statement:"Delirium kehittyy tyypillisesti hitaasti kuukausien tai vuosien kuluessa.", answer:false, explanation:"Väärin. Tämä on dementian piirre – delirium kehittyy äkillisesti (tunneista päiviin)."},
 {id:"tf24", category:"itsetuho", statement:"Suurin osa nuorista, jotka viiltävät itseään ilman itsetuhotarkoitusta, tekee myöhemmin itsemurhayrityksen.", answer:false, explanation:"Väärin. NSSI ennustaa lievästi kohonnutta riskiä, mutta yhteys ei ole suoraviivainen – suurin osa ei myöhemmin tee itsemurhayritystä."}
 ];
-const SHORT_BANK = [
+const MT_SHORT_BANK = [
 {id:"s01", category:"luokittelu", question:"Mitä tarkoitetaan kehityksellisellä psykopatologialla?",
   modelAnswer:["Näkökulma, joka tarkastelee mielenterveyden häiriöitä suhteessa normaaliin kehitykseen.","Huomioi käsitteet equifinality (eri lähtökohdat → sama lopputulema) ja multifinality (sama lähtökohta → eri lopputulemat).","Painottaa iän ja kehitystason vaikutusta siihen, miten oire tulkitaan ja mikä diagnoosi sopii."]},
 {id:"s02", category:"neurokehitys", question:"Nimeä kaksi keskeistä eroa DSM-5:n ja ICD-10:n välillä ADHD:n diagnostiikassa.",
@@ -2082,7 +2122,7 @@ const SHORT_BANK = [
 {id:"s20", category:"ahdistuneisuus", question:"Mitä tarkoittaa se, että ICD-10 sijoittaa eroahdistushäiriön lapsuusiän häiriöksi, kun taas DSM-5 sallii sen myös aikuisilla?",
   modelAnswer:["Diagnostinen soveltuvuus vaihtelee luokituksen mukaan – ICD-10:n mukaan diagnoosia ei tehtäisi aikuisella.","DSM-5 tunnistaa, että liiallinen huoli läheisten turvallisuudesta/erosta voi jatkua tai alkaa myös aikuisiässä."]}
 ];
-const ESSAY_BANK = [
+const MT_ESSAY_BANK = [
 {id:"e01", category:"kayttaytymisen_saately", maxPoints:15,
   question:"Vertaile ADHD:n, kaksisuuntaisen mielialahäiriön ja käytöshäiriön ilmenemistä lapsuudessa ja nuoruudessa, ja perustele miten näiden välinen erotusdiagnostiikka tehdään.",
   modelAnswerPoints:[
@@ -2275,7 +2315,7 @@ const ESSAY_BANK = [
     {label:"Rakenne ja perustelu", points:2}
   ]}
 ];
-const VIGNETTE_BANK = [
+const MT_VIGNETTE_BANK = [
 {id:"v01", category:"varhainen_vuorovaikutus", ageGroup:"lapsi", maxPoints:10,
   vignette:"6-vuotias tyttö puhuu kotona sujuvasti ja iloisesti vanhempiensa ja sisarustensa kanssa. Koulussa hän ei ole sanonut sanaakaan koko syyslukukauden aikana, vaikka opettaja kokee hänen ymmärtävän ohjeet hyvin ja hän leikkii tarvittaessa muiden lasten kanssa nyökkäillen ja viittoen. Perhe muutti paikkakunnalle kesällä. Vanhemmat kertovat, että kielenkehitys on ollut aina ikätasoista.",
   questions:["Mikä on todennäköisin diagnoosi?","Mitkä ovat keskeiset vaihtoehtoiset diagnoosit ja miksi ne eivät sovi yhtä hyvin?","Mitä lisätietoa diagnoosin varmistamiseksi tarvittaisiin?"],
@@ -2419,7 +2459,7 @@ const VIGNETTE_BANK = [
   rubric:[{label:"Tunnisti oikean päädiagnoosin",points:3},{label:"Painotti päihteiden poissulkemista",points:3},{label:"Erotti skitsoaffektiivisesta häiriöstä perustellusti",points:2},{label:"Tunnisti tarvittavan lisätiedon",points:2}]
 }
 ];
-const DIAGDRILL_BANK = [
+const MT_DIAGDRILL_BANK = [
 {id:"d01", category:"neurokehitys", ageGroup:"lapsi", maxPoints:8,
   vignette:"10-vuotias poika ei pysty istumaan paikallaan tunnilla, keskeyttää muita jatkuvasti ja unohtaa läksynsä lähes joka päivä. Näin on ollut jo esikoulusta asti, sekä kotona että koulussa.",
   modelAnswer:{mostLikely:"ADHD (yhdistetty esiintymismuoto).",
@@ -2517,7 +2557,7 @@ const DIAGDRILL_BANK = [
   rubric:[{label:"Tunnisti todennäköisen selityksen",points:3},{label:"Muisti elimellisen poissulkemisen",points:3},{label:"Tunnisti tarvittavan lisätiedon",points:2}]
 }
 ];
-const FLASHCARD_BANK = [
+const MT_FLASHCARD_BANK = [
 {id:"f01", category:"luokittelu", difficulty:"perus", front:"Mitä tarkoittaa, että DSM-5 ja ICD-10 ovat 'rinnakkaiset' luokitusjärjestelmät?", back:"Ne kuvaavat pitkälti samoja häiriöitä, mutta kriteerit (oiremäärä, kesto, alaryhmät) voivat erota saman diagnoosin sisällä."},
 {id:"f02", category:"luokittelu", difficulty:"vaativa", front:"Mitä tarkoittavat equifinality ja multifinality kehityksellisessä psykopatologiassa?", back:"Equifinality: eri lähtökohdat voivat johtaa samaan lopputulemaan. Multifinality: sama lähtökohta voi johtaa eri lopputulemiin."},
 {id:"f03", category:"neurokehitys", difficulty:"perus", front:"Mitkä kolme kriteeriä DSM-5 edellyttää älyllisen kehitysvamman diagnoosille?", back:"Älyllisten toimintojen puute, adaptiivisen toimintakyvyn puute vähintään yhdellä osa-alueella, alkaminen kehitysiässä."},
@@ -2589,7 +2629,7 @@ const FLASHCARD_BANK = [
 {id:"f69", category:"ahdistuneisuus", difficulty:"vaativa", front:"Eroahdistushäiriö vs. GAD: mikä ratkaisee?", back:"Huolen kohde – nimenomaan ero kiintymyshenkilöstä vs. laaja-alainen huoli useista aiheista."},
 {id:"f70", category:"kayttaytymisen_saately", difficulty:"vaativa", front:"Käytöshäiriö vs. epäsosiaalinen persoonallisuushäiriö: mikä ikäraja pitää muistaa?", back:"Persoonallisuushäiriö diagnosoidaan vasta ≥18v, edellyttäen käytöshäiriön alkaneen ennen 15v."}
 ];
-const DEVCHALLENGE_BANK = [
+const MT_DEVCHALLENGE_BANK = [
 {id:"dc01", type:"mcq", category:"neurokehitys", question:"Miten ADHD:n oirekuva tyypillisimmin muuttuu lapsuudesta nuoruuteen?",
   options:["Yliaktiivisuus voimistuu ja sisäinen levottomuus vähenee.","Ulkoinen yliaktiivisuus usein vähenee, mutta sisäinen levottomuus ja keskittymisvaikeudet jatkuvat.","Oireet häviävät aina kokonaan murrosiässä.","Impulsiivisuus muuttuu tyypillisesti psykoottisiksi oireiksi."],
   correctIndex:1,
@@ -2651,7 +2691,7 @@ const DEVCHALLENGE_BANK = [
 {id:"dc20", type:"short", category:"somaattiset", question:"Kuvaile lyhyesti, miten somaattisesti ilmenevä psyykkinen oireilu voi muuttaa muotoaan lapsuudesta aikuisuuteen.",
   modelAnswer:["Lapsuudessa tyypillistä toistuva, tilannesidonnainen vatsakipu/päänsärky ilman elimellistä löydöstä.","Nuoruudessa oireilu voi laajentua (väsymys, huimaus) tunneilmaisun kyvyn kehittyessä.","Aikuisuudessa voi kehittyä täysimuotoinen somaattisoireinen häiriö, joskaan yhteys ei ole kaikilla suora."]}
 ];
-const EXAM_BLUEPRINT = { essayCount:3, essayPts:15, vignetteCount:2, vignettePts:10, mcqCount:8, mcqPts:2, tfCount:6, tfPts:1.5, shortCount:5, shortPts:2, passPct:60 };
+const MT_EXAM_BLUEPRINT = { essayCount:3, essayPts:15, vignetteCount:2, vignettePts:10, mcqCount:8, mcqPts:2, tfCount:6, tfPts:1.5, shortCount:5, shortPts:2, passPct:60 };
 
 /* =========================================================================
    APUFUNKTIOT
@@ -2684,7 +2724,28 @@ function topicCategoryName(catId){
   const c = byId(CATEGORIES, catId);
   return c ? c.name : catId;
 }
+const MARK_INFO = {
+  "V":      {cls:"mark-v", label:"V",  title:"Varmistettu: tieto on tarkistettu luetusta lähteestä (ks. kortin lähteet)."},
+  "V-abs":  {cls:"mark-v", label:"V·abs", title:"Varmistettu vain tiivistelmästä – koko tekstiä ei luettu."},
+  "V-2nd":  {cls:"mark-v", label:"V²", title:"Varmistettu toisen käden lähteestä (esim. katsaus tai kirja-arvio)."},
+  "T":      {cls:"mark-t", label:"T",  title:"Taustatieto: yleisesti tunnettu käsite, jota ei ole tarkistettu tenttikirjasta – tarkista kirjasta."},
+  "EI LÖYTYNYT": {cls:"mark-x", label:"ei löytynyt", title:"Tätä haettiin, mutta luotettavaa lähdettä ei löytynyt."}
+};
+function fmtMarked(text){
+  const s = escapeHtml(text==null ? "" : text);
+  return s.replace(/\[(V-abs|V-2nd|V|T|EI LÖYTYNYT)\]/g, function(m, k){
+    const mi = MARK_INFO[k];
+    return '<span class="mark '+mi.cls+'" title="'+mi.title+'">'+mi.label+'</span>';
+  });
+}
+function ulMarked(items){
+  if(!items || !items.length) return "";
+  return "<ul>" + items.map(function(i){ return "<li>"+fmtMarked(i)+"</li>"; }).join("") + "</ul>";
+}
 function onsetTagsHtml(topic){
+  if(topic.badges){
+    return topic.badges.map(function(b){ return '<span class="tag'+(b.cls?' '+b.cls:'')+'">'+escapeHtml(b.label)+'</span>'; }).join("");
+  }
   if(!topic.tags || !topic.tags.onset) return "";
   return topic.tags.onset.map(function(o){
     return '<span class="tag onset-'+o+'">'+onsetLabel(o)+'</span>';
@@ -2697,7 +2758,7 @@ function onsetLabel(o){
 /* =========================================================================
    TILA JA TALLENNUS (localStorage)
    ========================================================================= */
-const STORAGE_KEY = "mtha_progress_v1";
+let STORAGE_KEY = "mtha_progress_v1"; /* vaihtuu opintojakson mukaan */
 function loadState(){
   let raw = null;
   try{ raw = localStorage.getItem(STORAGE_KEY); }catch(e){ raw = null; }
@@ -2770,12 +2831,46 @@ document.getElementById("theme-toggle").addEventListener("click", function(){
   document.documentElement.setAttribute("data-theme", next);
   STATE.theme = next;
   saveState();
+  try{ localStorage.setItem("suvi_theme", next); }catch(e){ /* ei tallennusta */ }
 });
 
 /* =========================================================================
    YLEISET UI-KOMPONENTIT
    ========================================================================= */
+function renderTopicCardGeneric(topic){
+  let html = '<div class="q-meta">'+escapeHtml(topic.source||"")+' &middot; Kokonaisuus: '+escapeHtml(topicCategoryName(topic.category))+'</div>';
+  html += onsetTagsHtml(topic);
+  if(topic.sourceStatus){ html += '<div class="source-status">'+fmtMarked(topic.sourceStatus)+'</div>'; }
+  topic.sections.forEach(function(sec){
+    html += '<div class="section-block"><h4>'+escapeHtml(sec.title)+'</h4>';
+    if(sec.type==="list"){ html += ulMarked(sec.items); }
+    else if(sec.type==="dev"){
+      html += '<div class="dev-cols" style="grid-template-columns:repeat('+sec.cols.length+',1fr)">';
+      html += sec.cols.map(function(c){ return '<div class="dev-col"><h5>'+escapeHtml(c.label)+'</h5><p>'+fmtMarked(c.text)+'</p></div>'; }).join("");
+      html += '</div>';
+    }
+    else { html += '<p>'+fmtMarked(sec.text)+'</p>'; }
+    html += '</div>';
+  });
+  if(topic.connections && topic.connections.length){
+    html += '<div class="section-block"><h4>Yhteydet muihin aiheisiin</h4><div>';
+    html += topic.connections.map(function(cid){
+      const t = byId(TOPICS, cid);
+      return t ? '<span class="tag" style="cursor:pointer" onclick="event.stopPropagation();navigateTo(\'theory\',{topicId:\''+cid+'\'})">'+escapeHtml(t.name)+'</span>' : "";
+    }).join("");
+    html += '</div></div>';
+  }
+  if(topic.references && topic.references.length){
+    html += '<div class="section-block"><h4>Lähteet, joihin kortti nojaa</h4><ul class="ref-list">';
+    html += topic.references.map(function(r){
+      return '<li>'+fmtMarked(r.text)+(r.url ? ' – <a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener">avaa lähde</a>' : '')+'</li>';
+    }).join("");
+    html += '</ul></div>';
+  }
+  return html;
+}
 function renderTopicCardFull(topic){
+  if(topic.sections) return renderTopicCardGeneric(topic);
   const c = topic.core, d = topic.development;
   let html = "";
   html += '<div class="q-meta">Kirjan luku / aihe: '+escapeHtml(topic.chapterFi)+' &middot; Kokonaisuus: '+escapeHtml(topicCategoryName(topic.category))+'</div>';
@@ -2818,30 +2913,28 @@ function renderTopicCardFull(topic){
    NÄKYMÄ: ETUSIVU
    ========================================================================= */
 VIEW_RENDERERS.home = function(container){
+  const H = COURSE.home;
   const totalTopics = TOPICS.length;
   const accs = allCategoryAccuracies().filter(function(c){ return c.attempts>0; });
   const avgAcc = accs.length ? Math.round(100*accs.reduce(function(s,c){return s+c.accuracy;},0)/accs.length) : null;
   let html = "";
-  html += '<h2 class="view-title">Tervetuloa opiskelemaan</h2>';
-  html += '<p class="view-lead">Mielenterveyden häiriöiden aineopintotenttiin valmentava sovellus. Kaikki data tallentuu vain tähän selaimeen.</p>';
-  html += '<div class="disclaimer"><strong>Tärkeä huomautus lähteistä:</strong> Tämän sovelluksen sisältö on koottu yleisesti tunnetusta psykiatrisesta ja kehityspsykopatologisesta tietämyksestä (mm. DSM-5- ja ICD-10-luokitukset) ja jäsennetty vastaamaan ilmoittamiasi Duodecimin teosten <em>Psykiatria</em> ja <em>Lastenpsykiatria ja nuorisopsykiatria</em> lukuja. Kyseessä <strong>ei ole</strong> suora ote näiden kirjojen tekstistä, eikä sisältöä ole voitu tarkistaa rivi riviltä alkuperäisistä painoksista. Tarkista aina tarkat diagnostiset kriteerit, esiintyvyysluvut ja muut yksityiskohdat itse tenttikirjallisuudesta ennen tenttiä. Kohdat, joissa tarkkuus kaipaa erityisesti kirjatarkistusta, on merkitty ⚠-merkillä.</div>';
+  html += '<h2 class="view-title">'+H.title+'</h2>';
+  html += '<p class="view-lead">'+H.lead+'</p>';
+  if(H.disclaimerHtml) html += '<div class="disclaimer">'+H.disclaimerHtml+'</div>';
 
   html += '<div class="grid grid-3">';
-  html += statCard("Aihekokonaisuuksia", totalTopics, "Teoriaosion häiriö- ja aihekortit");
+  html += statCard("Aihekokonaisuuksia", totalTopics, H.topicsStatLabel || "Teoriaosion aihekortit");
   html += statCard("Keskim. osaaminen", avgAcc!==null ? avgAcc+" %" : "–", "Kaikkien harjoiteltujen aihealueiden keskiarvo");
   html += statCard("Tenttiyrityksiä", STATE.examHistory.length, "Harjoitustentin suorituskertoja");
   html += '</div>';
 
-  html += '<div class="card"><h3>Miten opiskella tehokkaasti tätä laajaa aluetta?</h3><ol>';
-  html += '<li><strong>Teoria</strong> -osiossa käyt läpi häiriöt jäsenneltyinä kokonaisuuksina – älä opettele lukujärjestyksessä sanasta sanaan.</li>';
-  html += '<li><strong>Elämänkaari</strong>-näkymä auttaa hahmottamaan, miten oirekuva muuttuu iän myötä – tämä on tentin kannalta erityisen keskeistä.</li>';
-  html += '<li><strong>Vertailu</strong> ja <strong>Kokonaisuudet</strong> auttavat näkemään häiriöiden väliset yhteydet ja erot, mikä on esseevastausten ydin.</li>';
-  html += '<li>Harjoittele runsaasti <strong>Diagnostiikka</strong>-, <strong>Tapaukset</strong>- ja <strong>Kehityshaaste</strong> -tiloissa, koska ne vastaavat parhaiten tentin soveltavaa luonnetta.</li>';
-  html += '<li>Kun tunnistat heikot alueesi <strong>Omista tilastoista</strong>, käytä <strong>Heikot alueet</strong> -tilaa kohdennettuun kertaukseen.</li>';
-  html += '<li>Simuloi lopuksi koko tenttiä <strong>Harjoitustentti</strong>-tilassa. Hyväksymisraja on 60 %.</li>';
+  if(H.extraCardsHtml) html += H.extraCardsHtml;
+
+  html += '<div class="card"><h3>'+(H.howtoTitle || "Miten opiskella tehokkaasti?")+'</h3><ol>';
+  html += H.howtoItems.map(function(li){ return '<li>'+li+'</li>'; }).join("");
   html += '</ol></div>';
 
-  html += '<div class="card"><h3>Sisällön kattavuus</h3><p class="small-muted">Sovellus kattaa kaikki ilmoittamasi luvut molemmista tenttikirjoista, järjestettynä ' + CATEGORIES.length + ' isompaan aihekokonaisuuteen. Lasten- ja nuorisopsykiatrian sekä aikuispsykiatrian sisällöt on yhdistetty saman häiriön kohdalla, jotta kehityksellinen jatkumo näkyy suoraan.</p></div>';
+  html += '<div class="card"><h3>Sisällön kattavuus</h3><p class="small-muted">'+H.coverageHtml.replace("{CATS}", CATEGORIES.length)+'</p></div>';
 
   container.innerHTML = html;
 };
@@ -2875,18 +2968,18 @@ VIEW_RENDERERS.stats = function(container){
   if(STATE.examHistory.length){
     html += '<div class="card"><h3>Harjoitustenttien historia</h3><table><tr><th>Ajankohta</th><th>Pisteet</th><th>%</th><th>Tulos</th></tr>';
     html += STATE.examHistory.slice().reverse().map(function(e){
-      return '<tr><td>'+escapeHtml(e.date)+'</td><td>'+e.score+' / '+e.max+'</td><td>'+e.pct+' %</td><td>'+(e.passed?'<span class="badge dsm5" style="background:var(--good-bg);color:var(--good)">Hyväksytty</span>':'<span class="badge" style="background:var(--bad-bg);color:var(--bad)">Hylätty</span>')+'</td></tr>';
+      return '<tr><td>'+escapeHtml(e.date)+'</td><td>'+e.score+' / '+e.max+'</td><td>'+e.pct+' %</td><td>'+(e.passed===null||e.passed===undefined ? '–' : (e.passed?'<span class="badge dsm5" style="background:var(--good-bg);color:var(--good)">Hyväksytty</span>':'<span class="badge" style="background:var(--bad-bg);color:var(--bad)">Hylätty</span>'))+'</td></tr>';
     }).join("");
     html += '</table></div>';
   }
 
   html += '<div class="card"><h3>Tietojen hallinta</h3><p class="small-muted">Kaikki tieto on vain tässä selaimessa. Voit nollata edistymisen alta.</p>';
-  html += '<button class="btn secondary small" id="reset-progress-btn">Nollaa kaikki tallennettu edistyminen</button></div>';
+  html += '<button class="btn secondary small" id="reset-progress-btn">Nollaa tämän opintojakson tallennettu edistyminen</button></div>';
 
   container.innerHTML = html;
   const resetBtn = document.getElementById("reset-progress-btn");
   if(resetBtn) resetBtn.addEventListener("click", function(){
-    if(confirm("Haluatko varmasti nollata kaiken tallennetun edistymisen tässä selaimessa?")){
+    if(confirm("Haluatko varmasti nollata opintojakson \""+COURSE.title+"\" tallennetun edistymisen tässä selaimessa? Muiden opintojaksojen tiedot säilyvät.")){
       STATE = {theme: STATE.theme, categoryStats:{}, flashcardStatus:{}, examHistory:[], answeredIds:{}};
       saveState();
       navigateTo("stats");
@@ -2905,8 +2998,8 @@ VIEW_RENDERERS.theory = function(container, params){
   }
 };
 function renderTheoryList(container){
-  let html = '<h2 class="view-title">Teoria</h2><p class="view-lead">Selaa häiriöitä aihekokonaisuuksittain. Klikkaa avataksesi täyden kortin (määritelmä, diagnostiikka, erotusdiagnostiikka, elämänkaarinäkökulma).</p>';
-  html += '<div class="search-box"><input type="search" id="theory-search" placeholder="Hae häiriön nimellä…"></div>';
+  let html = '<h2 class="view-title">Teoria</h2><p class="view-lead">'+COURSE.labels.theoryLead+'</p>';
+  html += '<div class="search-box"><input type="search" id="theory-search" placeholder="'+COURSE.labels.theorySearch+'"></div>';
   html += '<div id="theory-list-content"></div>';
   container.innerHTML = html;
 
@@ -2945,7 +3038,7 @@ function renderTheoryDetail(container, topicId){
    NÄKYMÄ: VERTAILU
    ========================================================================= */
 VIEW_RENDERERS.compare = function(container, params){
-  let html = '<h2 class="view-title">Häiriöiden vertailu</h2><p class="view-lead">Valitse valmis vertailupari tai rakenna oma vertailu 2–4 häiriön väliltä.</p>';
+  let html = '<h2 class="view-title">'+COURSE.labels.compareTitle+'</h2><p class="view-lead">'+COURSE.labels.compareLead+'</p>';
   html += '<div class="card"><h3>Valmiit tentin kannalta keskeiset vertailuparit</h3><div id="cmp-pairs-list"></div></div>';
   html += '<div class="card"><h3>Rakenna oma vertailu</h3><p class="small-muted">Valitse 2–4 aihetta ja klikkaa Vertaa.</p>';
   html += '<div id="cmp-custom-checks" style="max-height:260px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:10px"></div>';
@@ -2975,6 +3068,23 @@ VIEW_RENDERERS.compare = function(container, params){
 
   function buildCustomComparison(ids){
     const ts = ids.map(function(id){ return byId(TOPICS, id); });
+    if(ts.every(function(t){ return t.sections; })){
+      const titles = [];
+      ts.forEach(function(t){ t.sections.forEach(function(sec){ if(sec.type!=="dev" && titles.indexOf(sec.title)<0) titles.push(sec.title); }); });
+      return {
+        id:"custom", title:"Oma vertailu: "+ts.map(function(t){return t.name;}).join(" vs. "),
+        topicIds:ids,
+        dimensions:titles.map(function(title){
+          const values = {};
+          ts.forEach(function(t){
+            const sec = t.sections.find(function(x){ return x.title===title; });
+            values[t.id] = !sec ? "–" : (sec.type==="list" ? sec.items.join(" • ") : sec.text);
+          });
+          return {label:title, values:values};
+        }),
+        note:"Oma koottu vertailu valituista aihekorteista."
+      };
+    }
     const dims = [
       {label:"Ydinmääritelmä", key:function(t){return t.core.definition;}},
       {label:"Keskeiset oireet", key:function(t){return fmtList(t.core.symptoms);}},
@@ -3004,10 +3114,10 @@ VIEW_RENDERERS.compare = function(container, params){
     let h = '<div class="card"><h3>'+escapeHtml(pair.title)+'</h3>';
     h += '<div style="overflow-x:auto"><table class="compare-table"><tr><th>Ulottuvuus</th>'+ts.map(function(t){return '<th>'+escapeHtml(t.name)+'</th>';}).join("")+'</tr>';
     pair.dimensions.forEach(function(dim){
-      h += '<tr><td><strong>'+escapeHtml(dim.label)+'</strong></td>'+ts.map(function(t){ return '<td>'+escapeHtml(dim.values[t.id]||"–")+'</td>'; }).join("")+'</tr>';
+      h += '<tr><td><strong>'+escapeHtml(dim.label)+'</strong></td>'+ts.map(function(t){ return '<td>'+fmtMarked(dim.values[t.id]||"–")+'</td>'; }).join("")+'</tr>';
     });
     h += '</table></div>';
-    if(pair.note) h += '<p style="margin-top:12px"><strong>Tentin kannalta:</strong> '+escapeHtml(pair.note)+'</p>';
+    if(pair.note) h += '<p style="margin-top:12px"><strong>Tentin kannalta:</strong> '+fmtMarked(pair.note)+'</p>';
     h += '<div class="btn-row">'+ts.map(function(t){ return '<button class="btn secondary small" onclick="navigateTo(\'theory\',{topicId:\''+t.id+'\'})">Avaa: '+escapeHtml(t.name)+'</button>'; }).join("")+'</div>';
     h += '</div>';
     document.getElementById("cmp-result").innerHTML = h;
@@ -3019,19 +3129,19 @@ VIEW_RENDERERS.compare = function(container, params){
    NÄKYMÄ: ELÄMÄNKAARI
    ========================================================================= */
 VIEW_RENDERERS.lifecycle = function(container){
-  let html = '<h2 class="view-title">Elämänkaarinäkymä</h2><p class="view-lead">Sama häiriökirjo tarkasteltuna ikävaiheiden jatkumona – mikä alkaa milloinkin, ja miten oirekuva muuttuu.</p>';
+  let html = '<h2 class="view-title">'+COURSE.labels.lifecycleTitle+'</h2><p class="view-lead">'+COURSE.labels.lifecycleLead+'</p>';
   html += '<div class="timeline">';
   LIFECYCLE_STAGES.forEach(function(stage){
     html += '<div class="timeline-stage"><h3>'+escapeHtml(stage.name)+'</h3><div class="stage-range">'+escapeHtml(stage.ageRange)+'</div>';
-    html += '<p>'+escapeHtml(stage.description)+'</p>';
+    html += '<p>'+fmtMarked(stage.description)+'</p>';
     html += '<div class="section-block"><h4>Tässä vaiheessa keskeiset aiheet</h4>';
     html += stage.topics.map(function(st){
       const t = byId(TOPICS, st.topicId);
       if(!t) return "";
-      return '<div style="margin-bottom:8px"><span class="tag" style="cursor:pointer" onclick="navigateTo(\'theory\',{topicId:\''+t.id+'\'})">'+escapeHtml(t.name)+'</span> <span class="small-muted">'+escapeHtml(st.note)+'</span></div>';
+      return '<div style="margin-bottom:8px"><span class="tag" style="cursor:pointer" onclick="navigateTo(\'theory\',{topicId:\''+t.id+'\'})">'+escapeHtml(t.name)+'</span> <span class="small-muted">'+fmtMarked(st.note)+'</span></div>';
     }).join("");
     html += '</div>';
-    html += '<div class="section-block"><h4>Kehitykselliset avainteemat</h4>'+ul(stage.keyThemes)+'</div>';
+    html += '<div class="section-block"><h4>Kehitykselliset avainteemat</h4>'+ulMarked(stage.keyThemes)+'</div>';
     html += '</div>';
   });
   html += '</div>';
@@ -3041,7 +3151,7 @@ VIEW_RENDERERS.lifecycle = function(container){
 /* =========================================================================
    NÄKYMÄ: KOKONAISUUDET
    ========================================================================= */
-const OVERVIEW_FILTERS = [
+const MT_OVERVIEW_FILTERS = [
   {key:"psykoottisuus", label:"Mitkä häiriöt voivat sisältää psykoottisia oireita?"},
   {key:"ahdistuneisuus", label:"Missä häiriöissä ahdistuneisuus on keskeistä?"},
   {key:"mielialaoireet", label:"Missä häiriöissä mielialaoireet ovat keskeisiä?"},
@@ -3052,34 +3162,35 @@ const OVERVIEW_FILTERS = [
   {key:"poissulkeminen", label:"Mitkä diagnoosit vaativat erityisesti muiden sairauksien/päihteiden poissulkemista?"},
   {key:"neurokehitys", label:"Mitkä ovat neurokehityksellisiä häiriöitä?"}
 ];
-const ONSET_FILTERS = [
-  {key:"lapsuus", label:"Mitkä alkavat tyypillisesti lapsuudessa?"},
-  {key:"nuoruus", label:"Mitkä puhkeavat tyypillisesti nuoruudessa?"},
-  {key:"aikuisuus", label:"Mitkä puhkeavat tyypillisesti vasta aikuisuudessa?"}
+const MT_ONSET_FILTERS = [
+  {key:"lapsuus", label:"Mitkä alkavat tyypillisesti lapsuudessa?", mode:"onset"},
+  {key:"nuoruus", label:"Mitkä puhkeavat tyypillisesti nuoruudessa?", mode:"onset"},
+  {key:"aikuisuus", label:"Mitkä puhkeavat tyypillisesti vasta aikuisuudessa?", mode:"onset"}
 ];
 VIEW_RENDERERS.overview = function(container){
-  let html = '<h2 class="view-title">Kokonaisuuksien hallinta</h2><p class="view-lead">Hahmota häiriöiden väliset yhteydet suurempien kysymysten kautta. Klikkaa kysymystä nähdäksesi vastaavat häiriöt.</p>';
-  html += '<div class="card"><h3>Oireiden ja piirteiden mukaan</h3><div id="ov-filters-symptom"></div></div>';
-  html += '<div class="card"><h3>Alkamisiän mukaan</h3><div id="ov-filters-onset"></div></div>';
+  const L = COURSE.labels;
+  let html = '<h2 class="view-title">Kokonaisuuksien hallinta</h2><p class="view-lead">'+L.overviewLead+'</p>';
+  OVERVIEW_GROUPS.forEach(function(g){
+    html += '<div class="card"><h3>'+escapeHtml(g.title)+'</h3><div>';
+    html += g.filters.map(function(f){
+      return '<span class="chip-filter" data-filter="'+f.key+'" data-mode="'+(f.mode||"tag")+'">'+escapeHtml(f.label)+'</span>';
+    }).join("");
+    html += '</div></div>';
+  });
   html += '<div id="ov-result"></div>';
-  html += '<div class="card"><h3>Komorbiditeettikartta</h3><p class="small-muted">Valitse aihe nähdäksesi sen tyypilliset liitännäisdiagnoosit ja yhteydet.</p>';
+  html += '<div class="card"><h3>'+L.relationsTitle+'</h3><p class="small-muted">'+L.relationsLead+'</p>';
   html += '<select id="ov-comorbid-select"><option value="">– valitse aihe –</option>'+TOPICS.map(function(t){return '<option value="'+t.id+'">'+escapeHtml(t.name)+'</option>';}).join("")+'</select>';
   html += '<div id="ov-comorbid-result" style="margin-top:12px"></div></div>';
   container.innerHTML = html;
 
-  document.getElementById("ov-filters-symptom").innerHTML = OVERVIEW_FILTERS.map(function(f){
-    return '<span class="chip-filter" data-filter="'+f.key+'" data-mode="tag">'+escapeHtml(f.label)+'</span>';
-  }).join("");
-  document.getElementById("ov-filters-onset").innerHTML = ONSET_FILTERS.map(function(f){
-    return '<span class="chip-filter" data-filter="'+f.key+'" data-mode="onset">'+escapeHtml(f.label)+'</span>';
-  }).join("");
   $all(".chip-filter", container).forEach(function(chip){
     chip.addEventListener("click", function(){
       $all(".chip-filter", container).forEach(function(c){c.classList.remove("active");});
       chip.classList.add("active");
       const key = chip.dataset.filter, mode = chip.dataset.mode;
       const matches = TOPICS.filter(function(t){
-        return mode==="onset" ? (t.tags.onset||[]).indexOf(key)>-1 : !!t.tags[key];
+        const tags = t.tags || {};
+        return mode==="onset" ? (tags.onset||[]).indexOf(key)>-1 : !!tags[key];
       });
       let h = '<div class="card"><h3>Vastaavat aiheet ('+matches.length+')</h3>';
       if(!matches.length){ h += '<p class="small-muted">Ei osumia.</p>'; }
@@ -3095,7 +3206,9 @@ VIEW_RENDERERS.overview = function(container){
     const t = byId(TOPICS, e.target.value);
     const resEl = document.getElementById("ov-comorbid-result");
     if(!t){ resEl.innerHTML=""; return; }
-    let h = '<div class="section-block"><h4>Tavalliset komorbiditeetit</h4>'+ul(t.core.comorbid)+'</div>';
+    let h = "";
+    if(t.core && t.core.comorbid){ h += '<div class="section-block"><h4>Tavalliset komorbiditeetit</h4>'+ul(t.core.comorbid)+'</div>'; }
+    if(t.relatedConcepts){ h += '<div class="section-block"><h4>Liittyvät käsitteet</h4>'+ulMarked(t.relatedConcepts)+'</div>'; }
     h += '<div class="section-block"><h4>Keskeiset yhteydet muihin aihekortteihin</h4><div>';
     h += (t.connections||[]).map(function(cid){
       const ct = byId(TOPICS, cid);
@@ -3130,7 +3243,7 @@ function renderMCQItem(container, item, onAnswered){
       });
       let fb = '<div class="feedback-box '+(correct?"correct":"incorrect")+'"><strong>'+(correct?"Oikein!":"Väärin.")+'</strong><ul style="margin-top:8px">';
       item.options.forEach(function(o, oi){
-        fb += '<li style="margin-bottom:4px"><strong>'+escapeHtml(o)+'</strong> — '+escapeHtml(item.optionNotes[oi])+'</li>';
+        fb += '<li style="margin-bottom:4px"><strong>'+escapeHtml(o)+'</strong> — '+fmtMarked(item.optionNotes[oi])+'</li>';
       });
       fb += '</ul></div>';
       container.querySelector("#mcq-feedback").innerHTML = fb;
@@ -3152,7 +3265,7 @@ function renderTFItem(container, item, onAnswered){
       answered = true;
       const userVal = btn.dataset.v==="true";
       const correct = userVal===item.answer;
-      let fb = '<div class="feedback-box '+(correct?"correct":"incorrect")+'"><strong>'+(correct?"Oikein!":"Väärin.")+'</strong> Oikea vastaus: <strong>'+(item.answer?"Oikein":"Väärin")+'</strong>. '+escapeHtml(item.explanation)+'</div>';
+      let fb = '<div class="feedback-box '+(correct?"correct":"incorrect")+'"><strong>'+(correct?"Oikein!":"Väärin.")+'</strong> Oikea vastaus: <strong>'+(item.answer?"Oikein":"Väärin")+'</strong>. '+fmtMarked(item.explanation)+'</div>';
       container.querySelector("#tf-feedback").innerHTML = fb;
       onAnswered(correct?1:0);
     });
@@ -3166,10 +3279,10 @@ function renderShortItem(container, item, onAnswered){
   html += '<div id="reveal-area"></div>';
   container.innerHTML = html;
   container.querySelector("#reveal-btn").addEventListener("click", function(){
-    let h = '<div class="feedback-box neutral"><h4 style="margin-top:0">Mallivastauksen keskeiset kohdat</h4>'+ul(item.modelAnswer)+'</div>';
+    let h = '<div class="feedback-box neutral"><h4 style="margin-top:0">Mallivastauksen keskeiset kohdat</h4>'+ulMarked(item.modelAnswer)+'</div>';
     h += '<div class="section-block"><h4>Itsearviointi — rastita, mitkä asiat käsittelit omassa vastauksessasi</h4>';
     item.modelAnswer.forEach(function(p, i){
-      h += '<label style="display:block;padding:4px 0;font-size:13px"><input type="checkbox" class="self-check"> '+escapeHtml(p)+'</label>';
+      h += '<label style="display:block;padding:4px 0;font-size:13px"><input type="checkbox" class="self-check"> '+fmtMarked(p)+'</label>';
     });
     h += '</div><button class="btn" id="score-btn">Laske pisteet</button><div id="score-result"></div>';
     container.querySelector("#reveal-area").innerHTML = h;
@@ -3190,7 +3303,7 @@ function renderEssayItem(container, item, onAnswered){
   html += '<div id="essay-reveal-area"></div>';
   container.innerHTML = html;
   container.querySelector("#essay-reveal-btn").addEventListener("click", function(){
-    let h = '<div class="feedback-box neutral"><h4 style="margin-top:0">Mallivastauksen avainkohdat</h4>'+ul(item.modelAnswerPoints)+'</div>';
+    let h = '<div class="feedback-box neutral"><h4 style="margin-top:0">Mallivastauksen avainkohdat</h4>'+ulMarked(item.modelAnswerPoints)+'</div>';
     h += '<div class="section-block"><h4>Arviointirubriikki</h4><p class="small-muted">Rastita rehellisesti kohdat, jotka vastauksesi täytti kohtuullisesti verrattuna mallivastaukseen. Tämä on itsearviointi — sovellus ei analysoi tekstiäsi automaattisesti.</p>';
     item.rubric.forEach(function(r, i){
       h += '<div class="rubric-row"><input type="checkbox" class="rubric-check" data-points="'+r.points+'" id="rub-'+i+'"><label for="rub-'+i+'" style="flex:1;margin-left:8px">'+escapeHtml(r.label)+'</label><span class="rubric-pts">'+r.points+' p</span></div>';
@@ -3208,7 +3321,11 @@ function renderEssayItem(container, item, onAnswered){
   });
 }
 function renderCaseItem(container, item, onAnswered){
-  const defaultQ = ["Mikä on todennäköisin diagnoosi?","Mitkä ovat keskeiset vaihtoehtoiset diagnoosit ja miksi ne eivät sovi yhtä hyvin?","Mitä lisätietoa diagnoosin varmistamiseksi tarvittaisiin?"];
+  const CL = Object.assign({
+    defaultQuestions:["Mikä on todennäköisin diagnoosi?","Mitkä ovat keskeiset vaihtoehtoiset diagnoosit ja miksi ne eivät sovi yhtä hyvin?","Mitä lisätietoa diagnoosin varmistamiseksi tarvittaisiin?"],
+    mostLikely:"Todennäköisin diagnoosi", differentials:"Keskeiset vaihtoehtoiset diagnoosit", reasoning:"Perustelu", infoNeeded:"Tarvittava lisätieto"
+  }, (COURSE && COURSE.caseLabels) || {});
+  const defaultQ = CL.defaultQuestions;
   let html = '<div class="q-meta">'+escapeHtml(topicCategoryName(item.category))+(item.ageGroup?(' &middot; Ikäryhmä: '+escapeHtml(item.ageGroup)):'')+'</div>';
   html += '<div class="card" style="background:var(--bg-panel-alt)"><p style="margin:0">'+escapeHtml(item.vignette)+'</p></div>';
   html += '<div class="section-block"><h4>Pohdittavaksi</h4>'+ul(item.questions || defaultQ)+'</div>';
@@ -3219,10 +3336,10 @@ function renderCaseItem(container, item, onAnswered){
   container.querySelector("#case-reveal-btn").addEventListener("click", function(){
     const ma = item.modelAnswer;
     let h = '<div class="feedback-box neutral">';
-    h += '<h4 style="margin-top:0">Todennäköisin diagnoosi</h4><p>'+escapeHtml(ma.mostLikely)+'</p>';
-    h += '<h4>Keskeiset vaihtoehtoiset diagnoosit</h4><ul>'+ma.differentials.map(function(d){return '<li style="margin-bottom:4px"><strong>'+escapeHtml(d.name)+':</strong> '+escapeHtml(d.why)+'</li>';}).join("")+'</ul>';
-    h += '<h4>Perustelu</h4><p>'+escapeHtml(ma.reasoning)+'</p>';
-    h += '<h4>Tarvittava lisätieto</h4>'+ul(ma.infoNeeded);
+    h += '<h4 style="margin-top:0">'+CL.mostLikely+'</h4><p>'+fmtMarked(ma.mostLikely)+'</p>';
+    h += '<h4>'+CL.differentials+'</h4><ul>'+ma.differentials.map(function(d){return '<li style="margin-bottom:4px"><strong>'+escapeHtml(d.name)+':</strong> '+fmtMarked(d.why)+'</li>';}).join("")+'</ul>';
+    h += '<h4>'+CL.reasoning+'</h4><p>'+fmtMarked(ma.reasoning)+'</p>';
+    h += '<h4>'+CL.infoNeeded+'</h4>'+ulMarked(ma.infoNeeded);
     h += '</div>';
     h += '<div class="section-block"><h4>Itsearviointi</h4>';
     item.rubric.forEach(function(r, i){
@@ -3333,14 +3450,16 @@ function buildMixedPool(){
   return pool;
 }
 
-VIEW_RENDERERS.mcq = function(container){ renderQuizModeStart(container, {title:"Monivalinta", lead:"Valitse oikea vaihtoehto. Näet vastattuasi perustelun sekä oikealle että keskeisille väärille vaihtoehdoille.", bank:MCQ_BANK, sampleSize:12}); };
-VIEW_RENDERERS.tf = function(container){ renderQuizModeStart(container, {title:"Oikein vai väärin?", lead:"Testaa käsitteellisiä eroja, DSM-5/ICD-10-eroja ja ikävaiheisiin liittyviä väärinkäsityksiä.", bank:TF_BANK, sampleSize:12}); };
-VIEW_RENDERERS.short = function(container){ renderQuizModeStart(container, {title:"Avoimet kysymykset", lead:"Palauta tieto muistista ilman vastausvaihtoehtoja. Vertaa omaa vastaustasi mallivastaukseen ja arvioi itse osaamisesi.", bank:SHORT_BANK, sampleSize:8}); };
-VIEW_RENDERERS.essay = function(container){ renderQuizModeStart(container, {title:"Esseekysymykset", lead:"Vaativia aineopintotasoisia esseekysymyksiä, jotka edellyttävät vertailua, synteesiä ja kehityksellistä tarkastelua. Arvioi itse vastauksesi rubriikin avulla.", bank:ESSAY_BANK, sampleSize:3}); };
-VIEW_RENDERERS.vignette = function(container){ renderQuizModeStart(container, {title:"Tapauspohjaiset harjoitukset", lead:"Haastavia kliinisiä vinjettejä lapsista, nuorista ja aikuisista. Perustele vastauksesi ennen mallivastauksen katsomista.", bank:VIGNETTE_BANK, sampleSize:5}); };
-VIEW_RENDERERS.diagdrill = function(container){ renderQuizModeStart(container, {title:"Diagnostiikka ja erotusdiagnostiikka", lead:"Nopeampia päättelyharjoituksia: mikä on todennäköisin diagnoosi, mitkä ovat vaihtoehdot ja mitkä oireet ratkaisevat.", bank:DIAGDRILL_BANK, sampleSize:6}); };
-VIEW_RENDERERS.devchallenge = function(container){ renderQuizModeStart(container, {title:"Kehityksellinen haastetila", lead:"Vaativia kysymyksiä nimenomaan ikävaiheiden eroista, kehityksellisistä jatkumoista ja erotusdiagnostiikan muutoksesta iän myötä.", bank:DEVCHALLENGE_BANK, sampleSize:10}); };
-VIEW_RENDERERS.random = function(container){ renderQuizModeStart(container, {title:"Satunnaisharjoittelu", lead:"Sekoitettuja kysymyksiä ja tehtävätyyppejä koko tenttialueelta – et voi ennakoida seuraavaa aihetta.", bank:buildMixedPool(), sampleSize:15}); };
+function bankForMode(mode){
+  return {mcq:MCQ_BANK, tf:TF_BANK, short:SHORT_BANK, essay:ESSAY_BANK, vignette:VIGNETTE_BANK,
+          diagdrill:DIAGDRILL_BANK, devchallenge:DEVCHALLENGE_BANK, random:buildMixedPool()}[mode] || [];
+}
+["mcq","tf","short","essay","vignette","diagdrill","devchallenge","random"].forEach(function(mode){
+  VIEW_RENDERERS[mode] = function(container){
+    const m = COURSE.modes[mode];
+    renderQuizModeStart(container, {title:m.title, lead:m.lead, bank:bankForMode(mode), sampleSize:m.sampleSize});
+  };
+});
 
 /* =========================================================================
    NÄKYMÄ: HEIKOT ALUEET
@@ -3426,11 +3545,25 @@ function examKindLabel(kind){
   return {essay:"Essee", case:"Tapausanalyysi", mcq:"Monivalinta", tf:"Oikein/väärin", short:"Avoin kysymys"}[kind] || kind;
 }
 function buildExamItems(){
-  const essays = pickRandom(ESSAY_BANK, Math.min(EXAM_BLUEPRINT.essayCount, ESSAY_BANK.length)).map(function(it){ return {kind:"essay", item:it, weight:it.maxPoints}; });
-  const vignettes = pickRandom(VIGNETTE_BANK, Math.min(EXAM_BLUEPRINT.vignetteCount, VIGNETTE_BANK.length)).map(function(it){ return {kind:"case", item:it, weight:it.maxPoints}; });
-  const mcqs = pickRandom(MCQ_BANK, Math.min(EXAM_BLUEPRINT.mcqCount, MCQ_BANK.length)).map(function(it){ return {kind:"mcq", item:it, weight:EXAM_BLUEPRINT.mcqPts}; });
-  const tfs = pickRandom(TF_BANK, Math.min(EXAM_BLUEPRINT.tfCount, TF_BANK.length)).map(function(it){ return {kind:"tf", item:it, weight:EXAM_BLUEPRINT.tfPts}; });
-  const shorts = pickRandom(SHORT_BANK, Math.min(EXAM_BLUEPRINT.shortCount, SHORT_BANK.length)).map(function(it){ return {kind:"short", item:it, weight:EXAM_BLUEPRINT.shortPts}; });
+  const bp = EXAM_BLUEPRINT;
+  if(bp.sections){
+    const out = [];
+    bp.sections.forEach(function(sec){
+      const bank = {essay:ESSAY_BANK, "case":VIGNETTE_BANK, mcq:MCQ_BANK, tf:TF_BANK, short:SHORT_BANK}[sec.kind] || [];
+      const pool = sec.filter ? bank.filter(function(it){
+        return Object.keys(sec.filter).every(function(k){ return it[k]===sec.filter[k]; });
+      }) : bank;
+      pickRandom(pool, Math.min(sec.count, pool.length)).forEach(function(it){
+        out.push({kind:sec.kind, item:it, weight:(sec.pts!=null ? sec.pts : it.maxPoints)});
+      });
+    });
+    return out;
+  }
+  const essays = pickRandom(ESSAY_BANK, Math.min(bp.essayCount, ESSAY_BANK.length)).map(function(it){ return {kind:"essay", item:it, weight:it.maxPoints}; });
+  const vignettes = pickRandom(VIGNETTE_BANK, Math.min(bp.vignetteCount, VIGNETTE_BANK.length)).map(function(it){ return {kind:"case", item:it, weight:it.maxPoints}; });
+  const mcqs = pickRandom(MCQ_BANK, Math.min(bp.mcqCount, MCQ_BANK.length)).map(function(it){ return {kind:"mcq", item:it, weight:bp.mcqPts}; });
+  const tfs = pickRandom(TF_BANK, Math.min(bp.tfCount, TF_BANK.length)).map(function(it){ return {kind:"tf", item:it, weight:bp.tfPts}; });
+  const shorts = pickRandom(SHORT_BANK, Math.min(bp.shortCount, SHORT_BANK.length)).map(function(it){ return {kind:"short", item:it, weight:bp.shortPts}; });
   return [].concat(mcqs, tfs, shorts, vignettes, essays);
 }
 function startExam(container){
@@ -3469,7 +3602,7 @@ function startExam(container){
   }
   function finish(){
     const percentage = pct(totalEarned, totalMax);
-    const passed = percentage >= EXAM_BLUEPRINT.passPct;
+    const passed = (EXAM_BLUEPRINT.passPct==null) ? null : percentage >= EXAM_BLUEPRINT.passPct;
     const catBreak = Object.keys(byCategory).map(function(c){
       return {id:c, name:topicCategoryName(c), pctv: pct(byCategory[c].earned, byCategory[c].max), earned:byCategory[c].earned, max:byCategory[c].max};
     }).sort(function(a,b){ return a.pctv-b.pctv; });
@@ -3478,8 +3611,9 @@ function startExam(container){
     STATE.examHistory.push({date:new Date().toISOString ? new Date().toISOString().slice(0,10) : "", score:Math.round(totalEarned*10)/10, max:Math.round(totalMax*10)/10, pct:percentage, passed:passed, byCategory:catBreak});
     saveState();
     let h = '<div class="card"><h2 class="view-title" style="margin-top:0">Harjoitustentin tulos</h2>';
-    h += '<div style="font-size:32px;font-weight:700;color:'+(passed?"var(--good)":"var(--bad)")+'">'+Math.round(totalEarned*10)/10+' / '+Math.round(totalMax*10)/10+' ('+percentage+' %)</div>';
-    h += '<p style="font-size:16px"><strong>'+(passed?"Hyväksytty ✓":"Hylätty ✗")+'</strong> — hyväksymisraja on 60 %.</p>';
+    h += '<div style="font-size:32px;font-weight:700;color:'+(passed===null?"var(--accent-dark)":(passed?"var(--good)":"var(--bad)"))+'">'+Math.round(totalEarned*10)/10+' / '+Math.round(totalMax*10)/10+' ('+percentage+' %)</div>';
+    if(passed===null){ h += '<p style="font-size:14px">'+fmtMarked(EXAM_BLUEPRINT.resultNote||"")+'</p>'; }
+    else { h += '<p style="font-size:16px"><strong>'+(passed?"Hyväksytty ✓":"Hylätty ✗")+'</strong> — hyväksymisraja on '+EXAM_BLUEPRINT.passPct+' %.</p>'; }
     h += '<div class="section-block"><h4>Pisteet aihealueittain</h4>';
     h += catBreak.map(function(c){
       const cls = c.pctv>=75?"good":(c.pctv>=50?"warn":"bad");
@@ -3508,10 +3642,11 @@ function startExam(container){
   showItem();
 }
 VIEW_RENDERERS.exam = function(container){
-  let html = '<h2 class="view-title">Harjoitustentti</h2><p class="view-lead">Kokonainen tenttisimulaatio: 3 esseetä (15 p), 2 tapausanalyysiä (10 p), 8 monivalintaa (2 p), 6 oikein/väärin-väittämää (1,5 p) ja 5 avointa kysymystä (2 p). Yhteensä 100 pistettä. Hyväksymisraja 60 %.</p>';
+  let html = '<h2 class="view-title">Harjoitustentti</h2><p class="view-lead">'+EXAM_BLUEPRINT.description+'</p>';
   if(STATE.examHistory.length){
     html += '<div class="card"><h3>Aiemmat suoritukset tässä selaimessa</h3>'+STATE.examHistory.slice(-3).reverse().map(function(e){
-      return '<div>'+escapeHtml(e.date)+': '+e.score+' / '+e.max+' ('+e.pct+' %) – '+(e.passed?"Hyväksytty":"Hylätty")+'</div>';
+      const res = (e.passed===null||e.passed===undefined) ? "" : (" – "+(e.passed?"Hyväksytty":"Hylätty"));
+      return '<div>'+escapeHtml(e.date)+': '+e.score+' / '+e.max+' ('+e.pct+' %)'+res+'</div>';
     }).join("")+'</div>';
   }
   html += '<div class="card"><button class="btn" id="exam-start-btn">Aloita uusi harjoitustentti</button></div>';
@@ -3522,11 +3657,132 @@ VIEW_RENDERERS.exam = function(container){
   });
 };
 
+/*__PP2_DATA__*/
+
+/* =========================================================================
+   OPINTOJAKSOREKISTERI JA OPINTOJAKSON VAIHTO
+   ========================================================================= */
+const MT_COURSE = {
+  id:"mielenterveys", icon:"🧠", title:"Mielenterveyden häiriöt", subtitle:"Tenttivalmennus · aineopinnot",
+  switchLabel:"Mielenterveyden häiriöt", switchSub:"Aineopinnot · 4 op",
+  storageKey:"mtha_progress_v1",
+  data:{
+    CATEGORIES:MT_CATEGORIES, TOPICS:MT_TOPICS, COMPARISON_PAIRS:MT_COMPARISON_PAIRS, LIFECYCLE_STAGES:MT_LIFECYCLE_STAGES,
+    MCQ_BANK:MT_MCQ_BANK, TF_BANK:MT_TF_BANK, SHORT_BANK:MT_SHORT_BANK, ESSAY_BANK:MT_ESSAY_BANK, VIGNETTE_BANK:MT_VIGNETTE_BANK,
+    DIAGDRILL_BANK:MT_DIAGDRILL_BANK, FLASHCARD_BANK:MT_FLASHCARD_BANK, DEVCHALLENGE_BANK:MT_DEVCHALLENGE_BANK,
+    EXAM_BLUEPRINT:Object.assign({
+      description:"Kokonainen tenttisimulaatio: 3 esseetä (15 p), 2 tapausanalyysiä (10 p), 8 monivalintaa (2 p), 6 oikein/väärin-väittämää (1,5 p) ja 5 avointa kysymystä (2 p). Yhteensä 100 pistettä. Hyväksymisraja 60 %."
+    }, MT_EXAM_BLUEPRINT),
+    OVERVIEW_GROUPS:[
+      {title:"Oireiden ja piirteiden mukaan", filters:MT_OVERVIEW_FILTERS},
+      {title:"Alkamisiän mukaan", filters:MT_ONSET_FILTERS}
+    ]
+  },
+  nav:{},
+  labels:{
+    theoryLead:"Selaa häiriöitä aihekokonaisuuksittain. Klikkaa avataksesi täyden kortin (määritelmä, diagnostiikka, erotusdiagnostiikka, elämänkaarinäkökulma).",
+    theorySearch:"Hae häiriön nimellä…",
+    compareTitle:"Häiriöiden vertailu",
+    compareLead:"Valitse valmis vertailupari tai rakenna oma vertailu 2–4 häiriön väliltä.",
+    lifecycleTitle:"Elämänkaarinäkymä",
+    lifecycleLead:"Sama häiriökirjo tarkasteltuna ikävaiheiden jatkumona – mikä alkaa milloinkin, ja miten oirekuva muuttuu.",
+    overviewLead:"Hahmota häiriöiden väliset yhteydet suurempien kysymysten kautta. Klikkaa kysymystä nähdäksesi vastaavat häiriöt.",
+    relationsTitle:"Komorbiditeettikartta",
+    relationsLead:"Valitse aihe nähdäksesi sen tyypilliset liitännäisdiagnoosit ja yhteydet."
+  },
+  modes:{
+    mcq:{title:"Monivalinta", lead:"Valitse oikea vaihtoehto. Näet vastattuasi perustelun sekä oikealle että keskeisille väärille vaihtoehdoille.", sampleSize:12},
+    tf:{title:"Oikein vai väärin?", lead:"Testaa käsitteellisiä eroja, DSM-5/ICD-10-eroja ja ikävaiheisiin liittyviä väärinkäsityksiä.", sampleSize:12},
+    short:{title:"Avoimet kysymykset", lead:"Palauta tieto muistista ilman vastausvaihtoehtoja. Vertaa omaa vastaustasi mallivastaukseen ja arvioi itse osaamisesi.", sampleSize:8},
+    essay:{title:"Esseekysymykset", lead:"Vaativia aineopintotasoisia esseekysymyksiä, jotka edellyttävät vertailua, synteesiä ja kehityksellistä tarkastelua. Arvioi itse vastauksesi rubriikin avulla.", sampleSize:3},
+    vignette:{title:"Tapauspohjaiset harjoitukset", lead:"Haastavia kliinisiä vinjettejä lapsista, nuorista ja aikuisista. Perustele vastauksesi ennen mallivastauksen katsomista.", sampleSize:5},
+    diagdrill:{title:"Diagnostiikka ja erotusdiagnostiikka", lead:"Nopeampia päättelyharjoituksia: mikä on todennäköisin diagnoosi, mitkä ovat vaihtoehdot ja mitkä oireet ratkaisevat.", sampleSize:6},
+    devchallenge:{title:"Kehityksellinen haastetila", lead:"Vaativia kysymyksiä nimenomaan ikävaiheiden eroista, kehityksellisistä jatkumoista ja erotusdiagnostiikan muutoksesta iän myötä.", sampleSize:10},
+    random:{title:"Satunnaisharjoittelu", lead:"Sekoitettuja kysymyksiä ja tehtävätyyppejä koko tenttialueelta – et voi ennakoida seuraavaa aihetta.", sampleSize:15}
+  },
+  home:{
+    title:"Tervetuloa opiskelemaan",
+    lead:"Mielenterveyden häiriöiden aineopintotenttiin valmentava sovellus. Kaikki data tallentuu vain tähän selaimeen.",
+    disclaimerHtml:'<strong>Tärkeä huomautus lähteistä:</strong> Tämän sovelluksen sisältö on koottu yleisesti tunnetusta psykiatrisesta ja kehityspsykopatologisesta tietämyksestä (mm. DSM-5- ja ICD-10-luokitukset) ja jäsennetty vastaamaan ilmoittamiasi Duodecimin teosten <em>Psykiatria</em> ja <em>Lastenpsykiatria ja nuorisopsykiatria</em> lukuja. Kyseessä <strong>ei ole</strong> suora ote näiden kirjojen tekstistä, eikä sisältöä ole voitu tarkistaa rivi riviltä alkuperäisistä painoksista. Tarkista aina tarkat diagnostiset kriteerit, esiintyvyysluvut ja muut yksityiskohdat itse tenttikirjallisuudesta ennen tenttiä. Kohdat, joissa tarkkuus kaipaa erityisesti kirjatarkistusta, on merkitty ⚠-merkillä.',
+    topicsStatLabel:"Teoriaosion häiriö- ja aihekortit",
+    howtoTitle:"Miten opiskella tehokkaasti tätä laajaa aluetta?",
+    howtoItems:[
+      '<strong>Teoria</strong> -osiossa käyt läpi häiriöt jäsenneltyinä kokonaisuuksina – älä opettele lukujärjestyksessä sanasta sanaan.',
+      '<strong>Elämänkaari</strong>-näkymä auttaa hahmottamaan, miten oirekuva muuttuu iän myötä – tämä on tentin kannalta erityisen keskeistä.',
+      '<strong>Vertailu</strong> ja <strong>Kokonaisuudet</strong> auttavat näkemään häiriöiden väliset yhteydet ja erot, mikä on esseevastausten ydin.',
+      'Harjoittele runsaasti <strong>Diagnostiikka</strong>-, <strong>Tapaukset</strong>- ja <strong>Kehityshaaste</strong> -tiloissa, koska ne vastaavat parhaiten tentin soveltavaa luonnetta.',
+      'Kun tunnistat heikot alueesi <strong>Omista tilastoista</strong>, käytä <strong>Heikot alueet</strong> -tilaa kohdennettuun kertaukseen.',
+      'Simuloi lopuksi koko tenttiä <strong>Harjoitustentti</strong>-tilassa. Hyväksymisraja on 60 %.'
+    ],
+    coverageHtml:"Sovellus kattaa kaikki ilmoittamasi luvut molemmista tenttikirjoista, järjestettynä {CATS} isompaan aihekokonaisuuteen. Lasten- ja nuorisopsykiatrian sekä aikuispsykiatrian sisällöt on yhdistetty saman häiriön kohdalla, jotta kehityksellinen jatkumo näkyy suoraan."
+  }
+};
+
+const COURSES = [MT_COURSE].concat(typeof PP2_COURSE !== "undefined" ? [PP2_COURSE] : []);
+const DEFAULT_COURSE_ID = COURSES[COURSES.length-1].id;
+const NAV_DEFAULTS = {};
+$all(".nav-btn").forEach(function(b){
+  NAV_DEFAULTS[b.dataset.view] = {icon:b.querySelector(".icon").textContent, label:b.textContent.replace(b.querySelector(".icon").textContent, "").trim()};
+});
+
+function applyCourseNav(c){
+  $all(".nav-btn").forEach(function(b){
+    const view = b.dataset.view;
+    const conf = Object.assign({}, NAV_DEFAULTS[view], (c.nav||{})[view] || {});
+    b.innerHTML = '<span class="icon">'+conf.icon+'</span>'+escapeHtml(conf.label);
+    const bank = ["mcq","tf","short","essay","vignette","diagdrill","devchallenge"].indexOf(view)>-1 ? bankForMode(view) : null;
+    const hidden = conf.hidden || (bank && bank.length===0) || (view==="compare" && !COMPARISON_PAIRS.length && !TOPICS.length) || (view==="lifecycle" && !LIFECYCLE_STAGES.length);
+    b.style.display = hidden ? "none" : "";
+  });
+}
+function renderCourseSwitch(){
+  const el = document.getElementById("course-switch-list");
+  el.innerHTML = COURSES.map(function(c){
+    return '<button class="course-btn'+(COURSE && COURSE.id===c.id ? ' active' : '')+'" data-course="'+c.id+'">'+c.icon+' '+escapeHtml(c.switchLabel)+'<small>'+escapeHtml(c.switchSub)+'</small></button>';
+  }).join("");
+  $all(".course-btn", el).forEach(function(b){
+    b.addEventListener("click", function(){ if(!COURSE || COURSE.id!==b.dataset.course) activateCourse(b.dataset.course); });
+  });
+}
+function activateCourse(id, opts){
+  const c = byId(COURSES, id) || COURSES[0];
+  COURSE = c;
+  const d = c.data;
+  CATEGORIES = d.CATEGORIES; TOPICS = d.TOPICS; COMPARISON_PAIRS = d.COMPARISON_PAIRS; LIFECYCLE_STAGES = d.LIFECYCLE_STAGES;
+  MCQ_BANK = d.MCQ_BANK; TF_BANK = d.TF_BANK; SHORT_BANK = d.SHORT_BANK; ESSAY_BANK = d.ESSAY_BANK; VIGNETTE_BANK = d.VIGNETTE_BANK;
+  DIAGDRILL_BANK = d.DIAGDRILL_BANK; FLASHCARD_BANK = d.FLASHCARD_BANK; DEVCHALLENGE_BANK = d.DEVCHALLENGE_BANK;
+  EXAM_BLUEPRINT = d.EXAM_BLUEPRINT; OVERVIEW_GROUPS = d.OVERVIEW_GROUPS;
+  STORAGE_KEY = c.storageKey;
+  STATE = loadState();
+  try{ localStorage.setItem("suvi_active_course", c.id); }catch(e){ /* ei tallennusta */ }
+  try{ if(location.hash !== "#kurssi="+c.id) history.replaceState(null, "", "#kurssi="+c.id); }catch(e){ /* esim. data:-osoite */ }
+  document.getElementById("course-title").textContent = c.title;
+  document.getElementById("course-subtitle").textContent = c.subtitle;
+  document.title = c.title + " – tenttivalmennus";
+  applyCourseNav(c);
+  renderCourseSwitch();
+  if(!(opts && opts.skipNavigate)) navigateTo("home");
+}
+function courseFromHash(){
+  const m = /kurssi=([a-z0-9_-]+)/i.exec(location.hash || "");
+  return m && byId(COURSES, m[1]) ? m[1] : null;
+}
+window.addEventListener("hashchange", function(){
+  const id = courseFromHash();
+  if(id && (!COURSE || COURSE.id!==id)) activateCourse(id);
+});
+
 /* =========================================================================
    INIT
    ========================================================================= */
-document.documentElement.setAttribute("data-theme", STATE.theme || "light");
-navigateTo("home");
+(function initApp(){
+  let savedCourse = null, savedTheme = null;
+  try{ savedCourse = localStorage.getItem("suvi_active_course"); savedTheme = localStorage.getItem("suvi_theme"); }catch(e){ /* ei tallennusta */ }
+  const startId = courseFromHash() || (savedCourse && byId(COURSES, savedCourse) ? savedCourse : DEFAULT_COURSE_ID);
+  activateCourse(startId, {skipNavigate:true});
+  document.documentElement.setAttribute("data-theme", savedTheme || STATE.theme || "light");
+  navigateTo("home");
+})();
 </script>
 </body>
 </html>
