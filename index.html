@@ -3657,7 +3657,728 @@ VIEW_RENDERERS.exam = function(container){
   });
 };
 
-/*__PP2_DATA__*/
+/*__PP2_DATA_START__*/
+/* =========================================================================
+
+   OPINTOJAKSO: PERSOONALLISUUSPSYKOLOGIA II – DATA
+
+   Lähdemerkinnät: [V] varmistettu luetusta lähteestä, [T] taustatieto,
+
+   [EI LÖYTYNYT] haettu mutta ei löytynyt. Ks. kunkin kortin references.
+
+   ========================================================================= */
+
+const PP2_TOPICS = [
+/* ---------- Harter luku 2: Minärepresentaatiot lapsuudessa ([V] näyteluku luettu kokonaan) ---------- */
+{
+  id:"h2_vaiheet", category:"h_lapsuus", book:"harter",
+  name:"Lapsuuden kolme vaihetta: minäkuvauksen sisältö, rakenne ja tarkkuus",
+  source:"Harter (2012) luku 2, s. 27–71",
+  badges:[{label:"Harter luku 2"},{label:"Lapsuus 2–10 v", cls:"onset-lapsuus"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (kustantajan julkaisema näyteluku, luettu kokonaan). Sivunumerot viittaavat kirjaan.",
+  tags:{kehitys:true, itsetunto:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Harter kuvaa lapsuuden minäkuvauksia kolmessa ikävaiheessa: hyvin varhainen lapsuus (2–4 v), varhainen–keskilapsuus (5–7 v) ja keski–myöhäislapsuus (8–10 v). Jokaisessa vaiheessa tarkastellaan (1) normatiivista kehitystä, (2) kehitykseen kuuluvia, normatiivisia haavoittuvuuksia ja (3) patologisempia vääristymiä. Luvun keskeinen teesi on, että kognitiiviset edistysaskeleet tuovat mukanaan myös uusia haavoittuvuuksia (s. 27, 63)."},
+    {title:"Taulukko 2.1 ikävaiheittain (s. 28)", type:"dev", cols:[
+      {label:"2–4 v", text:"Sisältö: konkreettiset, havaittavat ominaisuudet – kyvyt, toiminnot, omistukset, mieltymykset. Rakenne: toisistaan erilliset representaatiot, ei johdonmukaisuutta, kaikki tai ei mitään -ajattelu. Arvio: epärealistisen myönteinen; todellista ja ihanneminää ei erotella. Vertailu: ei suoria vertailuja. Muut: aikuisten reaktioiden (kehu, moite) ennakointi."},
+      {label:"5–7 v", text:"Sisältö: laajentuneet luokittelevat ominaisuudet, tietyt taidot. Rakenne: alkeelliset kytkökset representaatioiden välillä, tyypillisesti vastakohtina; kaikki tai ei mitään -ajattelu jatkuu. Arvio: yleensä myönteinen, epätarkkuus jatkuu. Vertailu: ajallinen vertailu omaan nuorempaan itseen; ikätovereihin vertaillaan reiluuden arvioimiseksi. Muut: ymmärrys, että muut arvioivat minää; muiden standardeista alkaa tulla käyttäytymisen ohjaimia (self-guides)."},
+      {label:"8–10 v", text:"Sisältö: piirrenimikkeet (kyvyt, ihmissuhdeominaisuudet), vertailu ikätovereihin, globaali arvio omasta arvosta. Rakenne: ylemmän tason yleistykset, jotka kokoavat useita käyttäytymisiä; vastakkaisten ominaisuuksien yhdistäminen onnistuu. Arvio: sekä myönteisiä että kielteisiä arvioita, tarkkuus kasvaa. Vertailu: sosiaalinen vertailu itsearvioinnin välineenä. Muut: muiden mielipiteet ja standardit sisäistetään."}
+    ]},
+    {title:"Kognitiiviset kehitysteoriat taustalla", type:"list", items:[
+      "Fischerin taitoteoria: yksittäiset representaatiot (single representations) → representaatioiden kytkennät (representational mappings) → representaatiosysteemit (s. 31, 51, 61).",
+      "Casen malli: varhaisvaiheen ”interrelationaalinen” taso ja 5–7-vuotiaiden ”yksiulotteinen” ajattelu (s. 31, 51).",
+      "Piaget'n havainto transduktiivisesta päättelystä (yksittäisestä yksittäiseen) selittää varhaisten kuvausten hajanaisuutta (s. 31).",
+      "Harter käyttää Jamesin jakoa I-minään (havainnoiva, toimiva subjekti) ja Me-minään (havaittu kohde) läpi luvun (s. 29)."
+    ]},
+    {title:"Helposti sekoitettavat", type:"list", items:[
+      "5–7-vuotiaan ”olen fiksu” ei ole vielä varsinainen piirre: Harterin mukaan kyse on usein aikuisilta mallitetusta nimikkeestä, kun taas piirre on ylemmän tason yleistys, joka syntyy vasta 8–10-vuotiaana (s. 52).",
+      "Ajallinen vertailu (minä nyt vs. minä nuorempana) ei ole sama kuin sosiaalinen vertailu; sosiaalista vertailua itsearviointiin käytetään vasta keskilapsuudessa (s. 54, 62).",
+      "Pienet lapset kyllä vertailevat muihin – mutta reiluuden (oma osuus palkkioista) ja tehtävän vaatimusten selvittämiseksi, ei oman pätevyyden arvioimiseksi (s. 54)."
+    ]},
+    {title:"Muista tentissä", type:"list", items:[
+      "Osaa taulukon 2.1 viisi ulottuvuutta: sisältö, rakenne, valenssi/tarkkuus, vertailun luonne ja herkkyys muiden näkemyksille.",
+      "Kehitys ei ole pelkkää ”parantumista”: tarkempi minäkuva on usein myös kielteisempi (s. 63–64)."
+    ]}
+  ],
+  connections:["h2_varhaislapsuus","h2_varhainen_keski","h2_myohaislapsuus","h2_haavoittuvuudet"],
+  references:[{text:"[V] Harter, S. (2012). The Construction of the Self (2nd ed.), luku 2 – Guilfordin julkaisema näyteluku.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+{
+  id:"h2_varhaislapsuus", category:"h_lapsuus", book:"harter",
+  name:"Hyvin varhainen lapsuus (2–4 v): konkreettinen ja epärealistisen myönteinen minä",
+  source:"Harter (2012) luku 2, s. 29–49",
+  badges:[{label:"Harter luku 2"},{label:"2–4 v", cls:"onset-lapsuus"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (näyteluku luettu kokonaan).",
+  tags:{kehitys:true, itsetunto:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Taaperoiässä lapsi on jo oppinut kehollisen itsetietoisuuden (peilitesti: lapsi koskettaa nenäänsä salaa laitettua väriä). Varhaislapsuudessa itsetietoisuus muuttuu psykologisemmaksi: lapsi kuvaa itseään sanoin. Kuvaukset ovat konkreettisia, havaittavia ja toisistaan irrallisia, ja itsearviot ovat epärealistisen myönteisiä (s. 29–31)."},
+    {title:"Minäkuvauksen piirteet", type:"list", items:[
+      "Damonin ja Hartin ”kategoriset identifikaatiot”: fyysiset (”minulla on siniset silmät”), toiminnalliset (”juoksen tosi kovaa”), sosiaaliset ja psykologiset (”olen iloinen”) ominaisuudet erillisinä luokkina (s. 30).",
+      "Lapsi mainitsee yksittäisiä taitoja, ei yleistyksiä (esim. ”urheilullinen”), ja haluaa usein näyttää taidon heti (”katso!”) (s. 30).",
+      "Omistukset ovat osa minää; Rosenbergin mukaan lapsi on kuin ”demografi” tai radikaali behavioristi – kuvaa vain sitä, minkä muut voivat havaita (s. 30).",
+      "Poikien kuvaukset painottuvat toimintaan ja taitoihin, tyttöjen sosiaalisiin suhteisiin ja tunteisiin (Fivush & Buckner) (s. 30).",
+      "Tunteista lapsi ymmärtää iloisen, vihaisen, surullisen ja pelokkaan, mutta kiistää voivansa tuntea myönteistä ja kielteistä yhtä aikaa (s. 32–33)."
+    ]},
+    {title:"Miksi itsearvio on liian myönteinen? Viisi syytä (s. 31–33)", type:"list", items:[
+      "1) Lapsi ei erota toivottua ja todellista pätevyyttä – ihanneminää ja todellista minää ei ole erikseen.",
+      "2) Sosiaalista vertailua ei osata käyttää itsearvioinnissa.",
+      "3) Ajalliset vertailut (”juoksen nopeammin kuin 2-vuotiaana”) ovat palkitsevia, koska taidot kehittyvät nopeasti.",
+      "4) Näkökulmanottokyky puuttuu, joten lapsi ei sisäistä muiden kriittisiä arvioita – Cooleyn peiliminän edellytykset puuttuvat; lisäksi useimmat aikuiset ovat tukevia ja mitoittavat onnistumisen lapselle saavutettavaksi.",
+      "5) Kaikki tai ei mitään -ajattelu: lapsi ei myönnä vastakkaisia ominaisuuksia (hyvä ja huono) itsessään."
+    ]},
+    {title:"Harterin tulkinta: ei strategista itsensä korostamista", type:"text", text:"Harter katsoo, ettei pienten lasten liian myönteinen kuva ole aikuisten kaltaista taktista itsensä korostamista: lapsilla ei ole tarvetta suojata haurasta minäkuvaa (arviot ovat jo valmiiksi paisuneita), heiltä puuttuvat siihen tarvittavat mekanismit (esim. alaspäin suuntautuva sosiaalinen vertailu), heillä ei ole kielellistä käsitettä globaalista itsetunnosta, ja iänmukainen ”normaali narsismi” herättää ympäristössä hyväksyntää eikä torjuntaa. Myönteisyys voi jopa olla suojaava ja motivoiva tekijä (s. 33–34)."},
+    {title:"Globaali itsetunto puuttuu – mutta näkyy käyttäytymisessä", type:"text", text:"Pieni lapsi ei pysty muodostamaan sanallistettavaa käsitystä omasta arvostaan kokonaisuutena, eivätkä eri osa-alueet ole vielä eriytyneet (faktorianalyysit, Harter & Pike 1984). Itsetunto näkyy kuitenkin käyttäytymisessä, ks. kortti ”Käyttäytymisessä ilmenevä itsetunto” (s. 34–37)."},
+    {title:"Sosiaalinen ympäristö", type:"list", items:[
+      "Higgins: lapsi luokittelee itsensä samaan ryhmään kuin samaa sukupuolta oleva vanhempi (”teenkö samoin kuin isä?”) – samastuminen alkaa (s. 37).",
+      "Stipek ym.: hieman ennen 2 vuoden ikää lapset alkavat ennakoida aikuisten reaktioita, hakevat myönteistä palautetta onnistumisista ja välttelevät kielteistä epäonnistumisista (s. 37).",
+      "Muiden mielipiteitä ei vielä pystytä sisäistämään, joten realistinen, sanallistettu itsearvio ei ole mahdollinen (s. 37–38)."
+    ]},
+    {title:"Normatiiviset haavoittuvuudet (s. 41–43)", type:"list", items:[
+      "Konkreettinen, hajanainen ja epärealistisen myönteinen minäkuva – kehitykseen kuuluva, ei huolestuttava sinänsä.",
+      "Egosentrismi (Piaget): lapsi ei erota omaa näkökulmaansa muiden näkökulmasta – kognitiivinen rajoite, ei persoonallisuuspiirre.",
+      "Normaali narsismi: huomion haluaminen on iänmukaista, lämmintä ja tyydytettävissä; patologisessa narsismissa vaatimukset ovat liiallisia ja puolustuksellisia (Kernbergin kriteerit)."
+    ]},
+    {title:"Muista tentissä", type:"list", items:[
+      "Viisi syytä liian myönteiseen itsearvioon – tämä on tyypillinen tenttikysymys.",
+      "Harterin kanta (vrt. Trzesniewski ym. 2010): lasten positiivisuus ei ole aikuisten kaltaista itsensä korostamista."
+    ]}
+  ],
+  connections:["h2_vaiheet","h2_kayttaytymisen_itsetunto","h2_kertomukset","h2_varhainen_keski"],
+  references:[{text:"[V] Harter (2012), luku 2 – Guilfordin näyteluku, s. 29–49.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+{
+  id:"h2_kayttaytymisen_itsetunto", category:"h_lapsuus", book:"harter",
+  name:"Käyttäytymisessä ilmenevä itsetunto pienillä lapsilla",
+  source:"Harter (2012) luku 2, s. 35–37",
+  badges:[{label:"Harter luku 2"},{label:"4–7 v", cls:"onset-lapsuus"},{label:"Mittaaminen"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (näyteluku).",
+  tags:{kehitys:true, itsetunto:true, mittaaminen:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Vaikka pieni lapsi ei osaa sanoittaa globaalia itsetuntoaan, hän voi kokea korkeaa tai matalaa itsetuntoa, joka näkyy aikuisille havaittavana käyttäytymisenä (”behaviorally presented self-esteem”). Harterin ryhmä kehitti käsitteen yhdessä päiväkoti- ja esikouluopettajien kanssa."},
+    {title:"Miten käsite rakennettiin", type:"list", items:[
+      "Noin 20 opettajan avoimet haastattelut → 84 käyttäytymiskuvausta (s. 35).",
+      "Toinen opettajaryhmä teki Q-lajittelun: kuvaukset lajiteltiin korkean ja matalan itsetunnon lapsen prototyypin välille; opettajien yksimielisyys oli hyvin suuri (s. 35)."
+    ]},
+    {title:"Kaksi ulottuvuutta (s. 35–36)", type:"list", items:[
+      "Aktiivinen ulottuvuus: itsevarmuus, uteliaisuus, aloitteellisuus ja itsenäisyys (luottaa omiin ideoihinsa, tarttuu haasteisiin, kokeilee uutta) – tai niiden puute (jää sivuun, vain katselee).",
+      "Reaktiivinen ulottuvuus: sopeutuva reagointi muutokseen ja stressiin (sietää turhautumista, kestää kritiikkiä ja kiusoittelua) – tai epäkypsä, sopimaton tai välttelevä reagointi.",
+      "Empiirisesti nämä kaksi ulottuvuutta korreloivat voimakkaasti keskenään."
+    ]},
+    {title:"Yllättävä havainto", type:"text", text:"Opettajien mukaan pätevyys sinänsä ei erotellut korkean ja matalan itsetunnon pieniä lapsia – itsevarmuus erotteli. Pienellä lapsella itsevarmuus käyttäytymistyylinä ei siis ole sama asia kuin taitavuus. Keskilapsuudessa pätevyyden merkitys itsetunnolle kasvaa selvästi (s. 36–37)."},
+    {title:"Mikä tukee korkeaa itsetuntoa varhaislapsuudessa", type:"list", items:[
+      "Vanhemman tuki, herkkyys ja kontingentti (lapsen viesteihin vastaava) responsiivisuus.",
+      "Tutkimisen, hallinnan ja uteliaisuuden tukeminen, joka vahvistaa itsevarmuutta – ja itsevarmuus puolestaan johtaa taitojen harjoitteluun, josta tulee myöhemmin itsetunnon keskeinen ennustaja (s. 37)."
+    ]},
+    {title:"Helposti sekoitettavat", type:"list", items:[
+      "Käyttäytymisessä ilmenevä itsetunto ≠ lapsen oma itsearvio: sitä arvioivat aikuiset (opettajat) havainnoimalla.",
+      "Itsevarmuus ≠ pätevyys pienillä lapsilla."
+    ]}
+  ],
+  connections:["h2_varhaislapsuus","h1_itsetunnon_mittaaminen"],
+  references:[{text:"[V] Harter (2012), luku 2, s. 35–37 – Guilfordin näyteluku.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+{
+  id:"h2_kertomukset", category:"h_lapsuus", book:"harter",
+  name:"Minän yhteisrakentaminen kertomuksissa ja omaelämäkerrallinen muisti",
+  source:"Harter (2012) luku 2, s. 38–41, 50–51, 60",
+  badges:[{label:"Harter luku 2"},{label:"1,5–10 v", cls:"onset-lapsuus"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (näyteluku).",
+  tags:{kehitys:true, sosiokulttuurinen:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Vanhemmat vaikuttavat lapsen minän kehitykseen auttamalla häntä rakentamaan kertomuksia omista kokemuksistaan. Kertomukset tukevat omaelämäkerrallista muistia ja tunnetta minän jatkuvuudesta ajassa (Nelsonin ”minän säilyvyys”)."},
+    {title:"Kehityskulku", type:"list", items:[
+      "18–27 kuukauden iässä lapsi alkaa käyttää sanoja ”minä”, ”minua”, ”minun” – persoonapronominit mahdollistavat I-minästä ja Me-minästä puhumisen (s. 38).",
+      "Menneen aikamuodon omaksuminen kolmannen ikävuoden loppupuolella vahvistaa minän jatkuvuutta ajassa (s. 38).",
+      "Howe & Courage: pelkkä kieli ei riitä – omaelämäkerrallinen muisti edellyttää käsitystä itsestä erillisenä toimijana. Tämä on yksi selitys lapsuusiän amnesialle (s. 39).",
+      "Alussa vanhempi kertoo ja rakentaa tarinan; iän myötä lapsi ja vanhempi rakentavat muistoa yhdessä (s. 39).",
+      "5–7 v: lapsesta tulee aktiivisempi kertoja, vanhemmilla on vielä ”toimittajan oikeus”; kertomuksissa korostuvat aikomukset ja tulevaisuus (s. 51).",
+      "8–10 v: lapsesta tulee kertomuksensa tekijä ja omistaja – ristiriitatilanteessa lapsen oma versio voittaa vanhemman version (s. 60)."
+    ]},
+    {title:"Vanhempien kerrontatyylit (s. 39–40)", type:"list", items:[
+      "Runsaasti elaboroiva tyyli: pitkiä, kuvailevia, muistelevia kertomuksia → lapsen kertomuksista tulee rikkaampia ja omaelämäkerrallinen muisti vahvistuu (Haden; Reese).",
+      "Niukasti elaboroiva tyyli: lyhyitä, käytännöllisiä, muistojen ”oikeellisuuteen” keskittyviä kertomuksia.",
+      "Sekä äidit että isät elaboroivat enemmän tyttärille kuin pojille; äidit puhuvat tytöille enemmän tunteista, erityisesti surusta (s. 40)."
+    ]},
+    {title:"Kulttuurinen minä ja kiintymys", type:"list", items:[
+      "Nelsonin ”kulttuurinen minä” nousee esiin 5–7-vuotiaana: kertomuksia muovaavat kulttuurin roolit ja arvot, esim. sukupuolistereotyyppiset ammattitoiveet (s. 50).",
+      "Turvallinen kiintymys liittyy äidin muistelutyyliin; turvallisesti kiintyneiden lasten ja äitien arvioivan kielen käyttö alkoi korreloida 25 kuukauden iästä alkaen (Newcombe & Reese) (s. 40–41).",
+      "Bowlby: jos vanhempi toistuvasti sivuuttaa tai tulkitsee tahallaan väärin vauvan tunneviestejä, lapselle voi muodostua sisäinen malli ”tarpeillani (tai minulla) ei ole väliä” (s. 41)."
+    ]},
+    {title:"Kun kertomuksia ei rakenneta: köyhtynyt minä", type:"text", text:"Jos vanhempi (esim. oman masennuksensa vuoksi) ei juuri rakenna kertomuksia lapsen kanssa, lapselle voi kehittyä ”köyhtynyt minä”: sanasto itsen kuvaamiseen, omaelämäkerralliset muistot ja tulevaisuuden haaveet puuttuvat. Terapiassa palataan alkuun – esim. leikekirja ja perherituaalit (s. 47–49)."}
+  ],
+  connections:["h2_varhaislapsuus","h2_haavoittuvuudet","h8_kulttuuri"],
+  references:[{text:"[V] Harter (2012), luku 2 – Guilfordin näyteluku.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+{
+  id:"h2_varhainen_keski", category:"h_lapsuus", book:"harter",
+  name:"Varhainen–keskilapsuus (5–7 v): vastakohdat ja kaikki tai ei mitään -ajattelu",
+  source:"Harter (2012) luku 2, s. 49–59",
+  badges:[{label:"Harter luku 2"},{label:"5–7 v", cls:"onset-lapsuus"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (näyteluku).",
+  tags:{kehitys:true, itsetunto:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Lapsi alkaa yhdistää aiemmin erillisiä taitoja kokonaisuuksiksi (esim. ”juoksen, hyppään ja kiipeän hyvin”), mutta ajattelu on yhä mustavalkoista. Uusi kyky kytkeä representaatioita toisiinsa (Fischerin ”mappings”) tapahtuu tyypillisesti vastakohtina: ”olen hyvä, joten en voi olla huono” (s. 51)."},
+    {title:"Keskeiset piirteet", type:"list", items:[
+      "Rochat: metakognitiivinen itsetietoisuus kehittyy; minäkuva on yhä hyvin myönteinen (s. 50).",
+      "Muut voivat lapsen mielestä olla huonoja, mutta hän ei itse – korkeintaan joskus myöhemmin ”vähän” (s. 51–52).",
+      "Lapsi ei pysty yhdistämään vastakkaisia ominaisuuksia, kuten kiltti ja ilkeä tai fiksu ja tyhmä (s. 52).",
+      "Tunteet: lapsi ymmärtää, että voi tuntea kaksi samansuuntaista tunnetta (iloinen ja innostunut), mutta ei vastakkaisia (iloinen ja surullinen) samanaikaisesti (Harter & Buddin 1987) (s. 52).",
+      "Jatkuvuutta perustellaan konkreettisesti: ”minulla on edelleen sama nimi” (s. 51)."
+    ]},
+    {title:"Sosiaalinen ympäristö", type:"list", items:[
+      "Lapsi tiedostaa, että muut arvioivat häntä (”julkinen silmä”), mutta ei ole vielä sisäistänyt arvioita omiksi arvioikseen (Selman; Higgins) (s. 53).",
+      "Muiden näkemyksistä alkaa tulla ”minän ohjaimia” (self-guides), jotka säätelevät käyttäytymistä – rinnastuu Banduran itsesäätelyteoriaan: ulkoinen kontrolli → sisäistetyt standardit (s. 53).",
+      "Sosiaalista vertailua käytetään reiluuden arviointiin ja tehtävän vaatimusten selvittämiseen, ei omaan pätevyysarvioon; ajallinen vertailu ja ikänormit hallitsevat (Ruble ym.) (s. 54)."
+    ]},
+    {title:"Normatiiviset haavoittuvuudet", type:"list", items:[
+      "Epätarkat itsearviot jatkuvat samoista viidestä syystä kuin varhaislapsuudessa, ja ne ovat jopa pysyvämpiä, koska ne nyt sanallistetaan ja aikuiset tukevat niitä (s. 54–55).",
+      "Globaalia itsetuntoa ei vielä ole: lapsi ei pysty yhdistämään osa-alueiden pätevyyttä niiden tärkeydellä painotettuna (Jamesin malli) (s. 55).",
+      "Normaali narsismi lievenee: ihailun tarvetta tasapainottaa kiitollisuus; haaveet kuuluisuudesta jaetaan muiden kanssa (vrt. patologinen: kateus, omistushalu) (s. 56)."
+    ]},
+    {title:"Patologiset riskit", type:"list", items:[
+      "Kaltoinkohdeltu lapsi päätyy kaikki tai ei mitään -ajattelun vuoksi siihen, että hän on ”täysin paha”.",
+      "Briere: lapsi päättelee ”joko minä tai vanhempani ovat pahoja”; koska aikuiset ovat lapsen käsityksessä aina oikeassa, syy on hänessä itsessään. Egosentrismi ja teon (ei aikomuksen) huomioiminen vahvistavat itsesyytöstä (s. 58–59).",
+      "Dissosiaatio vakavan kaltoinkohtelun selviytymiskeinona kytkeytyy tämän ikävaiheen normatiiviseen taipumukseen pilkkoa kokemuksia (s. 58)."
+    ]},
+    {title:"Muista tentissä", type:"list", items:[
+      "Vastakohtien ”kuvaus” (mapping) on kognitiivinen edistysaskel, joka samalla ylläpitää liian myönteistä minäkuvaa.",
+      "Nelsonin kulttuurinen minä: sukupuoliskeemat (Bem) ohjaavat sekä stereotypioiden sisältöä että niiden noudattamisen tärkeyttä (s. 50–51)."
+    ]}
+  ],
+  connections:["h2_varhaislapsuus","h2_myohaislapsuus","h6_itsetietoiset_tunteet"],
+  references:[{text:"[V] Harter (2012), luku 2, s. 49–59 – Guilfordin näyteluku.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+{
+  id:"h2_myohaislapsuus", category:"h_lapsuus", book:"harter",
+  name:"Keski–myöhäislapsuus (8–10 v): piirteet, sosiaalinen vertailu ja globaali itsetunto",
+  source:"Harter (2012) luku 2, s. 59–71",
+  badges:[{label:"Harter luku 2"},{label:"8–10 v", cls:"onset-lapsuus"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (näyteluku).",
+  tags:{kehitys:true, itsetunto:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Lapsi kuvaa itseään piirrenimikkein (suosittu, avulias, fiksu, tyhmä), jotka ovat ylemmän tason yleistyksiä useista käyttäytymisistä. Hän ymmärtää voivansa olla sekä hyvä että huono eri asioissa, osaa käyttää sosiaalista vertailua ja pystyy ensimmäistä kertaa sanoittamaan globaalin itsetuntonsa (s. 60–63)."},
+    {title:"Kognitiiviset edistysaskeleet", type:"list", items:[
+      "Ylemmän tason yleistykset: esim. ”fiksu” kokoaa menestyksen kahdessa kouluaineessa, ”suosittu” kokoaa ystävällisyyden, avuliaisuuden ja salaisuuksien pitämisen (s. 61).",
+      "Myönteiset ja kielteiset ominaisuudet voidaan yhdistää: ”voin olla sekä fiksu että tyhmä” (s. 61).",
+      "Tunteet (Harter & Buddin 1987): ensin vastakkaiset tunteet vain eri kohteisiin (”huomion siirto”), vaiheen lopussa samaan kohteeseen (”iloinen lahjasta, vihainen ettei se ollut toivottu”) (s. 61–62).",
+      "Itsetietoiset tunteet (ylpeys, häpeä) omasta toiminnasta ilmestyvät; nelivaiheinen kehitys kuvataan luvussa 6 (s. 62).",
+      "Minäpystyvyysuskomukset (Bandura) akateemisella ja sosiaalisella alueella korostuvat (s. 60)."
+    ]},
+    {title:"Sosiaaliset prosessit", type:"list", items:[
+      "Sosiaalista vertailua käytetään itsearviointiin vasta keskilapsuudessa (Frey & Ruble) – edellyttää kykyä pitää oma ja toisen suoritus mielessä yhtä aikaa (s. 62).",
+      "Koulu lisää vertailua: opettajat käyttävät luokka-asteiden myötä yhä enemmän vertailevaa tietoa (Eccles & Midgley), ja oppilaat tietävät sen (s. 63).",
+      "Globaali itsetunto: menestys itselle tärkeillä alueilla nostaa ja epäonnistuminen niillä laskee itsetuntoa (James); lapsi voi väheksyä heikkojen alueiden tärkeyttä; vanhempien ja ikätovereiden hyväksyntä tukee itsetuntoa (Cooley) (s. 63).",
+      "Sukupuolten eriytyminen on huipussaan (Maccoby); kulttuurinen minä voimistuu, esim. ulkonäköstandardit (s. 60–61)."
+    ]},
+    {title:"Normatiivinen haavoittuvuus: tarkempi mutta kielteisempi minäkuva (s. 63–65)", type:"list", items:[
+      "1) Myönteisten ja kielteisten ominaisuuksien tunnistaminen vähentää aiempaa ”virtuositeettia”.",
+      "2) Sosiaalinen vertailu saa useimmat (paitsi kaikkein taitavimmat) jäämään jälkeen tärkeillä alueilla.",
+      "3) Todellisen ja ihanneminän erottaminen: kun ei yllä omiin tavoitteisiinsa, itsetunto laskee (James). Todellisen ja ihanneminän ero kasvaa kehityksen myötä, koska omat arviot laskevat ja aikuiset nostavat odotuksia.",
+      "4) Parantunut näkökulmanotto: lapsi arvioi tarkemmin, mitä muut hänestä ajattelevat.",
+      "Harterin mukaan realistiset arviot ovat tästä iästä alkaen todennäköisesti sopeutuvampia; haitta voi olla väliaikainen."
+    ]},
+    {title:"Itsensä suojaamisen ja korostamisen strategiat syntyvät (s. 65–66)", type:"list", items:[
+      "Uusi motiivi: globaali itsetunto voi nyt olla uhattuna.",
+      "Uudet keinot: alaspäin suuntautuva sosiaalinen vertailu, ”parempi kuin keskiverto” -ajattelu, vaikutelman hallinta ja muiden manipulointi (esim. Tom Sawyer)."
+    ]},
+    {title:"Muista tentissä", type:"list", items:[
+      "Paradoksi: samat kognitiiviset edistysaskeleet, jotka tekevät minäkuvasta realistisemman, tekevät siitä myös haavoittuvamman.",
+      "8–10-vuotias osaa selittää, miksi pitää itsestään (tärkeät alueet + läheisten hyväksyntä) – James ja Cooley yhdessä."
+    ]}
+  ],
+  connections:["h2_varhainen_keski","h2_haavoittuvuudet","h1_james_cooley","h7_luokkahuone","h5_ulkonako"],
+  references:[{text:"[V] Harter (2012), luku 2, s. 59–71 – Guilfordin näyteluku.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+{
+  id:"h2_haavoittuvuudet", category:"h_lapsuus", book:"harter",
+  name:"Normatiiviset haavoittuvuudet vs. patologiset prosessit lapsuudessa",
+  source:"Harter (2012) luku 2, s. 41–49, 56–59, 66–71",
+  badges:[{label:"Harter luku 2"},{label:"Lapsuus", cls:"onset-lapsuus"},{label:"Patologia"}],
+  sourceStatus:"[V] Tarkistettu Harterin luvusta 2 (näyteluku).",
+  tags:{kehitys:true, itsetunto:true, hyvinvointi:true, harter:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Harter erottaa jokaisessa ikävaiheessa kehitykseen kuuluvat haavoittuvuudet (esim. epärealistinen myönteisyys, egosentrismi, normaali narsismi) patologisista prosesseista. Patologia syntyy tyypillisesti lapsen kehitystason ja hoitajien pitkäaikaisen kielteisen kohtelun vuorovaikutuksessa (s. 43)."},
+    {title:"Kiintymyssuhdeteorian näkökulma", type:"list", items:[
+      "Häiriöihin johtaa useita polkuja; turvaton kiintymys ei yksinään johda patologiaan, vaan yhdessä muiden riskitekijöiden kanssa (s. 43–44).",
+      "Välttelevä kiintymys voi kanavoitua vihamielisyydeksi ikätovereita kohtaan; ristiriitainen kiintymys + varautunut temperamentti → krooninen ahdistus; jäsentymätön kiintymys → hämmennys ja heikko tunnesäätely (DeKlyen & Greenberg) (s. 44).",
+      "Kiintymysmallit eivät välttämättä ole pysyviä: hoivan laadun muutokset ennustavat muutoksia turvallisuudessa (s. 44).",
+      "Sisäinen työmalli: johdonmukainen, tutkimista kunnioittava hoiva → malli itsestä arvokkaana ja pätevänä; torjuva hoiva → malli itsestä arvottomana (s. 46, 67)."
+    ]},
+    {title:"Kaltoinkohtelun vaikutukset", type:"list", items:[
+      "Kaikki tai ei mitään -ajattelu → käsitys itsestä ”täysin pahana” (s. 45).",
+      "I-minän toiminnot heikkenevät: jatkuva ulkoisten uhkien tarkkailu (Briere: ”muihin suuntautuneisuus”) vie huomion omien tarpeiden ja tunteiden tiedostamiselta; kaltoinkohdellut 30–36 kuukauden ikäiset käyttävät vähemmän sisäisiä tiloja kuvaavaa kieltä (Cicchetti) (s. 45).",
+      "Kertomukset ovat kielteisempiä ja hajanaisempia (dissosiaation merkkejä) (s. 46).",
+      "Vakava ja pitkäaikainen kaltoinkohtelu on yhdistetty mm. aikuisiän epävakaaseen persoonallisuuteen (s. 46–47).",
+      "Keskilapsuudessa kielteiset itsearviot automatisoituvat ja lapsi voi jäädä kaikki tai ei mitään -ajattelun tasolle (s. 66–67)."
+    ]},
+    {title:"Epätosi minä lapsuudessa", type:"list", items:[
+      "Kieli voi luoda kiilan eletyn ja sanallistetun kokemuksen välille (Stern) (s. 47).",
+      "Tunkeileva tai ylisuojeleva äiti voi saada vauvan esittämään ”epätoden ulkoisen minän” (Winnicott) (s. 47).",
+      "Optimaalinen itsetunto perustuu realistiseen kuvaan vahvuuksista ja heikkouksista ja on vakaa; ehdollinen itsetunto riippuu ulkoisesta hyväksynnästä ja on hauras (Crocker & Park) (s. 69).",
+      "Harter ym. (1996): epätoden minän käyttäytyminen yleistyy, jos vanhemmat asettavat hyväksynnälle saavuttamattomat ehdot. ”Ehdollinen tuki” ei tunnu lapsesta tuelta; lapset raportoivat matalaa itsetuntoa ja toivottomuutta vanhempien miellyttämisestä (s. 69–70)."
+    ]},
+    {title:"Narsismi myöhäislapsuudessa (s. 70–71)", type:"list", items:[
+      "Normaali narsismi haalistuu; patologisessa narsismissa empatian puute, suuruudenkuvitelmat, oikeutuksen tunne, raivo kritiikin edessä.",
+      "Syitä: vanhempien yliarvostus, hemmottelu ja liiallinen kehuminen SEKÄ vanhempien kylmyys yhdistettynä epärealistisiin odotuksiin (Thomaes ym.).",
+      "Narsistiset oireet ovat melko pysyviä myöhäislapsuudesta alkaen; 8–11-vuotiaiden haitallinen narsismi ennusti rikekäyttäytymistä kolmen vuoden päästä (Barry ym. 2007)."
+    ]},
+    {title:"Itsetunto, masennus ja ulkonäkö", type:"list", items:[
+      "Harter & Marold: kielteisten minäkäsitysten ja matalan itsetunnon sekä masennuksen välillä on vahva yhteys; masennus puolestaan ennustaa itsetuhoajatuksia (s. 68).",
+      "Kiang & Harter (2006): kulttuuristen ulkonäkönormien omaksuminen → matala itsetunto → masennus ja syömishäiriökäyttäytyminen (s. 69)."
+    ]},
+    {title:"Helposti sekoitettavat", type:"list", items:[
+      "Pienen lapsen ”tunteiden jakautuminen” (vain myönteinen tai kielteinen) on normatiivista dissosiaatiota ilman kliinistä merkitystä – toisin kuin kaltoinkohtelun jälkeinen dissosiaatio (s. 33, 58).",
+      "Köyhtynyt minä ≠ kielteinen minäkuva: köyhtyneessä minässä minäkuvauksia ja kertomuksia ei juuri ole."
+    ]}
+  ],
+  connections:["h2_kertomukset","h2_myohaislapsuus","h9_aitous","h5_ulkonako"],
+  references:[{text:"[V] Harter (2012), luku 2 – Guilfordin näyteluku.", url:"https://www.guilford.com/excerpts/harter.pdf"}]
+},
+/* ---------- Mikä meitä liikuttaa: Johdanto ([V] kustantajan julkaisema johdanto luettu kokonaan) ---------- */
+{
+  id:"m0_johdanto", category:"m_perusta", book:"mml",
+  name:"Motivaation käsite: miksi, mitä ja miten",
+  source:"Nurmi & Salmela-Aro: Johdanto. Teoksessa Salmela-Aro & Nurmi (toim.) 2017, s. 9–15",
+  badges:[{label:"MML johdanto"},{label:"Käsitteet"}],
+  sourceStatus:"[V] Tarkistettu kirjan johdantoluvusta (kustantajan verkossa julkaisema ote, luettu kokonaan).",
+  tags:{teoria:true, historia:true, mml:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Ihmiset eivät vain reagoi ympäristöön, vaan hakeutuvat tilanteisiin ja toimintoihin, jotka herättävät tunteita, tavoitteita, toiveita ja intohimoja – tätä psykologia kuvaa motivaationa. Monet elämän ongelmat liittyvät joko motivaation puutteeseen tai liiallisuuteen (esim. liian voimakas sitoutuminen työhön voi näkyä työuupumuksena) (s. 9)."},
+    {title:"Kolme kysymystä motivaation käsitteellisen moninaisuuden jäsentämiseen (s. 10)", type:"list", items:[
+      "MIKSI – motivaation taustalla olevat syyt: arvot, hallinnan tunne, psykologiset perustarpeet (autonomia, kompetenssi, yhteenkuuluvuus), evoluutiohistoria sekä osin geneettisesti välittyvät erot (persoonallisuuden piirteet, temperamentti). Tunnusomaista: miksi-puoli on harvoin tietoinen.",
+      "MITÄ – motivaation kohteet: tavoitteet, pyrkimykset, huolenaiheet, tavoiteorientaatiot ja intohimot. Ihmiset ovat yleensä tietoisia tästä puolesta ja pystyvät vastaamaan sitä koskeviin kysymyksiin.",
+      "MITEN – keinot toteuttaa motiiveja: suunnittelu, ongelmanratkaisu, itsesäätely, opitut toimintatavat ja strategiat. Toistettuina ne automatisoituvat eivätkä ole enää tietoisen ajattelun piirissä; esim. impulsiivisuutta selitetään itsesäätelyn vaikeuksilla."
+    ]},
+    {title:"Muista tentissä", type:"list", items:[
+      "Osaa sijoittaa eri teoriat miksi–mitä–miten-kehykseen: esim. perustarpeet ovat miksi-puolta, henkilökohtaiset tavoitteet mitä-puolta ja itsesäätely miten-puolta.",
+      "Johdannon mukaan teoriat kuvaavat paljolti samoja asioita eri käsittein – käsitteiden moninaisuus on tehtävä näkyväksi esseissä."
+    ]}
+  ],
+  connections:["m0_historia","m0_nykyteoriat"],
+  references:[{text:"[V] Nurmi & Salmela-Aro (2017) Johdanto – kustantajan julkaisema ote.", url:"https://www.opettajantietopalvelu.fi/lisamateriaalit/mika_meita_liikuttaa_johdanto.pdf"}]
+},
+{
+  id:"m0_historia", category:"m_perusta", book:"mml",
+  name:"Motivaatioteorian historia: psykoanalyysista tavoite- ja elämänkulkuteorioihin",
+  source:"Nurmi & Salmela-Aro: Johdanto (2017), s. 11–13",
+  badges:[{label:"MML johdanto"},{label:"Historia"}],
+  sourceStatus:"[V] Tarkistettu kirjan johdantoluvusta (kustantajan julkaisema ote).",
+  tags:{teoria:true, historia:true, elamankulku:true, mml:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Psykologian varhaiset motivaatiokäsitykset olivat pääosin implisiittisiä: niitä ei esitetty suoraan vaan pääteltiin teorioiden yleisistä väittämistä (s. 11)."},
+    {title:"Aikajana (s. 11–13)", type:"list", items:[
+      "Psykoanalyysi (Freud): motivoivat voimat kumpuavat idin tiedostamattomista seksuaalisista impulsseista, joita ego ja superego suitsivat; kehitysvaiheet määräytyvät sen mukaan, missä osassa elimistöä mielihyvä koetaan. Kirjoittajat huomauttavat yhtäläisyydestä itsesäätely- ja impulssikontrolliteorioihin.",
+      "Behaviorismi ja oppimisteoria: yksilö tekee sitä, mistä on palkittu, ja välttää sitä, mistä on rangaistu (välineellinen oppiminen); ehdollistumisessa neutraali asia liitetään palkitsevaan tai epämiellyttävään asiaan.",
+      "Humanistinen psykologia: Maslow'n tarvehierarkia (fysiologiset, turvallisuus, yhteenkuuluvuus, itsensä kunnioittaminen, itsensä toteuttaminen) laajensi homeostaattista tarvekäsitystä. Positiivisen psykologian liike syntyi paljolti humanististen ajatusten pohjalta.",
+      "Yhteistä näille: motivaatio nähdään sisäisinä pyrkimyksinä, joita ulkoiset tekijät lähinnä rajoittavat; valtaosa teorioista kehittyi Yhdysvalloissa.",
+      "1950-luvun lopulta eurooppalaiset hierarkkiset teoriat: Nuttinin relationaalinen motivaatioteoria (motivaatio henkilön ja ulkomaailman suhteena, yksilölliset motiivihierarkiat) ja Leontjevin toiminnan teoria (toiminta–toiminnot–operaatiot). Kumpaakaan ei juuri tutkittu empiirisesti; molemmissa yhtäläisyyksiä itsesäätelyteoriaan.",
+      "1990-luvulla Yhdysvalloissa tavoitekäsitteiset lähestymistavat: Klingerin huolenaiheet, Littlen henkilökohtaiset projektit, Emmonsin henkilökohtaiset pyrkimykset. Mittaus: henkilö listaa tärkeät projektinsa ja arvioi niitä ulottuvuuksilla (tärkeys, hallinnan tunne, stressi, myönteiset tunteet); menetelmät ovat yhä käytössä.",
+      "1990-luvulta elämänkulkua korostavat teoriat: Nurmen ja Salmela-Aron teorian pohjana Havighurstin, Baltesin ja Elderin elämänkulku- ja elämänkaariteoriat (ikäsidonnaiset kehitystehtävät, roolisiirtymät, toimintamahdollisuudet). Samankaltaisia teorioita kehittivät Brandtstädter ja Heckhausen."
+    ]},
+    {title:"Keskeinen tutkimustulos johdannossa", type:"text", text:"Johdannon mukaan eri-ikäisten tavoitteet kohdistuvat pääosin oman elämänvaiheen kehitystehtäviin ja roolisiirtymiin, ja psyykkinen hyvinvointi on parempi, kun tavoitteet koskevat juuri näitä ikäsidonnaisia tehtäviä (s. 13)."},
+    {title:"Helposti sekoitettavat", type:"list", items:[
+      "Nuttin ja Leontjev (hierarkkiset, eurooppalaiset, vähän empiiristä tutkimusta) vs. Klinger, Little ja Emmons (yhdysvaltalaiset tavoitekäsitteet, joilla on yhä käytössä olevat mittausmenetelmät).",
+      "Maslow'n teoria on humanistinen tarvehierarkia – ei itsemääräämisteorian perustarveteoria."
+    ]}
+  ],
+  connections:["m0_johdanto","m0_nykyteoriat","m1_tavoitteet_elamankulku","m1_tavoitemenetelma"],
+  references:[{text:"[V] Nurmi & Salmela-Aro (2017) Johdanto – kustantajan julkaisema ote.", url:"https://www.opettajantietopalvelu.fi/lisamateriaalit/mika_meita_liikuttaa_johdanto.pdf"}]
+},
+{
+  id:"m0_nykyteoriat", category:"m_perusta", book:"mml",
+  name:"Neljä nykyistä motivaatioteoriaa kirjan kehyksenä",
+  source:"Nurmi & Salmela-Aro: Johdanto (2017), s. 14–15",
+  badges:[{label:"MML johdanto"},{label:"Teorioiden vertailu"}],
+  sourceStatus:"[V] Tarkistettu kirjan johdantoluvusta (kustantajan julkaisema ote). Teorioiden tarkemmat sisällöt: ks. kunkin teorian oma kortti.",
+  tags:{teoria:true, oppiminen:true, tyo:true, mml:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"Nykyistä motivaatiotutkimusta kuvaa teorioiden runsaus; valtaosa teorioista keskittyy tiettyyn toimintaympäristöön ja kuvaa samoja asioita eri käsittein. Lähes kaikissa esiintyy jossain muodossa minäkuvaan tai kompetenssiin liittyviä käsitteitä (s. 14)."},
+    {title:"Neljä teoriaa johdannon mukaan (s. 14–15)", type:"list", items:[
+      "Itsemääräämisteoria (Deci & Ryan) – johdannon mukaan tällä hetkellä ehkä suosituin: ihmiset motivoituvat, kun voivat itse päättää tekemisistään; perustarpeina autonomia, kompetenssi ja yhteenkuuluvuus; viime aikoina neljänneksi on usein lisätty vaikuttaminen. Käytetty mm. koulussa, työelämässä ja urheilussa.",
+      "Ecclesin odotusarvoteoria – erityisesti oppimisessa: odotukset pärjäämisestä ja arvostukset luovat pohjan panostamiselle; odotukset liittyvät minäkäsitykseen; arvostus jaetaan kiinnostukseen, henkilökohtaiseen tärkeyteen ja välineelliseen arvoon.",
+      "Tavoiteorientaatioteoria (Nicholls, Dweck, Pintrich) – erityisesti työympäristössä ja urheiluvalmennuksessa: tehtäväsuuntautunut vs. minäsuuntautunut oppija sekä välttämissuuntautuminen (epäonnistumisen pelko).",
+      "Tavoiteteoria – koulutus-, työ- ja urasuunnittelun sekä perhe-elämän ja eläköitymisen tutkimuksessa: motivaatio liitetään ympäristöön, joka muuttuu ikävaiheesta toiseen (nuoruus: koulutus, kaverit, työura; aikuisuus: työura, perhe; vanhemmiten: eläköityminen, terveys)."
+    ]},
+    {title:"Kirjan rakenne (s. 15)", type:"list", items:[
+      "Osa I: näkökulmia motivaatioon – henkilökohtaisten tavoitteiden teoria, itsemääräämisteoria, odotusarvoteoria ja tavoiteorientaatioteoria.",
+      "Osa II: motivaatio työelämässä – itsemääräämisteorian, sosiaalisen oppimisen teorian, tavoiteorientaatioteorian ja tavoiteteorian näkökulmista.",
+      "Osa III: motivaatio, hyvinvointi ja liikunta."
+    ]},
+    {title:"Muista tentissä", type:"list", items:[
+      "Johdannon oma vertailukehys: missä ympäristössä kutakin teoriaa on tyypillisesti käytetty.",
+      "Tavoiteteorian erityispiirre muihin verrattuna: motivaatio kytketään keskeisesti muuttuvaan elinympäristöön ja ikävaiheeseen."
+    ]}
+  ],
+  connections:["m0_johdanto","m0_historia","m1_sdt","m1_odotusarvo","m1_tavoiteorientaatiot","m1_tavoitteet_elamankulku"],
+  references:[{text:"[V] Nurmi & Salmela-Aro (2017) Johdanto – kustantajan julkaisema ote.", url:"https://www.opettajantietopalvelu.fi/lisamateriaalit/mika_meita_liikuttaa_johdanto.pdf"}]
+},
+];
+
+const PP2_COMPARISON_PAIRS = [
+{id:"pc_h2_vaiheet", title:"Lapsuuden kolme vaihetta rinnakkain (Harter, taulukko 2.1)",
+  topicIds:["h2_varhaislapsuus","h2_varhainen_keski","h2_myohaislapsuus"],
+  dimensions:[
+    {label:"Sisältö", values:{h2_varhaislapsuus:"[V] Konkreettiset, havaittavat ominaisuudet: kyvyt, toiminnot, omistukset, mieltymykset.", h2_varhainen_keski:"[V] Laajentuneet luokittelevat ominaisuudet, tietyt taidot.", h2_myohaislapsuus:"[V] Piirrenimikkeet (kyvyt, ihmissuhdeominaisuudet), vertailu ikätovereihin, globaali arvio omasta arvosta."}},
+    {label:"Rakenne", values:{h2_varhaislapsuus:"[V] Erilliset representaatiot, ei johdonmukaisuutta; kaikki tai ei mitään.", h2_varhainen_keski:"[V] Alkeelliset kytkökset, tyypillisesti vastakohtina; kaikki tai ei mitään.", h2_myohaislapsuus:"[V] Ylemmän tason yleistykset; vastakkaiset ominaisuudet voidaan yhdistää."}},
+    {label:"Valenssi ja tarkkuus", values:{h2_varhaislapsuus:"[V] Epärealistisen myönteinen; todellista ja ihanneminää ei erotella.", h2_varhainen_keski:"[V] Yleensä myönteinen; epätarkkuus jatkuu.", h2_myohaislapsuus:"[V] Sekä myönteinen että kielteinen; tarkempi."}},
+    {label:"Vertailu", values:{h2_varhaislapsuus:"[V] Ei suoria vertailuja.", h2_varhainen_keski:"[V] Ajallinen vertailu; vertailu ikätovereihin reiluuden vuoksi.", h2_myohaislapsuus:"[V] Sosiaalinen vertailu itsearviointiin."}},
+    {label:"Herkkyys muiden näkemyksille", values:{h2_varhaislapsuus:"[V] Aikuisten reaktioiden ennakointi.", h2_varhainen_keski:"[V] Tietoisuus muiden arvioista; muiden standardit alkavat ohjata käytöstä.", h2_myohaislapsuus:"[V] Muiden mielipiteet ja standardit sisäistetään."}},
+    {label:"Globaali itsetunto", values:{h2_varhaislapsuus:"[V] Ei sanallistettavissa; näkyy käyttäytymisessä.", h2_varhainen_keski:"[V] Ei vielä sanallistettavissa.", h2_myohaislapsuus:"[V] Sanallistettavissa; perustuu tärkeisiin alueisiin ja läheisten hyväksyntään."}}
+  ],
+  note:"[V] Harterin kardinaali teesi: kognitiiviset edistysaskeleet tuovat mukanaan myös normatiivisia haavoittuvuuksia (s. 63)."},
+];
+
+const PP2_LIFECYCLE_STAGES = [
+{id:"pl_2_4", name:"Hyvin varhainen lapsuus", ageRange:"n. 2–4 vuotta (Harter luku 2)",
+  description:"[V] Kehollisesta itsetietoisuudesta (peilitesti) siirrytään sanallisiin, konkreettisiin itsekuvauksiin. Arviot ovat epärealistisen myönteisiä, ja itsetunto näkyy vain käyttäytymisessä.",
+  topics:[
+    {topicId:"h2_varhaislapsuus", note:"[V] Konkreettiset, irralliset ominaisuudet; viisi syytä liialliseen myönteisyyteen (s. 29–33)."},
+    {topicId:"h2_kayttaytymisen_itsetunto", note:"[V] Itsetunto näkyy itsevarmuutena ja sopeutuvana reagointina, ei pätevyytenä (s. 35–36)."},
+    {topicId:"h2_kertomukset", note:"[V] Vanhempi rakentaa kertomuksen; persoonapronominit 18–27 kk (s. 38–39)."}
+  ],
+  keyThemes:["[V] Epärealistinen myönteisyys on normatiivista ja voi olla suojaavaa (s. 33).","[V] Patologia syntyy kehitystason ja kroonisen kielteisen hoivan vuorovaikutuksessa (s. 43)."]},
+{id:"pl_5_7", name:"Varhainen–keskilapsuus", ageRange:"n. 5–7 vuotta (Harter luku 2)",
+  description:"[V] Taitoja kootaan kokonaisuuksiksi, mutta kytkennät tehdään vastakohtina. Lapsi tiedostaa, että muut arvioivat häntä, ja muiden standardeista tulee käyttäytymisen ohjaimia.",
+  topics:[
+    {topicId:"h2_varhainen_keski", note:"[V] ”Olen hyvä, joten en voi olla huono”; kulttuurinen minä ja sukupuoliskeemat (s. 50–52)."},
+    {topicId:"h2_kertomukset", note:"[V] Lapsi aktiivisempi kertoja, vanhemmilla toimittajan oikeus (s. 51)."}
+  ],
+  keyThemes:["[V] Sosiaalista vertailua käytetään reiluuden arviointiin, ei itsearviointiin (s. 54).","[V] Globaalia itsetuntoa ei vielä voi sanallistaa (s. 55)."]},
+{id:"pl_8_10", name:"Keski–myöhäislapsuus", ageRange:"n. 8–10 vuotta (Harter luku 2)",
+  description:"[V] Piirrenimikkeet, myönteisten ja kielteisten ominaisuuksien yhdistäminen, sosiaalinen vertailu ja sanallistettu globaali itsetunto. Minäkuva tarkentuu mutta muuttuu normatiivisesti kielteisemmäksi.",
+  topics:[
+    {topicId:"h2_myohaislapsuus", note:"[V] Neljä uutta taitoa → tarkempi mutta kielteisempi minäkuva (s. 63–65)."},
+    {topicId:"h2_haavoittuvuudet", note:"[V] Ehdollinen tuki, epätosi minä ja narsismin patologiset muodot (s. 69–71)."}
+  ],
+  keyThemes:["[V] James (tärkeät alueet) ja Cooley (läheisten hyväksyntä) näkyvät lapsen omissa perusteluissa (s. 63).","[V] Itsensä suojaamisen ja korostamisen keinot syntyvät (s. 65–66)."]},
+];
+
+const PP2_MCQ_BANK = [
+{id:"pm_h2_01", category:"h_lapsuus", book:"harter", question:"Miksi 2–4-vuotiaan itsearviot ovat Harterin mukaan epärealistisen myönteisiä?",
+  options:["Lapsi korostaa itseään strategisesti suojatakseen haurasta itsetuntoaan.","Lapsi ei erota toivottua ja todellista pätevyyttään eikä pysty käyttämään sosiaalista vertailua itsearvioinnissa.","Aikuiset antavat pienille lapsille pääosin kielteistä palautetta, jota lapsi kompensoi.","Lapsella on jo sanallistettava käsitys globaalista itsetunnostaan, jota hän haluaa suojata."],
+  correctIndex:1,
+  optionNotes:["Väärin – Harter nimenomaan kiistää, että pienten lasten positiivisuus olisi aikuisten kaltaista taktista itsensä korostamista (s. 33–34).","Oikein – nämä ovat kaksi Harterin viidestä syystä; muut ovat ajalliset vertailut, näkökulmanoton puute ja kaikki tai ei mitään -ajattelu (s. 31–33).","Väärin – Harterin mukaan useimmat aikuiset ovat pikemminkin tukevia, mikä kallistaa minäkuvaa myönteiseksi (s. 32).","Väärin – globaalin itsetunnon sanallistettava käsite kehittyy vasta 8–10-vuotiaana (s. 34, 63)."]},
+{id:"pm_h2_02", category:"h_lapsuus", book:"harter", question:"Missä ikävaiheessa lapsi Harterin mukaan pystyy ensimmäistä kertaa sanoittamaan globaalin itsetuntonsa eli arvionsa omasta arvostaan kokonaisuutena?",
+  options:["Hyvin varhainen lapsuus (2–4 v)","Varhainen–keskilapsuus (5–7 v)","Keski–myöhäislapsuus (8–10 v)","Vasta varhaisnuoruudessa"],
+  correctIndex:2,
+  optionNotes:["Väärin – tässä vaiheessa itsetunto näkyy vain käyttäytymisessä (s. 34–35).","Väärin – lapsi ei vielä pysty yhdistämään osa-alueiden pätevyyttä niiden tärkeydellä painotettuna (s. 55).","Oikein – globaali itsetunto voidaan nyt ilmaista sanallisesti (s. 63).","Väärin – kyky ilmaantuu jo myöhäislapsuudessa."]},
+{id:"pm_h2_03", category:"h_lapsuus", book:"harter", question:"Mikä erotteli opettajien arvioissa korkean ja matalan itsetunnon pieniä lapsia (käyttäytymisessä ilmenevä itsetunto)?",
+  options:["Lapsen pätevyys, esim. kirjaimien tai numeroiden osaaminen","Itsevarmuus, uteliaisuus, aloitteellisuus ja itsenäisyys sekä sopeutuva reagointi muutokseen ja stressiin","Kielellinen taitavuus kuvata itseään","Suosio ikätovereiden keskuudessa"],
+  correctIndex:1,
+  optionNotes:["Väärin – yllättävä havainto oli, ettei pätevyys sinänsä erotellut ryhmiä pienillä lapsilla (s. 36).","Oikein – aktiivinen ja reaktiivinen ulottuvuus, jotka korreloivat voimakkaasti (s. 35–36).","Väärin – käsitteen idea on nimenomaan, ettei pieni lapsi pysty sanoittamaan itsetuntoaan.","Väärin – tätä ei mainittu erottelevana tekijänä Harterin kuvauksessa."]},
+{id:"pm_h2_04", category:"h_lapsuus", book:"harter", question:"6-vuotias sanoo: ”Jos on hyvä jossain, ei voi olla huono, ainakaan samaan aikaan.” Mitä kehitysilmiötä lausuma kuvaa parhaiten?",
+  options:["Representaatioiden kytkentä vastakohtina (Fischerin ”mapping”) ja kaikki tai ei mitään -ajattelu","Representaatiosysteemi, jossa vastakkaiset ominaisuudet yhdistyvät","Epätoden minän käyttäytyminen","Alaspäin suuntautuva sosiaalinen vertailu"],
+  correctIndex:0,
+  optionNotes:["Oikein – 5–7-vuotias kytkee representaatioita tyypillisesti vastakohtina: ”olen hyvä, joten en voi olla huono” (s. 51).","Väärin – vastakkaisten ominaisuuksien yhdistäminen onnistuu vasta 8–10-vuotiaana (s. 61).","Väärin – lausuma kuvaa kognitiivista rakennetta, ei itsen esittämistä toisenlaisena kuin kokee olevansa.","Väärin – itsearviointiin tähtäävä sosiaalinen vertailu kehittyy vasta keskilapsuudessa (s. 62)."]},
+{id:"pm_h2_05", category:"h_lapsuus", book:"harter", question:"Mihin 5–7-vuotiaat Harterin kuvaaman tutkimuksen mukaan tyypillisesti käyttävät vertailua ikätovereihin?",
+  options:["Oman pätevyyden arvioimiseen","Reiluuden arvioimiseen (onko saanut oman osuutensa) ja tehtävän vaatimusten selvittämiseen","Oman itsetunnon suojaamiseen vertaamalla heikompiin","Eivät vertaile itseään muihin lainkaan"],
+  correctIndex:1,
+  optionNotes:["Väärin – tähän sosiaalista vertailua käytetään vasta keskilapsuudessa.","Oikein – Ruble ym.: vertailua käytetään muihin tarkoituksiin kuin itsearviointiin (s. 54).","Väärin – alaspäin suuntautuva vertailu on 8–10-vuotiaiden uusi strategia (s. 65).","Väärin – vertailua on, mutta eri tarkoituksessa."]},
+{id:"pm_h2_06", category:"h_lapsuus", book:"harter", question:"Miten todellisen ja ihanneminän välinen ero muuttuu lapsuuden aikana Harterin mukaan?",
+  options:["Ero pienenee, koska lapsi oppii realistiseksi.","Ero kasvaa, koska omat arviot muuttuvat vertailun myötä kielteisemmiksi ja aikuiset nostavat odotuksiaan.","Ero on suurimmillaan 2–4-vuotiailla.","Erolla ei ole yhteyttä itsetuntoon."],
+  correctIndex:1,
+  optionNotes:["Väärin – tutkimusten mukaan ero kasvaa kehityksen myötä (s. 64).","Oikein – Harter nimeää juuri nämä kaksi syytä (s. 64–65).","Väärin – pienet lapset eivät vielä erota todellista ja ihanneminää lainkaan (s. 31).","Väärin – Jamesin mallin mukaan tavoitteista jääminen laskee itsetuntoa (s. 64)."]},
+{id:"pm_h2_07", category:"h_lapsuus", book:"harter", question:"Millainen vanhempien kerrontatyyli tukee Harterin esittelemän tutkimuksen mukaan lapsen omaelämäkerrallista muistia?",
+  options:["Niukasti elaboroiva, muistojen oikeellisuuteen keskittyvä tyyli","Runsaasti elaboroiva, kuvaileva ja muisteleva tyyli","Tyyli, jossa lapsi kertoo yksin ilman vanhemman osallistumista","Kerrontatyylillä ei ole havaittu merkitystä"],
+  correctIndex:1,
+  optionNotes:["Väärin – tämä tyyli tuottaa lyhyempiä ja köyhempiä kertomuksia (s. 40).","Oikein – elaboroivat vanhemmat saavat lapsen kuvaamaan kokemuksiaan rikkaammin (Haden; Reese) (s. 40).","Väärin – Harter korostaa vanhemman ja lapsen yhteisrakentamista (s. 39).","Väärin – yksilölliset erot kerrontatyyleissä liittyvät lasten kertomuksiin."]},
+{id:"pm_h2_08", category:"h_lapsuus", book:"harter", question:"Harter ym. (1996) tutkivat epätoden minän käyttäytymistä. Milloin sitä Harterin mukaan esiintyy erityisesti?",
+  options:["Kun vanhemmat antavat ehdotonta tukea","Kun vanhempien hyväksyntä on ehdollista sille, että lapsi yltää saavuttamattomiin standardeihin","Kun lapsi kokeilee leikkisästi erilaisia rooleja","Kun lapsen itsetunto on hyvin korkea"],
+  correctIndex:1,
+  optionNotes:["Väärin – ehdoton hyväksyntä liittyy pikemminkin optimaaliseen itsetuntoon.","Oikein – ”ehdollinen tuki” ei tunnu lapsesta tuelta; lapset raportoivat myös matalaa itsetuntoa ja toivottomuutta (s. 69–70).","Väärin – luvussa 2 epätosi minä kytketään ehdolliseen hyväksyntään ja kaltoinkohteluun.","Väärin – yhteys on päinvastainen: epätosi minä liittyy matalaan itsetuntoon."]},
+{id:"pm_h2_09", category:"h_lapsuus", book:"harter", question:"Mikä seuraavista kuvaa Kernbergin kriteerein NORMAALIA varhaislapsuuden narsismia?",
+  options:["Vaatimukset ovat liiallisia ja mahdottomia täyttää.","Huomion halu on iänmukaista, esittäytyminen lämmintä ja tarpeet tyydytettävissä.","Jatkuva ihailun vaatimus toimii puolustuksena.","Lapsi on kateellinen ja omistushaluinen suuruudenhaaveistaan."],
+  correctIndex:1,
+  optionNotes:["Väärin – tämä kuvaa patologista narsismia (s. 43).","Oikein – normaali narsismi on iänmukaista ja herättää ympäristössä hyväksyntää (s. 43).","Väärin – puolustuksellinen ihailun vaatimus on patologisen narsismin piirre (s. 43).","Väärin – 5–7-vuotiaiden normaalit haaveet jaetaan muiden kanssa; kateus kuvaa patologista suuntaa (s. 56)."]},
+{id:"pm_h2_10", category:"h_lapsuus", book:"harter", question:"Mikä on Harterin luvun 2 läpileikkaava teesi kognitiivisesta kehityksestä ja minästä?",
+  options:["Kognitiivinen kehitys tekee minäkuvasta aina myönteisemmän.","Kognitiiviset edistysaskeleet tuovat paradoksaalisesti mukanaan myös uusia normatiivisia haavoittuvuuksia.","Minän kehitys on täysin riippumaton kognitiivisesta kehityksestä.","Vain patologiset kokemukset voivat laskea lapsen itsetuntoa."],
+  correctIndex:1,
+  optionNotes:["Väärin – esim. 8–10-vuotiaan tarkempi minäkuva on usein myös kielteisempi (s. 63–64).","Oikein – Harter kutsuu tätä luvun ”kardinaaliseksi teesiksi” (s. 63).","Väärin – Harter kytkee minäkuvan rakenteen nimenomaan neopiagetilaisiin kehitysvaiheisiin.","Väärin – itsetunto laskee normatiivisesti keskilapsuudessa myös ilman patologiaa (s. 64)."]},
+];
+
+const PP2_TF_BANK = [
+{id:"pt_h2_01", category:"h_lapsuus", book:"harter", statement:"Harterin mukaan 3-vuotiaan liian myönteiset itsearviot ovat samanlaista taktista itsensä korostamista kuin aikuisilla.", answer:false, explanation:"[V] Väärin. Harter kiistää tämän: pienillä lapsilla ei ole tarvetta suojata haurasta minäkuvaa eikä aikuisten käyttämiä mekanismeja; positiivisuus johtuu kognitiivisista rajoitteista (s. 33–34)."},
+{id:"pt_h2_02", category:"h_lapsuus", book:"harter", statement:"Pienen lapsen itsetunto voi näkyä käyttäytymisessä, vaikka lapsi ei osaa sanoittaa globaalia itsetuntoaan.", answer:true, explanation:"[V] Oikein. Harter kutsuu tätä käyttäytymisessä ilmeneväksi itsetunnoksi (behaviorally presented self-esteem) (s. 35)."},
+{id:"pt_h2_03", category:"h_lapsuus", book:"harter", statement:"Opettajien arvioissa lapsen pätevyys oli pienillä lapsilla vahvin korkean itsetunnon merkki.", answer:false, explanation:"[V] Väärin. Pätevyys ei erotellut ryhmiä – itsevarmuus erotteli. Itsevarmuus käyttäytymistyylinä ei pienillä lapsilla ole sama kuin taitavuus (s. 36)."},
+{id:"pt_h2_04", category:"h_lapsuus", book:"harter", statement:"8–10-vuotias pystyy ymmärtämään, että voi olla samanaikaisesti fiksu joissakin kouluaineissa ja heikko toisissa.", answer:true, explanation:"[V] Oikein. Vastakkaisten ominaisuuksien yhdistäminen on tämän ikävaiheen keskeinen edistysaskel (s. 61)."},
+{id:"pt_h2_05", category:"h_lapsuus", book:"harter", statement:"Harterin ja Buddinin (1987) mukaan lapsi ymmärtää vastakkaiset tunteet samaa kohdetta kohtaan ennen kuin hän ymmärtää ne eri kohteisiin kohdistuvina.", answer:false, explanation:"[V] Väärin, järjestys on päinvastainen: ensin vastakkaiset tunteet eri kohteisiin (”huomion siirto”), vasta myöhäislapsuuden lopussa samaan kohteeseen (s. 61–62)."},
+{id:"pt_h2_06", category:"h_lapsuus", book:"harter", statement:"Harterin esittelemän nykytutkimuksen mukaan varhaislapsuuden kiintymysmallit säilyvät aina muuttumattomina.", answer:false, explanation:"[V] Väärin. Kiintymysmallit eivät välttämättä ole pysyviä; esim. stressitekijät ja muutokset hoivan laadussa ennustavat muutoksia (s. 44)."},
+{id:"pt_h2_07", category:"h_lapsuus", book:"harter", statement:"”Köyhtynyt minä” voi kehittyä, kun vanhempi ei juuri rakenna kertomuksia yhdessä lapsen kanssa.", answer:true, explanation:"[V] Oikein. Tällaiselta lapselta puuttuvat itsen kuvaamisen sanasto, omaelämäkerralliset muistot ja haaveet tulevaisuudesta (s. 47–48)."},
+{id:"pt_h2_08", category:"h_lapsuus", book:"harter", statement:"Sosiaalista vertailua käytetään itsearvioinnin välineenä vasta keskilapsuudessa.", answer:true, explanation:"[V] Oikein. Se edellyttää kykyä pitää oma ja toisen suoritus mielessä samanaikaisesti (s. 62)."},
+{id:"pt_h2_09", category:"h_lapsuus", book:"harter", statement:"Harterin mukaan kehityksen myötä tarkentuva minäkuva on aina myös myönteisempi.", answer:false, explanation:"[V] Väärin. Keskilapsuudesta alkaen itsearviot muuttuvat normatiivisesti kielteisemmiksi samalla kun ne tarkentuvat (s. 63–64)."},
+{id:"pt_h2_10", category:"h_lapsuus", book:"harter", statement:"Pienen lapsen tunteiden ”jakautuminen” vain myönteisiin tai vain kielteisiin on Harterin mukaan normatiivista eikä sillä ole kliinistä merkitystä.", answer:true, explanation:"[V] Oikein. Fischerin ryhmän mukaan tämä on mielen luonnollista pilkkoutumista – toisin kuin kaltoinkohtelun jälkeinen dissosiaatio (s. 33)."},
+];
+
+const PP2_SHORT_BANK = [
+{id:"ps_h2_01", category:"h_lapsuus", book:"harter", question:"Nimeä ne viisi syytä, joiden vuoksi 2–4-vuotiaan itsearviot ovat Harterin mukaan epärealistisen myönteisiä.",
+  modelAnswer:["[V] Lapsi ei erota toivottua ja todellista pätevyyttä (ei erillistä ihanne- ja todellista minää).","[V] Sosiaalista vertailua ei osata käyttää itsearviointiin.","[V] Ajalliset vertailut omaan aiempaan itseen ovat palkitsevia, koska taidot kehittyvät nopeasti.","[V] Näkökulmanottokyky puuttuu, joten muiden kriittisiä arvioita ei sisäistetä (Cooleyn peiliminän edellytykset puuttuvat); aikuiset ovat lisäksi yleensä tukevia.","[V] Kaikki tai ei mitään -ajattelu: vastakkaisia ominaisuuksia ei myönnetä itsessä (s. 31–33)."]},
+{id:"ps_h2_02", category:"h_lapsuus", book:"harter", question:"Mitkä neljä kognitiivista taitoa tekevät 8–10-vuotiaan itsearvioista tarkempia mutta samalla kielteisempiä?",
+  modelAnswer:["[V] Myönteisten ja kielteisten ominaisuuksien samanaikainen tunnistaminen.","[V] Sosiaalisen vertailun käyttö itsearviointiin.","[V] Todellisen ja ihanneminän erottaminen.","[V] Kasvanut sosiaalinen näkökulmanottokyky (s. 64–65)."]},
+{id:"ps_h2_03", category:"h_lapsuus", book:"harter", question:"Mitä tarkoittaa käyttäytymisessä ilmenevä itsetunto, ja mitkä ovat sen kaksi ulottuvuutta?",
+  modelAnswer:["[V] Pienet lapset eivät osaa sanoittaa globaalia itsetuntoaan, mutta se näkyy aikuisille havaittavassa käyttäytymisessä.","[V] Aktiivinen ulottuvuus: itsevarmuus, uteliaisuus, aloitteellisuus, itsenäisyys.","[V] Reaktiivinen ulottuvuus: sopeutuva reagointi muutokseen, turhautumiseen ja stressiin.","[V] Käsite rakennettiin opettajahaastattelujen ja Q-lajittelun avulla (s. 35–36)."]},
+{id:"ps_h2_04", category:"h_lapsuus", book:"harter", question:"Miksi Harter katsoo, ettei pienten lasten positiivisuus ole aikuisten kaltaista itsensä korostamista?",
+  modelAnswer:["[V] Motiivi puuttuu: arviot ovat jo normatiivisesti paisuneita, eikä ole haurasta minäkuvaa suojattavana.","[V] Mekanismit puuttuvat: esim. alaspäin suuntautuva sosiaalinen vertailu ja todellisen/ihanneminän vertailu eivät ole vielä mahdollisia.","[V] Kielellinen käsite globaalista itsetunnosta puuttuu.","[V] Seuraukset ovat erilaiset: iänmukainen normaali narsismi herättää hyväksyntää, aikuisen suuruudenhulluus torjuntaa (s. 33–34)."]},
+{id:"ps_h2_05", category:"h_lapsuus", book:"harter", question:"Mikä on ”köyhtynyt minä”, mistä se syntyy ja miten siihen voidaan puuttua?",
+  modelAnswer:["[V] Lapselta puuttuvat sanasto itsen kuvaamiseen, omaelämäkerralliset muistot ja tulevaisuuden haaveet.","[V] Syntyy, kun vanhempi (esim. oman masennuksensa vuoksi) ei juuri rakenna kertomuksia lapsen kanssa.","[V] Hoidossa palataan alkuun: kertomusten, muistojen ja alkeellisten itsenimikkeiden rakentaminen yhdessä vanhemman kanssa (esim. leikekirja, perherituaalit) (s. 47–49)."]},
+{id:"ps_h2_06", category:"h_lapsuus", book:"harter", question:"Miten ehdollinen tuki liittyy epätoden minän käyttäytymiseen lapsuudessa Harterin mukaan?",
+  modelAnswer:["[V] Vanhemmat välittävät rakkautta tai tukea vain, jos lapsi yltää usein epärealistisiin tavoitteisiin (Ryan & Deci).","[V] Harter ym. (1996): epätoden minän käyttäytyminen yleistyy erityisesti tällöin; ”ehdollinen tuki” ei tunnu lapsesta tuelta.","[V] Lapset tukahduttavat todellisen minänsä saadakseen hyväksyntää ja raportoivat matalaa itsetuntoa ja toivottomuutta vanhempien miellyttämisestä (s. 69–70)."]},
+];
+
+const PP2_ESSAY_BANK = [
+{id:"pe_h2_01", category:"h_lapsuus", book:"harter", maxPoints:15,
+  question:"Kuvaa ja vertaile minäkuvauksen sisältöä, rakennetta ja tarkkuutta Harterin kolmessa lapsuuden ikävaiheessa (2–4, 5–7 ja 8–10 v). Selitä, miksi kognitiivinen kehitys tuo mukanaan sekä edistysaskelia että uusia haavoittuvuuksia.",
+  modelAnswerPoints:[
+    "[V] 2–4 v: konkreettiset, havaittavat ja toisistaan irralliset ominaisuudet (taidot, toiminnot, omistukset); Fischerin yksittäiset representaatiot; epärealistisen myönteinen arvio; ei suoria vertailuja (s. 28–31).",
+    "[V] 5–7 v: taitoja kootaan joukoiksi, representaatioita kytketään vastakohtina (”hyvä, joten en voi olla huono”); kaikki tai ei mitään -ajattelu jatkuu; ajallinen vertailu, vertailu ikätovereihin reiluuden vuoksi (s. 51–54).",
+    "[V] 8–10 v: piirrenimikkeet ylemmän tason yleistyksinä, vastakkaisten ominaisuuksien yhdistäminen, sosiaalinen vertailu itsearviointiin, globaalin itsetunnon sanallistaminen (s. 60–63).",
+    "[V] Liiallisen myönteisyyden viisi syytä varhaisemmissa vaiheissa (ihanne/todellinen minä, sosiaalinen vertailu, ajallinen vertailu, näkökulmanotto, kaikki tai ei mitään) (s. 31–33).",
+    "[V] Paradoksi: myöhäislapsuuden neljä uutta taitoa (myönteinen+kielteinen, sosiaalinen vertailu, todellinen vs. ihanneminä, näkökulmanotto) tekevät arvioista tarkempia mutta kielteisempiä (s. 63–65).",
+    "[V] Uudet itsetunnon suojaamisen motiivit ja keinot syntyvät (alaspäin vertailu, parempi kuin keskiverto, vaikutelman hallinta) (s. 65–66).",
+    "[V] Harterin arvio: realistisuus on sopeutuvampaa tästä iästä alkaen, ja haitta voi olla väliaikainen (s. 65)."
+  ],
+  rubric:[
+    {label:"Kolmen ikävaiheen sisällön ja rakenteen kuvaus oikein (Fischer/Case-käsitteet)", points:4},
+    {label:"Tarkkuuden/valenssin muutos ja sen syyt (viisi syytä, neljä taitoa)", points:4},
+    {label:"Vertailun kehitys (ajallinen → reiluus → sosiaalinen vertailu itsearviointiin)", points:2},
+    {label:"Edistysaskeleiden ja haavoittuvuuksien paradoksi perusteltu", points:3},
+    {label:"Rakenne, käsitteiden täsmällisyys ja vertaileva ote", points:2}
+  ]},
+{id:"pe_h2_02", category:"h_lapsuus", book:"harter", maxPoints:15,
+  question:"Pohdi sosiaalisen ympäristön merkitystä lapsen minän rakentumisessa Harterin luvun 2 pohjalta: kertomusten yhteisrakentaminen, kiintymys, ehdollinen tuki ja kaltoinkohtelu. Erottele kehitykseen kuuluvat (normatiiviset) haavoittuvuudet patologisista prosesseista.",
+  modelAnswerPoints:[
+    "[V] Kertomusten yhteisrakentaminen tukee omaelämäkerrallista muistia ja minän jatkuvuutta; elaboroiva tyyli rikastaa lapsen kertomuksia; tyttöjen kanssa elaboroidaan enemmän (s. 38–40).",
+    "[V] Kiintymys: sisäinen työmalli itsestä arvokkaana/arvottomana; turvaton kiintymys johtaa patologiaan lähinnä yhdessä muiden riskien kanssa; mallit voivat muuttua (s. 43–46).",
+    "[V] Normatiiviset haavoittuvuudet: epärealistinen myönteisyys, egosentrismi, normaali narsismi – iänmukaisia (s. 41–43, 56).",
+    "[V] Patologiset prosessit: kaltoinkohtelu → ”täysin paha” minä, heikentynyt itsetietoisuus, hajanaiset kertomukset; köyhtynyt minä; epätosi minä (s. 45–49, 57–59).",
+    "[V] Ehdollinen tuki (Harter ym. 1996) → epätosi minä, matala itsetunto, toivottomuus; optimaalinen vs. ehdollinen itsetunto (s. 69–70).",
+    "[V] Patologia syntyy lapsen kehitystason ja kroonisen kielteisen kohtelun vuorovaikutuksessa; esim. kaikki tai ei mitään -ajattelu tekee itsesyytöksestä kokonaisvaltaisen (s. 43, 58)."
+  ],
+  rubric:[
+    {label:"Kertomusten ja omaelämäkerrallisen muistin merkitys kuvattu", points:3},
+    {label:"Kiintymysteorian näkökulma (työmallit, riskien yhteisvaikutus, muuttuvuus)", points:3},
+    {label:"Normatiivisten ja patologisten prosessien erottelu perusteltu esimerkein", points:4},
+    {label:"Ehdollinen tuki ja epätosi minä", points:3},
+    {label:"Rakenne ja argumentoinnin laatu", points:2}
+  ]},
+];
+
+const PP2_VIGNETTE_BANK = [
+{id:"pv_h2_01", category:"h_lapsuus", book:"harter", ageGroup:"lapsi (4 v)", maxPoints:10,
+  vignette:"Nelivuotias Eeli kertoo päiväkodissa: ”Minä olen maailman nopein ja vahvin! Osaan laskea sataan, kuuntele! En pelkää ikinä mitään.” Hän laskee väliin numeroita väärin, mutta ei huomaa sitä. Vanhemmat kysyvät neuvolassa, onko Eelillä narsistisia piirteitä, koska hän ”kehuu itseään koko ajan ja vaatii, että häntä katsotaan”.",
+  questions:["Miten tulkitset Eelin itsekuvauksen Harterin teorian valossa?","Onko kyse narsismista tai tietoisesta itsensä korostamisesta? Perustele.","Mitä lisätietoa tarvitsisit, jos haluaisit arvioida mahdollista huolta?"],
+  modelAnswer:{
+    mostLikely:"[V] Iänmukainen, normatiivisesti epärealistisen myönteinen minäkuva: konkreettiset taidot, halu näyttää taito heti ja kaikki tai ei mitään -ajattelu (”en pelkää ikinä”) (s. 30–33).",
+    differentials:[
+      {name:"Patologinen narsismi", why:"[V] Epätodennäköinen: Kernbergin kriteerein normaali narsismi on iänmukaista, lämmintä ja tyydytettävissä olevaa huomion hakemista; patologisessa vaatimukset ovat liiallisia ja puolustuksellisia (s. 43)."},
+      {name:"Strateginen itsensä korostaminen", why:"[V] Harterin mukaan pienet lapset eivät tarvitse eivätkä osaa aikuisten kaltaista itsensä korostamista; arviot ovat jo valmiiksi paisuneita (s. 33–34)."}
+    ],
+    reasoning:"[V] Viisi syytä liialliseen myönteisyyteen – ihanne/todellinen minä erottumatta, ei sosiaalista vertailua, ajalliset vertailut, näkökulmanoton puute, kaikki tai ei mitään -ajattelu – selittävät kuvauksen. Harterin mukaan myönteisyys voi tässä iässä olla jopa suojaavaa ja motivoivaa (s. 31–34).",
+    infoNeeded:["[V] Onko esittäytyminen lämmintä ja vastavuoroista vai vihamielistä ja puolustuksellista (Kernbergin erottelu).","[V] Käyttäytymisessä ilmenevä itsetunto: tarttuuko Eeli uusiin haasteisiin ja sietääkö turhautumista (s. 35–36).","[T] Perheen hoivan laatu ja mahdolliset kuormitustekijät."]
+  },
+  rubric:[{label:"Tunnisti normatiivisen, iänmukaisen positiivisuuden",points:3},{label:"Perusteli Harterin viidellä syyllä",points:3},{label:"Erotti normaalin narsismin patologisesta ja strategisesta korostamisesta",points:2},{label:"Nimesi relevanttia lisätietoa",points:2}]},
+{id:"pv_h2_02", category:"h_lapsuus", book:"harter", ageGroup:"lapsi (9 v)", maxPoints:10,
+  vignette:"Yhdeksänvuotias Aino sanoo: ”Olen aika huono matikassa, varsinkin kun näen miten muut laskevat. Mutta ei se haittaa, koska kirjoittaminen on mulle tärkeintä, ja siinä olen hyvä. Tykkään itsestäni, koska äiti ja isä tykkää musta ja kaveritkin.”",
+  questions:["Mitä Harterin kuvaamia myöhäislapsuuden kehitysilmiöitä Ainon puheessa näkyy?","Mitkä kaksi klassista itsearvostuksen teoriaa näkyvät Ainon perusteluissa?","Mikä tekee Ainosta haavoittuvamman kuin nuorempana?"],
+  modelAnswer:{
+    mostLikely:"[V] Tyypillinen 8–10-vuotiaan minäkuvaus: piirrenimikkeet, myönteisten ja kielteisten ominaisuuksien yhdistäminen, sosiaalinen vertailu itsearviointiin ja sanallistettu globaali itsetunto (s. 60–63).",
+    differentials:[
+      {name:"Jamesin malli", why:"[V] Aino väheksyy heikon alueen (matematiikka) tärkeyttä ja nojaa tärkeään alueeseen (kirjoittaminen): itsetunto riippuu pätevyydestä itselle tärkeillä alueilla (s. 63)."},
+      {name:"Cooleyn peiliminä", why:"[V] Vanhempien ja kavereiden hyväksyntä tukee itsestä pitämistä (s. 63)."}
+    ],
+    reasoning:"[V] Sosiaalinen vertailu, todellisen/ihanneminän erottaminen ja näkökulmanotto tekevät arvioista realistisempia mutta myös kielteisempiä; tärkeiden alueiden valinta ja läheisten tuki toimivat suojana (s. 63–65).",
+    infoNeeded:["[V] Tuleeko matematiikasta myöhemmin tärkeä (esim. koulun tai vanhempien paineesta), jolloin väheksyntä ei enää suojaa.","[V] Onko vanhempien hyväksyntä ehdotonta vai ehdollista (ehdollinen tuki → epätosi minä, s. 69–70)."]
+  },
+  rubric:[{label:"Tunnisti myöhäislapsuuden kehitysilmiöt",points:3},{label:"Nimesi Jamesin ja Cooleyn mallit oikein perustein",points:3},{label:"Selitti tarkemman mutta haavoittuvamman minäkuvan",points:2},{label:"Nimesi relevanttia lisätietoa",points:2}]},
+{id:"pv_h2_03", category:"h_lapsuus", book:"harter", ageGroup:"lapsi (7 v)", maxPoints:10,
+  vignette:"Seitsemänvuotiaan Leon perhettä tavataan perheneuvolassa. Äiti on ollut pitkään masentunut. Leo ei osaa kertoa, mistä hän pitää tai mitä hän haluaisi isona tehdä. Kotona ei ole valokuvia Leosta, eikä perheellä ole yhteisiä tapoja tai rituaaleja. Koulussa Leon toiminta vaikuttaa päämäärättömältä.",
+  questions:["Mitä Harterin käsitettä tilanne havainnollistaa?","Miten se eroaa kielteisestä minäkuvasta?","Millainen apu Harterin mukaan sopisi?"],
+  modelAnswer:{
+    mostLikely:"[V] Köyhtynyt minä: kertomusten yhteisrakentamisen puute on jättänyt lapselle vähän itsen kuvaamisen sanastoa, omaelämäkerrallisia muistoja ja tulevaisuuden haaveita (s. 47–48).",
+    differentials:[
+      {name:"Kielteinen minäkuva (esim. kaltoinkohtelun jälkeen)", why:"[V] Kielteisessä minäkuvassa lapsella on kuvauksia, mutta ne ovat kielteisiä; köyhtyneessä minässä kuvauksia on ylipäätään vähän (s. 45, 48)."},
+      {name:"Masennus lapsella", why:"[T] Päämäärättömyys voi liittyä myös mielialaan – arvio tarvitaan erikseen."}
+    ],
+    reasoning:"[V] Harterin mukaan masentuneet tai muuten kyvyttömät vanhemmat voivat jättää kertomusten rakentamisen lähes kokonaan väliin; lapsen käyttäytyminen voi näyttää järjestäytymättömältä ja päämäärättömältä, koska minä ei toimi toiminnan ja tavoitteiden ohjaajana (s. 48).",
+    infoNeeded:["[V] Onko vanhemmalla voimavaroja osallistua (menetelmät edellyttävät vanhemman yhteistyötä, s. 49).","[T] Lapsen mieliala ja mahdollinen kaltoinkohtelu."]
+  },
+  rubric:[{label:"Tunnisti köyhtyneen minän",points:3},{label:"Erotti kielteisestä minäkuvasta",points:3},{label:"Kuvasi Harterin mukaisen avun (kertomukset, leikekirja, rituaalit, vanhemman mukanaolo)",points:2},{label:"Nimesi relevanttia lisätietoa",points:2}]},
+];
+
+const PP2_DIAGDRILL_BANK = [
+{id:"pd_h2_01", category:"h_lapsuus", book:"harter", ageGroup:"lapsi (10 v)", maxPoints:8,
+  vignette:"Kymmenvuotias Iida on kotona aina kiltti ja ahkera. Hän kertoo terveydenhoitajalle, ettei vanhemmat ”tykkäis oikeasta minusta” ja että hän saa kehuja vain, kun arvosanat ovat täydellisiä. Hän tuntee olonsa toivottomaksi.",
+  modelAnswer:{mostLikely:"[V] Epätoden minän käyttäytyminen, joka liittyy vanhempien ehdolliseen tukeen (Harter ym. 1996) (s. 69–70).",
+    differentials:[{name:"Normatiivinen roolikokeilu", why:"[T] Roolien kokeilu liitetään tyypillisesti nuoruuteen, eikä siihen liity toivottomuutta tai kokemusta, että todellinen minä ei kelpaa."},{name:"Optimaalinen itsetunto", why:"[V] Optimaalinen itsetunto on vakaa eikä riipu ulkoisesta hyväksynnästä – Iidan itsetunto on ehdollinen (s. 69)."}],
+    reasoning:"[V] Hyväksyntä on sidottu saavuttamattomiin standardeihin; lapsi tukahduttaa todellisen minänsä, ja tuloksena on matala itsetunto ja toivottomuus vanhempien miellyttämisestä.",
+    infoNeeded:["[V] Ovatko vanhempien odotukset realistisia (saavuttamattomat standardit ovat keskeinen riski).","[T] Mielialaoireiden laajuus."]},
+  rubric:[{label:"Tunnisti epätoden minän ja ehdollisen tuen",points:4},{label:"Erotti optimaalisesta/ehdollisesta itsetunnosta",points:2},{label:"Nimesi relevanttia lisätietoa",points:2}]},
+{id:"pd_h2_02", category:"h_lapsuus", book:"harter", ageGroup:"lapsi (5 v)", maxPoints:8,
+  vignette:"Viisivuotias Olavi osaa jo lukea ja on taitava palapeleissä, mutta päiväkodissa hän jää sivuun katselemaan, ei tartu uusiin tehtäviin ja luovuttaa heti, jos jokin ei onnistu.",
+  modelAnswer:{mostLikely:"[V] Matala käyttäytymisessä ilmenevä itsetunto: aktiivinen ulottuvuus (itsevarmuus, aloitteellisuus, uteliaisuus) ja reaktiivinen ulottuvuus (turhautumisen sietäminen) ovat heikkoja (s. 35–36).",
+    differentials:[{name:"Pätevyyden puute", why:"[V] Olavi on taitava – Harterin mukaan pienillä lapsilla pätevyys ei erottele korkeaa ja matalaa itsetuntoa, itsevarmuus erottelee (s. 36)."}],
+    reasoning:"[V] Itsevarmuus käyttäytymistyylinä ei pienillä lapsilla ole sama asia kuin taitavuus. Korkeaa itsetuntoa tukevat vanhempien herkkyys, responsiivisuus sekä tutkimisen ja hallinnan tukeminen (s. 37).",
+    infoNeeded:["[V] Miten aikuiset tukevat lapsen tutkimista ja hallintayrityksiä (s. 37).","[T] Temperamentti ja mahdollinen ahdistuneisuus."]},
+  rubric:[{label:"Tunnisti käyttäytymisessä ilmenevän itsetunnon",points:4},{label:"Erotti itsevarmuuden ja pätevyyden",points:2},{label:"Nimesi relevanttia lisätietoa",points:2}]},
+{id:"pd_h2_03", category:"h_lapsuus", book:"harter", ageGroup:"lapsi (6 v)", maxPoints:8,
+  vignette:"Kuusivuotias Vilma sanoo: ”Mä oon tosi kiltti. En voi olla ilkeä, koska mä oon kiltti. Jotkut muut on ilkeitä, mut en mä.”",
+  modelAnswer:{mostLikely:"[V] Representaatioiden kytkentä vastakohtina (Fischerin representational mapping) ja kaikki tai ei mitään -ajattelu, tyypillistä 5–7-vuotiaille (s. 51–52).",
+    differentials:[{name:"Representaatiosysteemi (8–10 v)", why:"[V] Vasta myöhäislapsuudessa vastakkaiset ominaisuudet voidaan yhdistää (”voin olla sekä kiltti että joskus ilkeä”) (s. 61)."},{name:"Varsinainen persoonallisuuspiirre", why:"[V] Harterin mukaan tämän ikäisen ”kiltti” on usein aikuisilta mallitettu nimike, ei ylemmän tason yleistys (s. 52)."}],
+    reasoning:"[V] Uusi kyky kytkeä representaatioita tapahtuu vastakohtina, mikä ylläpitää liian myönteistä minäkuvaa; muut voivat olla ”huonoja”, mutta ei minä (s. 51–52).",
+    infoNeeded:["[T] Ei tarvita lisätietoa huolen arvioimiseksi – kyse on iänmukaisesta ajattelusta."]},
+  rubric:[{label:"Tunnisti vastakohtien kytkennän ja kaikki tai ei mitään -ajattelun",points:4},{label:"Erotti 8–10-vuotiaiden representaatiosysteemistä",points:2},{label:"Tunnisti iänmukaisuuden",points:2}]},
+];
+
+const PP2_FLASHCARD_BANK = [
+{id:"pf_h2_01", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Harterin kolme lapsuuden ikävaihetta luvussa 2?", back:"Hyvin varhainen lapsuus 2–4 v, varhainen–keskilapsuus 5–7 v, keski–myöhäislapsuus 8–10 v (s. 27)."},
+{id:"pf_h2_02", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Mitkä viisi ulottuvuutta taulukko 2.1 kuvaa?", back:"Sisältö, rakenne/organisaatio, valenssi/tarkkuus, vertailun luonne ja herkkyys muiden näkemyksille (s. 28)."},
+{id:"pf_h2_03", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Mitä ovat Damonin ja Hartin ”kategoriset identifikaatiot”?", back:"Pienen lapsen tapa ymmärtää itsensä erillisinä luokittelevina ominaisuuksina: fyysisinä, toiminnallisina, sosiaalisina tai psykologisina (s. 30)."},
+{id:"pf_h2_04", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Fischerin kolme tasoa lapsuuden minäkuvauksessa?", back:"Yksittäiset representaatiot (2–4 v) → representaatioiden kytkennät/mappings, usein vastakohtina (5–7 v) → representaatiosysteemit, joissa vastakkaiset ominaisuudet yhdistyvät (8–10 v)."},
+{id:"pf_h2_05", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Viisi syytä 2–4-vuotiaan epärealistisen myönteiseen itsearvioon?", back:"Ei ihanne/todellinen-minän erottelua; ei sosiaalista vertailua itsearvioon; palkitsevat ajalliset vertailut; näkökulmanoton puute (ei peiliminää); kaikki tai ei mitään -ajattelu (s. 31–33)."},
+{id:"pf_h2_06", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Mitä on käyttäytymisessä ilmenevä itsetunto?", back:"Pienen lapsen itsetunto, joka näkyy aikuisille havaittavana käyttäytymisenä: itsevarmuus, uteliaisuus, aloitteellisuus, itsenäisyys ja sopeutuva reagointi muutokseen (s. 35–36)."},
+{id:"pf_h2_07", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Mikä oli yllättävä havainto pienten lasten itsetunnosta opettajien arvioissa?", back:"Pätevyys sinänsä ei erotellut korkean ja matalan itsetunnon lapsia – itsevarmuus erotteli (s. 36)."},
+{id:"pf_h2_08", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Missä iässä lapsi alkaa käyttää sanoja ”minä, minua, minun”?", back:"Noin 18–27 kuukauden iässä (s. 38)."},
+{id:"pf_h2_09", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Runsaasti vs. niukasti elaboroiva kerrontatyyli?", back:"Runsaasti elaboroiva: pitkät, kuvailevat, muistelevat kertomukset → rikkaampi omaelämäkerrallinen muisti. Niukasti elaboroiva: lyhyet, käytännölliset, oikeellisuuteen keskittyvät (s. 39–40)."},
+{id:"pf_h2_10", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Mikä on Nelsonin ”kulttuurinen minä”?", back:"5–7-vuotiaasta alkaen lapsen omaelämäkerrallinen kertomus muotoutuu kulttuurin roolien, instituutioiden ja arvojen mukaan (esim. sukupuolistereotyyppiset ammattitoiveet) (s. 50)."},
+{id:"pf_h2_11", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Missä järjestyksessä samanaikaisten vastakkaisten tunteiden ymmärrys kehittyy (Harter & Buddin 1987)?", back:"Ensin kaksi samansuuntaista tunnetta; sitten vastakkaiset tunteet eri kohteisiin; lopuksi (myöhäislapsuuden lopussa) vastakkaiset tunteet samaan kohteeseen (s. 52, 61–62)."},
+{id:"pf_h2_12", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Neljä taitoa, jotka tekevät 8–10-vuotiaan itsearviosta tarkemman mutta kielteisemmän?", back:"Myönteiset+kielteiset ominaisuudet; sosiaalinen vertailu; todellinen vs. ihanneminä; kasvanut näkökulmanotto (s. 64–65)."},
+{id:"pf_h2_13", category:"h_lapsuus", book:"harter", difficulty:"perus", front:"Mikä on ”köyhtynyt minä”?", back:"Minä, jolta puuttuvat itsen kuvaamisen sanasto, omaelämäkerrallinen kertomus ja tulevaisuuden haaveet – syntyy, kun vanhemmat eivät rakenna kertomuksia lapsen kanssa (s. 47–48)."},
+{id:"pf_h2_14", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Optimaalinen vs. ehdollinen itsetunto (Crocker & Park)?", back:"Optimaalinen: realistinen, vakaa, ei paisu onnistumisesta eikä romahda epäonnistumisesta. Ehdollinen: riippuu ulkoisesta hyväksynnästä, on epävakaa ja hauras (s. 69)."},
+{id:"pf_h2_15", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Mitkä kaksi vanhemmuuden mallia Thomaes ym. liittävät lasten narsismiin?", back:"1) Yliarvostus, hemmottelu ja liiallinen kehuminen. 2) Kylmyys ja tuen puute yhdistettynä epärealistisiin odotuksiin (s. 70)."},
+{id:"pf_h2_16", category:"h_lapsuus", book:"harter", difficulty:"vaativa", front:"Brieren kuvaama kaltoinkohdellun lapsen päättelyketju?", back:"”Joko minä tai vanhempani ovat pahoja” → aikuiset ovat aina oikeassa → minä olen paha ja ansaitsen rangaistuksen → toistuessa ”täysin paha” (s. 58)."},
+];
+
+const PP2_DEVCHALLENGE_BANK = [
+{id:"pdc_h2_01", type:"mcq", category:"h_lapsuus", book:"harter", question:"Mikä muuttuu vertailun luonteessa lapsuuden aikana Harterin taulukon 2.1 mukaan?",
+  options:["Sosiaalinen vertailu → ajallinen vertailu → ei vertailua","Ei suoria vertailuja → ajallinen vertailu ja vertailu reiluuden vuoksi → sosiaalinen vertailu itsearviointiin","Vertailu pysyy samanlaisena koko lapsuuden","Ajallinen vertailu → ei vertailua → alaspäin vertailu"],
+  correctIndex:1,
+  optionNotes:["Väärin – järjestys on päinvastainen.","Oikein (s. 28, 54, 62).","Väärin – vertailun luonne on yksi taulukon viidestä muuttuvasta ulottuvuudesta.","Väärin – alaspäin vertailu on 8–10-vuotiaiden uusi keino, ei vertailun puute."]},
+{id:"pdc_h2_02", type:"mcq", category:"h_lapsuus", book:"harter", question:"Miten globaalin itsetunnon ilmeneminen muuttuu lapsuudessa?",
+  options:["Se on sanallistettavissa jo 3-vuotiaana ja heikkenee myöhemmin.","2–4 v: näkyy käyttäytymisessä; 5–7 v: ei vielä sanallistettavissa; 8–10 v: sanallistettavissa ja perustuu tärkeiden alueiden pätevyyteen ja läheisten hyväksyntään.","Globaali itsetunto kehittyy vasta nuoruudessa.","Globaali itsetunto on synnynnäinen eikä muutu."],
+  correctIndex:1,
+  optionNotes:["Väärin – pieni lapsi ei pysty sanallistamaan sitä (s. 34).","Oikein (s. 34–37, 55, 63).","Väärin – se sanallistuu jo myöhäislapsuudessa (s. 63).","Väärin – Harter kuvaa sen kehitystä."]},
+{id:"pdc_h2_03", type:"short", category:"h_lapsuus", book:"harter", question:"Miten lapsen oma rooli omaelämäkerrallisessa kertomuksessa muuttuu 2-vuotiaasta 10-vuotiaaseen?",
+  modelAnswer:["[V] Aluksi vanhempi kertoo ja rakentaa kertomuksen lapsen kokemuksista (s. 39).","[V] Kielen ja iän myötä kertomuksia rakennetaan yhdessä (s. 39).","[V] 5–7 v: lapsi on aktiivisempi kertoja, vanhemmilla ”toimittajan oikeus”; aikomukset ja tulevaisuus korostuvat (s. 51).","[V] 8–10 v: lapsi on kertomuksensa tekijä ja omistaja; ristiriidassa lapsen versio voittaa (s. 60)."]},
+{id:"pdc_h2_04", type:"short", category:"h_lapsuus", book:"harter", question:"Miten minän jatkuvuutta perustellaan eri ikävaiheissa Harterin (Chandler ym.) mukaan?",
+  modelAnswer:["[V] Varhaislapsuudessa kertomukset ja omaelämäkerrallinen muisti luovat alkeellisen jatkuvuuden (”minän säilyvyys”) (s. 38).","[V] 5–7 v: konkreettiset perustelut, esim. ”minulla on edelleen sama nimi” (s. 51).","[V] 8–10 v: perustellaan esim. sormenjäljillä tai DNA:lla, jotka pysyvät samoina muutoksista huolimatta (s. 60)."]},
+{id:"pdc_h2_05", type:"mcq", category:"h_lapsuus", book:"harter", question:"Miksi kaltoinkohtelu vaikuttaa 5–7-vuotiaan minään erityisen kokonaisvaltaisesti?",
+  options:["Koska tämän ikäisillä on jo vakiintunut globaali itsetunto.","Koska kaikki tai ei mitään -ajattelu ja vastakohtina ajattelu johtavat johtopäätökseen ”olen täysin paha”, ja egosentrismi lisää itsesyytöstä.","Koska tämän ikäiset osaavat jo tehokkaasti suojata itseään.","Koska kaltoinkohtelu vaikuttaa vain myöhäislapsuudessa."],
+  correctIndex:1,
+  optionNotes:["Väärin – globaali itsetunto ei ole vielä sanallistettavissa (s. 55).","Oikein (s. 56, 58–59).","Väärin – Harterin mukaan heillä ei vielä ole suojautumisen kognitiivisia keinoja (s. 56).","Väärin – vaikutukset alkavat jo varhaislapsuudessa (s. 45)."]},
+{id:"pdc_h2_06", type:"short", category:"h_lapsuus", book:"harter", question:"Miten narsismin ilmeneminen muuttuu varhaislapsuudesta myöhäislapsuuteen Harterin mukaan?",
+  modelAnswer:["[V] Varhaislapsuus: normaali narsismi – iänmukainen huomion halu, lämmin esittäytyminen (Kernberg) (s. 43).","[V] 5–7 v: ihailun tarvetta tasapainottaa kiitollisuus; haaveet jaetaan muiden kanssa; tietoisempi esittäytyminen (s. 56).","[V] 8–10 v: normaali narsismi haalistuu; patologinen narsismi näkyy empatian puutteena, oikeutuksen tunteena ja raivona kritiikin edessä (s. 70).","[V] Narsistiset oireet ovat melko pysyviä myöhäislapsuudesta alkaen (s. 71)."]},
+];
+
+const PP2_CATEGORIES = [
+  {id:"h_perusta", name:"Harter 1: Minän rakentumisen perusteet", description:"I-minä ja Me-minä, minäteorian historialliset juuret, globaali ja osa-aluekohtainen itsearvostus sekä niiden mittaaminen."},
+  {id:"h_lapsuus", name:"Harter 2: Minärepresentaatiot lapsuudessa", description:"Minäkuvauksen sisältö, rakenne ja tarkkuus 2–10-vuotiailla sekä normatiiviset haavoittuvuudet ja patologiset prosessit."},
+  {id:"h_nuoruus", name:"Harter 3: Minärepresentaatiot nuoruudessa", description:"Abstraktit minäkuvaukset, useat minät eri suhteissa, ristiriidat ja epätosi minä varhais-, keski- ja myöhäisnuoruudessa."},
+  {id:"h_aikuistuminen", name:"Harter 4: Nouseva aikuisuus", description:"Minän prosessit siirtymässä nuoruudesta aikuisuuteen."},
+  {id:"h_ulkonako", name:"Harter 5: Ulkonäkö ja itsetunto", description:"Koetun ulkonäön ja globaalin itsearvostuksen kiinteä yhteys."},
+  {id:"h_tunteet", name:"Harter 6: Itsetietoiset tunteet", description:"Ylpeys, häpeä, syyllisyys ja nolous sekä niiden kehitys."},
+  {id:"h_luokka", name:"Harter 7: Minä ja motivaatio luokkahuoneessa", description:"Sisäinen ja ulkoinen motivaatio koulussa, koettu pätevyys ja kouluympäristön vaikutukset."},
+  {id:"h_kulttuuri", name:"Harter 8: Kulttuuri ja monikulttuurisuus", description:"Kulttuurienväliset ja monikulttuuriset näkökulmat minään."},
+  {id:"h_aitous", name:"Harter 9: Autenttisuus", description:"Tosi ja epätosi minä, ehdollinen itsetunto ja nykyisen minäkeskeisyyden haittapuolet."},
+  {id:"m_perusta", name:"Motivaatio 0: Käsitteet ja historia", description:"Johdanto: miksi–mitä–miten-kehys, motivaatioteorioiden historia ja nykyteoriat."},
+  {id:"m_tavoitteet", name:"Motivaatio I: Henkilökohtaiset tavoitteet", description:"Tavoitteiden geneettinen perusta, tavoitteet ja hyvinvointi elämänkulussa sekä tavoitteiden mittaaminen."},
+  {id:"m_oppiminen", name:"Motivaatio I: Oppimisen motivaatioteoriat", description:"Itsemääräämisteoria, odotusarvoteoria ja tavoiteorientaatiot."},
+  {id:"m_tyo", name:"Motivaatio II: Motivaatio työssä", description:"Perustarpeet työssä, työn imu, työtavoitteet, digitalisoituva työ ja urasiirtymiin valmistautuminen."},
+  {id:"m_hyvinvointi", name:"Motivaatio III: Liikunta ja hyvinvointi", description:"Tunne- ja vuorovaikutusoppiminen, urheilun suoritusmotivaatio, käyttäytymismuutos, intohimo ja arvotyöskentely."}
+];
+
+const PP2_OVERVIEW_GROUPS = [
+  {title:"Teemat", filters:[
+    {key:"kehitys", label:"Missä aiheissa kehityksellinen (ikävaihe-)näkökulma on keskeinen?"},
+    {key:"itsetunto", label:"Mitkä aiheet liittyvät itsetuntoon ja itsearvostukseen?"},
+    {key:"hyvinvointi", label:"Mitkä aiheet liittyvät hyvinvointiin, uupumukseen tai masennukseen?"},
+    {key:"sosiokulttuurinen", label:"Missä sosiaaliset ja kulttuuriset tekijät korostuvat?"},
+    {key:"mittaaminen", label:"Mitkä aiheet käsittelevät mittaamista ja menetelmiä?"},
+    {key:"teoria", label:"Mitkä ovat keskeisiä motivaatio- tai minäteorioita?"}
+  ]},
+  {title:"Toimintaympäristö", filters:[
+    {key:"oppiminen", label:"Koulu, opiskelu ja oppiminen"},
+    {key:"tyo", label:"Työelämä ja työura"},
+    {key:"liikunta", label:"Liikunta, urheilu ja terveys"},
+    {key:"elamankulku", label:"Elämänkulku, kehitystehtävät ja siirtymät"}
+  ]},
+  {title:"Tenttikirja", filters:[
+    {key:"harter", label:"Harter: The Construction of the Self"},
+    {key:"mml", label:"Salmela-Aro & Nurmi: Mikä meitä liikuttaa"},
+    {key:"yhteys", label:"Missä minä ja motivaatio kohtaavat (molempien kirjojen yhteiset teemat)?"}
+  ]}
+];
+
+const PP2_EXAM_BLUEPRINT = {
+  description:"Harjoitustentti painottuu esseisiin, koska kyseessä on sähköinen kirjatentti: 4 esseetä (2 Harterista ja 2 motivaatiokirjasta, à 15 p), 5 avointa kysymystä (à 4 p), 8 monivalintaa (à 1,5 p) ja 8 oikein/väärin-väittämää (à 1 p). Yhteensä 100 pistettä.",
+  sections:[
+    {kind:"mcq", count:8, pts:1.5},
+    {kind:"tf", count:8, pts:1},
+    {kind:"short", count:5, pts:4},
+    {kind:"essay", count:2, pts:15, filter:{book:"harter"}},
+    {kind:"essay", count:2, pts:15, filter:{book:"mml"}}
+  ],
+  passPct:null,
+  resultNote:"[EI LÖYTYNYT] Opinto-oppaassa ei kerrota tentin kysymystyyppejä eikä arvosanarajoja (arvosteluasteikko 0–5). Tulos näytetään siksi vain pisteinä ja prosentteina – se ei ole ennuste arvosanasta. Katso heikoimmat osa-alueesi alta."
+};
+
+const PP2_COURSE = {
+  id:"persoonallisuus2", icon:"🪞", title:"Persoonallisuuspsykologia II", subtitle:"PSYK3400 · 3 op · kirjatentti",
+  switchLabel:"Persoonallisuuspsykologia II", switchSub:"Aineopinnot · 3 op",
+  storageKey:"pp2_progress_v1",
+  data:{
+    CATEGORIES:PP2_CATEGORIES, TOPICS:PP2_TOPICS, COMPARISON_PAIRS:PP2_COMPARISON_PAIRS, LIFECYCLE_STAGES:PP2_LIFECYCLE_STAGES,
+    MCQ_BANK:PP2_MCQ_BANK, TF_BANK:PP2_TF_BANK, SHORT_BANK:PP2_SHORT_BANK, ESSAY_BANK:PP2_ESSAY_BANK, VIGNETTE_BANK:PP2_VIGNETTE_BANK,
+    DIAGDRILL_BANK:PP2_DIAGDRILL_BANK, FLASHCARD_BANK:PP2_FLASHCARD_BANK, DEVCHALLENGE_BANK:PP2_DEVCHALLENGE_BANK,
+    EXAM_BLUEPRINT:PP2_EXAM_BLUEPRINT, OVERVIEW_GROUPS:PP2_OVERVIEW_GROUPS
+  },
+  nav:{
+    lifecycle:{icon:"🧬", label:"Ikävaiheet"},
+    diagdrill:{icon:"🔎", label:"Käsitteet käytäntöön"},
+    devchallenge:{icon:"⏳", label:"Kehityshaaste"}
+  },
+  labels:{
+    theoryLead:"Aihekortit on jäsennetty tenttikirjojen lukujen mukaan. Jokaisessa kortissa näkyy, mihin lähteeseen tieto perustuu: <span class=\"mark mark-v\">V</span> = varmistettu luetusta lähteestä, <span class=\"mark mark-t\">T</span> = taustatieto, joka pitää tarkistaa kirjasta.",
+    theorySearch:"Hae aiheen tai käsitteen nimellä…",
+    compareTitle:"Teorioiden ja käsitteiden vertailu",
+    compareLead:"Valitse valmis vertailu tai rakenna oma 2–4 aihekortin väliltä. Esseissä vertailu on usein arvosanan kannalta ratkaisevaa.",
+    lifecycleTitle:"Ikävaiheet: minän kehitys ja motivaatio elämänkulussa",
+    lifecycleLead:"Harterin minän kehityksen vaiheet ja motivaatiokirjan elämänkulkunäkökulma samalla aikajanalla.",
+    overviewLead:"Hahmota aiheiden väliset yhteydet teemojen, toimintaympäristöjen ja tenttikirjojen kautta.",
+    relationsTitle:"Käsitekartta",
+    relationsLead:"Valitse aihe nähdäksesi siihen liittyvät käsitteet ja yhteydet muihin kortteihin."
+  },
+  caseLabels:{
+    defaultQuestions:["Mitä teoriaa tai käsitettä tilanne parhaiten havainnollistaa?","Mitä muita tulkintoja on, ja miksi ne sopivat huonommin tai täydentävät?","Mitä lisätietoa tulkinnan varmistamiseksi tarvittaisiin?"],
+    mostLikely:"Keskeinen tulkinta", differentials:"Vaihtoehtoiset tai täydentävät tulkinnat", reasoning:"Perustelu", infoNeeded:"Mitä lisätietoa tarvittaisiin"
+  },
+  modes:{
+    mcq:{title:"Monivalinta", lead:"Valitse oikea vaihtoehto. Vastattuasi näet perustelun jokaiselle vaihtoehdolle.", sampleSize:12},
+    tf:{title:"Oikein vai väärin?", lead:"Testaa käsitteiden eroja ja yleisiä väärinkäsityksiä.", sampleSize:12},
+    short:{title:"Avoimet kysymykset", lead:"Palauta tieto muistista ilman vaihtoehtoja. Vertaa mallivastauksen avainkohtiin ja arvioi itse.", sampleSize:8},
+    essay:{title:"Esseekysymykset", lead:"Kirjatentin tyyppisiä esseekysymyksiä. Kirjoita vastaus ensin, vertaa sitten mallivastaukseen ja pisteytä itse rubriikilla.", sampleSize:3},
+    vignette:{title:"Tapaukset", lead:"Arkisia tilanteita lapsista, nuorista ja aikuisista: tunnista, mitä teoriaa tai käsitettä tilanne havainnollistaa, ja perustele.", sampleSize:5},
+    diagdrill:{title:"Käsitteet käytäntöön", lead:"Lyhyitä tilanteita: mikä käsite tai teoria selittää tilanteen parhaiten ja mikä erottaa sen lähikäsitteistä?", sampleSize:6},
+    devchallenge:{title:"Kehityksellinen haastetila", lead:"Kysymyksiä minän kehityksestä ikävaiheittain ja motivaatiosta elämänkulussa.", sampleSize:10},
+    random:{title:"Satunnaisharjoittelu", lead:"Sekoitettuja kysymyksiä molemmista kirjoista ja kaikista tehtävätyypeistä.", sampleSize:15}
+  },
+  home:{
+    title:"Persoonallisuuspsykologia II",
+    lead:"PSYK3400 · 3 op · psykologian aineopinnot, Turun yliopiston avoin yliopisto. Suoritus: kirjallisuuden itsenäinen opiskelu ja sähköinen kirjatentti (EXAM), arvostelu 0–5.",
+    disclaimerHtml:'<strong>Miten sisältöön voi luottaa?</strong> Sisältö on koottu niin, että jokainen väite perustuu joko luettuun lähteeseen tai on merkitty taustatiedoksi. <span class="mark mark-v">V</span> = varmistettu tässä luetusta lähteestä (esim. kustantajan julkaisema näyteluku, kirjan johdanto, kirjoittajan oma julkaisu tai teorian alkuperäislähde). <span class="mark mark-t">T</span> = yleisesti tunnettu taustatieto, jota ei ole tarkistettu tenttikirjasta. <span class="mark mark-x">ei löytynyt</span> = haettiin, mutta luotettavaa lähdettä ei löytynyt. <strong>Tenttikirjoja ei ole ollut käytettävissä kokonaisuudessaan</strong>: Harterin luvusta 2 ja motivaatiokirjan johdannosta sisältö on tarkistettu suoraan kirjan tekstistä, muista luvuista kirjoittajien omista julkaisuista ja teorioiden alkuperäislähteistä. Kunkin kortin alareunassa näkyvät lähteet, joihin kortti nojaa. Lue siis tenttikirjat – tämä sovellus auttaa jäsentämään ja harjoittelemaan.',
+    topicsStatLabel:"Teoriaosion aihekortit (molemmat kirjat)",
+    extraCardsHtml:'<div class="card"><h3>Opintojakson tavoitteet ja sisältö</h3><p class="small-muted"><span class="mark mark-v">V</span> Turun yliopiston opinto-oppaan (2024–2027) mukaan opiskelija syventää ymmärrystään persoonallisuudesta ja tutustuu erilaisiin tapoihin käsitteellistää persoonallisuuden rakenteet ja dynamiikka. Ensimmäisessä tenttikirjassa (Harter) käsitellään mm. minä-representaation kehittymistä eri ikävaiheissa, itsetuntoa ja fyysistä minäkäsitystä, itsetietoisuuden ja tunteiden välisiä yhteyksiä sekä sosiokulttuurisia näkemyksiä yksilön minästä. Toisen kirjan teemoja ovat motivaatiopsykologian kysymykset erityisesti hyvinvoinnin ja työelämän näkökulmasta sekä nykyiset motivaatioteoriat ja yksilön motivaation arviointi. Toteutus avoimessa yliopistossa 1.10.2026–25.4.2027.</p></div>'+
+      '<div class="card"><h3>Mistä tenttikirjat?</h3><ul class="small-muted"><li><span class="mark mark-v">V</span> Harterin luku 2 on luettavissa ilmaiseksi kustantajan sivuilla (Guilford, näyteluku). Kirja on ostettavissa myös e-kirjana (PDF/ePub).</li><li><span class="mark mark-v">V</span> Mikä meitä liikuttaa on saatavilla e-kirjana (Ellibs) ainakin Jyväskylän yliopiston kirjaston kautta; kustantajan sivuilla on ilmainen sisällysluettelo ja johdanto.</li><li>Tarkista oma pääsysi Turun yliopiston kirjaston tai kunnankirjaston kautta (Finna).</li></ul></div>',
+    howtoTitle:"Näin opiskelet kirjatenttiin",
+    howtoItems:[
+      'Lue kirjan luku ja avaa sen jälkeen vastaava <strong>Teoria</strong>-kortti: kortti tiivistää, mitä luvusta pitää osata, ja kertoo sivunumerot silloin kun ne on tarkistettu.',
+      '<strong>Ikävaiheet</strong>-näkymä kokoaa Harterin minän kehitysvaiheet ja motivaation elämänkulun samalle aikajanalle – kehityksellinen vertailu on tyypillinen esseeaihe.',
+      '<strong>Vertailu</strong> auttaa erottamaan lähikäsitteet (esim. sisäinen motivaatio vs. intohimo, työn imu vs. työholismi, tosi vs. epätosi minä).',
+      'Kirjoita <strong>Esseet</strong>-tilassa vastaus ensin itse ja pisteytä se vasta sitten rubriikilla – tämä vastaa kirjatentin tilannetta.',
+      'Kertaa <strong>Flashcardeilla</strong> käsitteet ja tutkijat, ja tee lopuksi <strong>Harjoitustentti</strong>.'
+    ],
+    coverageHtml:"Sovellus kattaa molempien tenttikirjojen kaikki luvut, jäsenneltynä {CATS} aihekokonaisuuteen: Harterin 9 lukua sekä motivaatiokirjan johdanto ja sen kolmen osan 16 lukua."
+  }
+};
+/*__PP2_DATA_END__*/
 
 /* =========================================================================
    OPINTOJAKSOREKISTERI JA OPINTOJAKSON VAIHTO
