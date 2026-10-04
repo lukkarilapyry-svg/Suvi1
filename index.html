@@ -5426,6 +5426,220 @@ const PP2_TOPICS = [
     {text:"[V] Nurmi & Salmela-Aro (2017) Johdanto, s. 9–10.", url:"https://www.opettajantietopalvelu.fi/lisamateriaalit/mika_meita_liikuttaa_johdanto.pdf"}
   ]
 },
+/*__PP2L_START__*/
+/* ---------- PP2-LUENNOT pe 2.10. ja la 3.10.2026 (Pocket-litteroinnit, luettu kokonaan).
+   [V] = luennoitsija sanoi tämän selvästi; [T] = taustatieto tai nimi, joka litteroinnissa oli epäselvä. ---------- */
+{
+  id:"l_mcadams", category:"l_luennot", book:"luento",
+  name:"Luento: McAdamsin kolme persoonallisuuden tasoa ja minä esiintyjänä, toimijana ja kertojana",
+  source:"Luento pe 2.10.2026 (osa 1)",
+  badges:[{label:"Luento 2.10."},{label:"Kytkee kirjat yhteen"}],
+  sourceStatus:"[V] Luennon litterointi luettu kokonaan. Puheentunnistus on paikoin epätarkka, joten tarkista yksityiskohdat Moodleen tulevista dioista. [T] Teorian nimet ja vuosiluvut on täydennetty taustatiedosta.",
+  tags:{teoria:true, kehitys:true, luento:true, yhteys:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"[V] Ihmistä ei voi ymmärtää yhden selittävän tekijän kautta, vaan häntä pitää tarkastella monesta suunnasta. Luennoitsija esitteli kolmikerroksisen mallin ja kytki sen kurssin molempiin kirjoihin: Harterin kirja käsittelee minän rakentumista ja kehitystä, Salmela-Aron ja Nurmen kirja motivaatiota eli sitä, mihin ihminen pyrkii. [T] Malli on Dan P. McAdamsin."},
+    {title:"Kolme tasoa", type:"dev", cols:[
+      {label:"1. Piirteet", text:"[V] Millainen ihminen on: adjektiivikuvaukset, kuten vilkas tai rauhallinen. Ne ovat suhteellisen riippumattomia tilanteesta ja auttavat ennustamaan käyttäytymistä."},
+      {label:"2. Luonteenomaiset sopeumat", text:"[V] Mihin ihminen pyrkii: motiivit, tavoitteet, arvot ja kiinnostuksen kohteet. Ne ovat sidottuja aikaan, paikkaan ja rooliin – voit olla erilainen läheissuhteissa kuin työssä. Tämä on motivaatiokirjan aluetta."},
+      {label:"3. Narratiivinen identiteetti", text:"[V] Kuka ihminen on: jatkuvasti muuttuva tarina omasta elämästä ja tulevaisuudesta, eli mitä elämä merkitsee ja miten vaikeisiin tapahtumiin suhtaudutaan."}
+    ]},
+    {title:"Minä esiintyjänä, toimijana ja kertojana", type:"list", items:[
+      "[V] Esiintyjä (actor): millaisena näyttäydyn muille vuorovaikutuksessa. Kehittyy varhain, koska olemme sosiaalisia olentoja.",
+      "[V] Toimija (agent): lapsuudessa alkaa muodostua tavoitteita ja suuntautumista tulevaan.",
+      "[V] Kertoja (author): nuoruudessa aletaan rakentaa omaa elämäntarinaa – millainen on minun elämäni tarina ja mikä minussa on erilaista kuin kavereissa.",
+      "[T] Jako kerrostuu: aiempi taso ei katoa, kun uusi kehittyy."
+    ]},
+    {title:"Miksi typologiat ovat ongelmallisia?", type:"list", items:[
+      "[V] Historialliset tyyppiopit (Hippokrates, Galenos) ja nykyiset tyyppitestit (esim. MBTI) antavat kuvauksia, jotka tuntuvat osuvilta, mutta ne sopisivat melkein kehen tahansa.",
+      "[V] MBTI:n tutkimusnäyttö on heikkoa. Jos testiä käytetään esimerkiksi rekrytoinnissa ilman näyttöä sen ennustekyvystä, se on ongelmallista.",
+      "[V] Itsearvio kertoo, millaiseksi koet itsesi, mutta ei välttämättä ennusta sitä, mitä yritetään ennustaa."
+    ]},
+    {title:"Persoonallisuus muuttuu", type:"list", items:[
+      "[V] Piirteet ovat suhteellisen pysyviä, mutta eivät muuttumattomia.",
+      "[V] Iän myötä tunteiden säätely tyypillisesti tasoittuu (nuorena tunteet ”räjähtävät” herkemmin), mutta samalla ihminen voi muuttua joustamattomammaksi.",
+      "[V] Aivot pyrkivät rakentamaan toimivan sisäisen mallin maailmasta ja itsestä, jotta tulevaa voi ennakoida."
+    ]},
+    {title:"Yhteys kirjoihin", type:"list", items:[
+      "Taso 2 ↔ motivaatiokirjan henkilökohtaiset tavoitteet ja elämänkulku.",
+      "Kertojan kehitys ↔ Harterin nuoruus: abstraktit minäkuvaukset ja kysymys ”mikä on oikea minä”.",
+      "Esiintyjä ↔ Cooleyn peiliminä."
+    ]}
+  ],
+  connections:["h1_konstruktio","h1_james_cooley","h3_nuoruus_vaiheet","m1_tavoitteet_elamankulku","l_bigfive"],
+  references:[{text:"[V] Persoonallisuuspsykologia II, luento pe 2.10.2026 (Pocket-litterointi). Diat luennoitsijan mukaan Moodlessa."}]
+},
+{
+  id:"l_bigfive", category:"l_luennot", book:"luento",
+  name:"Luento: Big Five, HEXACO ja persoonallisuuden ennustearvo",
+  source:"Luennot pe 2.10. (osa 2) ja la 3.10.2026 (osa 1)",
+  badges:[{label:"Luento 2.–3.10."},{label:"Mittaaminen"}],
+  sourceStatus:"[V] Luennon litterointi luettu kokonaan. Tutkimusten tekijät ja luvut kuuluivat litteroinnissa epäselvästi, joten ne on merkitty [T]:llä – tarkista dioista.",
+  tags:{mittaaminen:true, sosiokulttuurinen:true, teoria:true, luento:true},
+  sections:[
+    {title:"Miten Big Five syntyi?", type:"list", items:[
+      "[V] Lähtökohtana leksikaalinen ajatus: kielestä kerätään ihmisiä kuvaavat adjektiivit, ihmiset arvioivat niillä itseään, ja vastaukset tiivistetään faktorianalyysilla.",
+      "[V] Toistuvasti löytyi viisi laajaa ulottuvuutta: neuroottisuus, ekstroversio, avoimuus uusille kokemuksille, sovinnollisuus ja tunnollisuus.",
+      "[V] Malli toimii aineistoissa teknisesti hyvin, mutta se ei perustu teoriaan, josta ulottuvuudet olisi johdettu.",
+      "[V] Neuroottisuus on termi, jolla on painolastia psykiatrian historiasta. Tässä se tarkoittaa taipumusta jumiutua negatiiviseen ja reagoida kielteisesti."
+    ]},
+    {title:"Digitaaliset jalanjäljet", type:"list", items:[
+      "[V] Persoonallisuutta voidaan ennustaa pelkistä Facebook-tykkäyksistä ja älypuhelimen käyttödatasta.",
+      "[V] Cambridge Analytica käytti tällaista mallinnusta poliittisen mainonnan kohdentamiseen.",
+      "[V] Vaikutukset ovat pieniä, mutta käytännössä merkityksellisiä: pienikin kontrolli siihen, mihin suuntaan käyttäytymistä ohjataan, voi ratkaista. Tutkimukset vaikuttivat EU:n tiukempaan datasääntelyyn."
+    ]},
+    {title:"Kulttuurit ja vaihtoehtoiset mallit", type:"list", items:[
+      "[V] Big Five -rakenne ei toistu kaikissa kielissä ja kulttuureissa.",
+      "[V] HEXACO lisää rehellisyys–nöyryys-ulottuvuuden. Sitä käytetään, koska sillä on omat sovellusalueensa ja tuloksen voi havainnollistaa kuusinapaisena kuviona.",
+      "[V] Yleinen persoonallisuustekijä (”iso ykkönen”) on menetelmällisesti riskialtis.",
+      "[V] Esillä oli myös laajan, monikielisen aineiston kahden faktorin malli. [T] Faktorien tarkka sisältö jäi litteroinnissa epäselväksi."
+    ]},
+    {title:"WEIRD-ongelma", type:"list", items:[
+      "[V] Suurin osa psykologian tiedosta tulee länsimaisista, koulutetuista, teollistuneista, rikkaista ja demokraattisista (WEIRD) väestöistä.",
+      "[V] Esimerkiksi Müller-Lyerin harha ei toimi kaikissa kulttuureissa samalla tavalla.",
+      "[V] Ei-WEIRD-maissa Big Fiven yhteys tulotasoon vaihteli maittain. Tunnollisuuden yhteys oli joissain maissa jopa negatiivinen, ja korkea neuroottisuus liittyi heikompaan toimintakykyyn."
+    ]},
+    {title:"Mitä Big Five ennustaa?", type:"list", items:[
+      "[V] Esimerkiksi päihteiden käyttöä, autoritaarisuutta, persoonallisuushäiriöitä ja eksistentiaalista hyvinvointia (merkityksellisyyttä).",
+      "[V] Työholismia se ennustaa huonosti.",
+      "[V] Tunnollisuus ennusti avioitumista. Kumppanin tunnollisuus ja sitoutuminen ennustivat parisuhteen laatua.",
+      "[V] Ennusteet ovat todennäköisyyksiä, eivät determinismiä."
+    ]}
+  ],
+  connections:["l_mcadams","l_ph_luokittelu","h1_itsetunnon_mittaaminen","h8_kulttuuri"],
+  references:[{text:"[V] Persoonallisuuspsykologia II, luennot 2.10. ja 3.10.2026 (Pocket-litteroinnit)."}]
+},
+{
+  id:"l_ph_luokittelu", category:"l_luennot", book:"luento",
+  name:"Luento: Persoonallisuushäiriöt – luokittelun murros, ihmissuhdekehä ja defenssit",
+  source:"Luento la 3.10.2026 (osa 2)",
+  badges:[{label:"Luento 3.10."},{label:"Ei kirjoissa"}],
+  sourceStatus:"[V] Luennon litterointi luettu kokonaan. Luennoitsijan mukaan kurssikirjat eivät käsittele ongelmallista persoonallisuutta, joten se on luentojen lisäsisältöä. [T] Luokitusten tarkat termit on täydennetty taustatiedosta.",
+  tags:{hyvinvointi:true, mittaaminen:true, teoria:true, luento:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"[V] Jokaisella on persoonallisuuden piirteitä, jotka äärimuodossaan voisivat olla häiriö. Diagnoosi on perusteltu vain, jos piirteistä on haittaa itselle tai läheisille. Diagnoosijärjestelmä on palvelujärjestelmän työkalu, ei ensisijaisesti itseymmärryksen väline."},
+    {title:"Miksi luokittelu muuttuu?", type:"list", items:[
+      "[V] Erillisten häiriöluokkien luotettavuus on heikko: kun samaa potilastapausta arvioi kymmenen kliinikkoa, diagnooseja voi tulla useita.",
+      "[V] Häiriöt esiintyvät usein yhdessä tai yhdessä muiden mielenterveyden häiriöiden kanssa.",
+      "[V] Siksi siirrytään ulottuvuuksiin sekä DSM-5:n vaihtoehtoisessa mallissa että ICD-11:ssä.",
+      "[V] A-taso: persoonallisuuden toiminnan ongelmat, joita ovat minä ja identiteetti (millainen olen, mihin olen menossa) sekä ihmissuhteet (miten pärjään lähisuhteissa).",
+      "[V] B-taso: piirteet. [T] ICD-11:ssä negatiivinen affektiivisuus, irrallisuus, dissosiaalisuus, estottomuus ja anankastisuus.",
+      "[V] Arviossa otetaan huomioon ikä ja kulttuuri: esimerkiksi suomalainen hiljaisuus voisi Yhdysvalloissa herättää kysymyksiä."
+    ]},
+    {title:"Identiteetti ennustaa toimintakykyä", type:"text", text:"[V] Johdonmukainen käsitys itsestä yli ajan ennustaa toimintakykyä paremmin kuin pelkät piirteet."},
+    {title:"Ihmissuhdekehä (interpersoonallinen malli)", type:"list", items:[
+      "[V] Kaksi akselia: dominanssi–alistuvuus ja lämpö–kylmyys.",
+      "[V] Lähes kaiken persoonallisuusmittauksen voi palauttaa näihin akseleihin. Mallissa keskiössä on se, miten asetumme suhteessa muihin.",
+      "[V] Persoonallisuushäiriöt voi sijoittaa kehälle. Esimerkiksi narsistinen ja antisosiaalinen sijoittuvat dominoivalle ja kylmälle puolelle."
+    ]},
+    {title:"Psykodynaaminen näkökulma: defenssien tasot", type:"dev", cols:[
+      {label:"Primitiiviset", text:"[V] Halkominen eli täysin hyvä tai täysin paha, idealisointi ja projektiivinen identifikaatio. [T] Liittyvät psykoottiseen ja rajatilatasoiseen organisaatioon."},
+      {label:"Neuroottiset", text:"[V] Torjunta, reaktionmuodostus, älyllistäminen ja siirto."},
+      {label:"Kypsät", text:"[V] Ennakointi, suunnitelmallinen ongelmanratkaisu ja huumori."}
+    ]},
+    {title:"Muista", type:"list", items:[
+      "[V] Kaikki defenssit ovat kaikkien käytössä. Kuormittava tilanne voi heikentää joustavuutta, ja ongelma syntyy, kun defenssi on joustamaton.",
+      "[V] Elämänhistoria, kuten kaltoinkohtelu sekä emotionaalinen ja fyysinen laiminlyönti, ennustaa häiriöitä.",
+      "[T] Esiintyvyydeksi mainittiin noin joka kymmenes. Luku kuului litteroinnissa epäselvästi."
+    ]}
+  ],
+  connections:["l_narsismi","l_mentalisaatio","l_bigfive","h3_epatosi_mina","h2_haavoittuvuudet"],
+  references:[{text:"[V] Persoonallisuuspsykologia II, luento la 3.10.2026 (Pocket-litterointi)."}]
+},
+{
+  id:"l_narsismi", category:"l_luennot", book:"luento",
+  name:"Luento: Narsismi – grandioosinen ja haavoittuva narsismi sekä hierarkiamotivaatio",
+  source:"Luennot la 3.10.2026 (osat 2–3)",
+  badges:[{label:"Luento 3.10."},{label:"Vertaa Harter luku 9"}],
+  sourceStatus:"[V] Luennon litterointi luettu kokonaan. [T] Tutkimusten tekijät ja koeasetelmien nimet on täydennetty taustatiedosta tai ne olivat litteroinnissa epäselviä.",
+  tags:{itsetunto:true, hyvinvointi:true, sosiokulttuurinen:true, luento:true, yhteys:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"[V] Narsismi on normatiivinen piirre: kaikilla sitä on jonkin verran, ja se kuuluu myös kehitykseen, erityisesti nuoruuteen. Tutkimus erottaa grandioosisen (mahtailevan) ja haavoittuvan (”passiivisen”) narsismin."},
+    {title:"Narkissos ja Ekho", type:"text", text:"[V] Myytissä Narkissos ihastuu omaan heijastukseensa, ja Ekho, joka yrittää saada hänen huomionsa, kuihtuu toistamaan pelkkää kaikua. Luennoitsijan mukaan tämä kuvaa tyypillistä narsistisen parisuhteen dynamiikkaa: toisen oma ääni katoaa."},
+    {title:"Kaksi narsismin muotoa (luennoitsijan malli)", type:"dev", cols:[
+      {label:"Grandioosinen", text:"[V] Melko itseriittoinen minäkäsitys, joka ei heilahda muiden mielipiteiden mukaan. Muiden mielen lukemisen kyky on tallella, mutta sitä voidaan käyttää manipulointiin. Häpeä ja muut sosiaaliset tunteet eivät juuri kosketa. Tyypillistä ylimielisyys, mahtailu, hyväksikäyttö ja vihamielisyys."},
+      {label:"Haavoittuva", text:"[V] Epävakaa minäkäsitys, joka tarvitsee muita vakautuakseen. Neutraaleja tilanteita tulkitaan vihamielisiksi (vihamielisyysvinouma). Luottamus muihin on heikko ja samalla epäkriittinen. Vetäytyminen ja lähestyminen vuorottelevat."}
+    ]},
+    {title:"Hierarkia vs. perustarpeet", type:"list", items:[
+      "[V] Normaalisti tasapainoilemme autonomian, kompetenssin ja yhteenkuuluvuuden tarpeiden välillä (itsemääräämisteoria).",
+      "[V] Narsistisessa problematiikassa nämä ovat alisteisia hierarkialle: tärkeintä on olla huipulla. Siihen voi pyrkiä suorittamalla tai sabotoimalla muita.",
+      "[V] Sosiometrinen ajattelu: seuraamme jatkuvasti asemaamme ryhmässä. Ulkopuolelle jääminen laukaisee hälytyksen.",
+      "[V] Pallonheittokokeessa koehenkilö jätetään yllättäen pelin ulkopuolelle. Kokemus on erittäin epämiellyttävä ja muuttaa havaintoja ja käyttäytymistä. [T] Paradigma tunnetaan nimellä Cyberball."
+    ]},
+    {title:"Narsismi yhteiskunnassa ja mediassa", type:"list", items:[
+      "[V] Keltikangas-Järvinen: Itsekkäiden aika. Yhdysvalloissa 2010-luvulla käytiin keskustelua narsismin yleistymisestä, ja nyt asiaa tarkastellaan uusien globaalien tutkimusten valossa.",
+      "[V] Mediassa ja tietokirjoissa (esim. Thomas Erikson) narsismista kirjoitetaan enemmän kuin mistään muusta piirteestä. Riskinä on, että ihmisiä aletaan leimata liian herkästi.",
+      "[V] Hoidosta: Iso-Britanniassa empatiaa vahvistavalla hoitomallilla on vähennetty vankien väkivaltarikoksia, vaikka antisosiaalisuutta on pidetty mahdottomana hoitaa."
+    ]},
+    {title:"Yhteys kirjaan", type:"text", text:"Harterin luku 9 erottaa narsismin ja itsetunnon (korrelaatio noin .03) ja kuvaa ehdollista itsetuntoa. Luennon haavoittuva narsismi, jonka minäkäsitys tarvitsee muita vakautuakseen, muistuttaa Harterin ehdollista, peiliminäsuuntautunutta itsetuntoa. [T] Rinnastus on tulkinta."}
+  ],
+  connections:["h9_narsismi_itsetunto","l_mentalisaatio","l_ph_luokittelu","m1_sdt","h6_hapea_syyllisyys"],
+  references:[{text:"[V] Persoonallisuuspsykologia II, luennot la 3.10.2026 (Pocket-litteroinnit)."}]
+},
+{
+  id:"l_mentalisaatio", category:"l_luennot", book:"luento",
+  name:"Luento: Mentalisaatio, episteeminen luottamus ja tunteiden säätely vuorovaikutuksessa",
+  source:"Luennot pe 2.10. ja la 3.10.2026",
+  badges:[{label:"Luento 2.–3.10."},{label:"Kiintymys"}],
+  sourceStatus:"[V] Luentojen litteroinnit luettu kokonaan. [T] Teorioiden nimet on täydennetty taustatiedosta.",
+  tags:{kehitys:true, hyvinvointi:true, teoria:true, luento:true},
+  sections:[
+    {title:"Ydinajatus", type:"text", text:"[V] Mentalisaatio on kykyä ymmärtää omaa ja toisen ihmisen mieltä – ajatuksia, tunteita ja aikeita. Minä kehittyy vuorovaikutuksessa: aikuinen peilaa ja ”merkkaa” lapsen sisäisiä tiloja, ja lapsi oppii niiden avulla ymmärtämään ja säätelemään itseään."},
+    {title:"Mielen teoria", type:"list", items:[
+      "[V] Sally–Anne-tehtävä: Sally laittaa pallon koriin ja lähtee, Anne siirtää pallon laatikkoon. Mistä Sally etsii palloa palattuaan?",
+      "[V] Toimivan mielen teorian varassa lapsi vastaa ”korista”, koska ymmärtää, ettei Sally tiedä sitä, mitä lapsi itse tietää. Tehtävää käytetään pienten lasten arvioinnissa, esimerkiksi autismikirjon tutkimuksessa."
+    ]},
+    {title:"Tunteiden säätely syntyy vuorovaikutuksessa", type:"list", items:[
+      "[V] Kun lapsella on paha olo, kiintymysjärjestelmä aktivoituu ja lapsi hakee apua. Jos aikuinen pystyy peilaamaan tunteen ja rauhoittamaan, lapselle kehittyy vähitellen kyky säädellä itseään.",
+      "[V] Jos aikuinen on itse ahdistunut tai poissaoleva, tunne voimistuu, kiintymysjärjestelmä yliaktivoituu ja kehä jatkuu. Luennoitsijan mukaan tämä ei ole patologinen kuva, vaan arkinen dynamiikka.",
+      "[V] Sama kehä näkyy aikuisten parisuhteissa: toinen hakee läheisyyttä ja toinen etäisyyttä, eikä kumpikaan saa tunteitaan säädeltyä."
+    ]},
+    {title:"Kiintymyksen nelikenttä", type:"list", items:[
+      "[V] Akselit: myönteinen tai kielteinen käsitys itsestä ja muista.",
+      "[V] Tunteiden säätely voi onnistua yksin, yhdessä, molemmin tavoin tai ei kummallakaan. [T] Ryhmien osuuksista puhuttiin, mutta litteroinnista ei selvinnyt, mitä ryhmää luvut koskivat.",
+      "[V] Kiintymys on vuorovaikutussuhteen ominaisuus eikä pysyvä yksilön ominaisuus: suhteet eri ihmisiin voivat olla erilaisia, ja kiintymys voi muuttua myönteisten kokemusten myötä.",
+      "[V] Taustalla John Bowlbyn työ (mm. sotalapset)."
+    ]},
+    {title:"Episteeminen luottamus", type:"text", text:"[V] Kun koen, että toinen näkee minut oikein eli se, miten näen itseni, kohtaa sen, miten hän minut näkee, syntyy luottamus ja vuorovaikutus ”avautuu”. Silloin mieli voi muuttaa mieltä, ja toiselta voi oppia, esimerkiksi opettajalta, esihenkilöltä tai terapeutilta."},
+    {title:"Hoito", type:"text", text:"[V] Mentalisaatioon perustuvassa työskentelyssä tunnistetaan arjen ”katkokset”, joissa ajattelu muuttuu joustamattomaksi. Tavoitteena on oppia sietämään epävarmuutta suhteessa muihin ja ennakoimaan tilanteita."}
+  ],
+  connections:["l_narsismi","l_ph_luokittelu","h2_kertomukset","h1_james_cooley"],
+  references:[{text:"[V] Persoonallisuuspsykologia II, luennot 2.10. ja 3.10.2026 (Pocket-litteroinnit)."}]
+},
+{
+  id:"l_perfektionismi", category:"l_luennot", book:"luento",
+  name:"Luento: Perfektionismi ja pakko-oireinen (anankastinen) persoonallisuus",
+  source:"Luento la 3.10.2026 (osa 3)",
+  badges:[{label:"Luento 3.10."},{label:"Hyvinvointi"}],
+  sourceStatus:"[V] Luennon litterointi luettu kokonaan. [T] Mallien kehittäjien nimet ja muutoksen tarkka suuruus olivat litteroinnissa epäselviä, joten ne on täydennetty taustatiedosta – tarkista dioista.",
+  tags:{hyvinvointi:true, tyo:true, teoria:true, luento:true, yhteys:true},
+  sections:[
+    {title:"Perfektionismin kolme suuntaa", type:"dev", cols:[
+      {label:"Itseen kohdistuva", text:"[V] Vaatimukset kumpuavat omasta toiminnasta: vaadin itseltäni paljon."},
+      {label:"Muihin kohdistuva", text:"[V] Vaadin muilta, esimerkiksi kumppanilta, perheeltä tai työyhteisöltä, vaatimusten täyttämistä."},
+      {label:"Sosiaalisesti määrätty", text:"[V] Koen, että yhteiskunta tai läheiset vaativat minulta paljon. Tämä muoto on luennon mukaan kasvanut nuorilla. [T] Hewitt & Flett; kasvua on kuvannut noin 30 %:n suuruisena mm. Curran & Hill."}
+    ]},
+    {title:"Adaptiivinen vs. maladaptiivinen", type:"list", items:[
+      "[V] Adaptiivinen perfektionismi auttaa saavuttamaan haastavia tavoitteita.",
+      "[V] Maladaptiivisessa tavoitteet ovat epärealistisia, motiivina on pahan välttäminen eikä onnistumisen ilo, onnistumisestakaan ei osata nauttia ja mukana on märehtimistä.",
+      "[V] Monidimensionaalisessa mallissa ulottuvuuksia ovat esimerkiksi huoli virheistä, suorituspaine, vanhempien odotukset ja kilpailullisuus sekä epäily omista suorituksista. [T] Frost ym.",
+      "[V] Rutiinit voivat olla hyödyllisiä, esimerkiksi urheilijan psyykkisessä valmistautumisessa. Ongelma syntyy, kun kontrolli on jäykkää eikä joustavaa."
+    ]},
+    {title:"Pakko-oireinen persoonallisuushäiriö", type:"list", items:[
+      "[V] Keskeistä on joustamattomuus, liiallinen sitoutuminen työhön ja tuottavuuteen sekä absoluuttinen moraali ilman harmaata aluetta.",
+      "[V] Kaksi alatyyppiä: ahdistunut, itseen kohdistuva vaativuus (itsekriittisyys, uniongelmat) ja kontrolloiva, muihin kohdistuva vaativuus.",
+      "[V] Kontrolloivassa alatyypissä empatia on matalampi, parisuhteeseen sitoudutaan heikommin ja konfliktien sekä väkivallan riski on suurempi."
+    ]},
+    {title:"Kontrollin palauttamisen kehä ja työuupumus", type:"list", items:[
+      "[V] Stressi tai kontrollin menetys johtaa yrityksiin palauttaa kontrolli, esimerkiksi listoilla, säännöillä ja lisätyöllä.",
+      "[V] Jos se ei auta, seuraa hallitsematon tunnetila ja toimintakyky laskee. Kontrollia yritetään palauttaa yhä kovemmin, usein työn kautta.",
+      "[V] Kehä voi johtaa työuupumukseen. Hoidossa etsitään muita tapoja palautua ja säädellä tunteita."
+    ]},
+    {title:"Yhteys kirjoihin", type:"text", text:"Motivaatiokirjan pakkomielteinen intohimo ja työholismi ovat lähellä maladaptiivista perfektionismia. Harterin ehdollinen itsetunto taas liittyy sosiaalisesti määrättyyn vaativuuteen. [T] Rinnastukset ovat tulkintaa."}
+  ],
+  connections:["m2_tyon_imu","m3_intohimo","h9_narsismi_itsetunto","l_ph_luokittelu"],
+  references:[{text:"[V] Persoonallisuuspsykologia II, luento la 3.10.2026 (Pocket-litterointi)."}]
+},
+/*__PP2L_END__*/
 ];
 
 const PP2_COMPARISON_PAIRS = [
@@ -5483,6 +5697,17 @@ const PP2_COMPARISON_PAIRS = [
     {label:"Seuraukset", values:{h3_epatosi_mina:"[V] Väheksyntämotiivilla masentuneisuus ja matala itsearvo.", h7_motivaatio_tunteet:"[V] Opettajaharhaa kokeneilla kielteisempiä tuloksia.", h9_aitous:"[V] Autenttisuus liittyy elämäntyytyväisyyteen ja vakaaseen itsetuntoon."}}
   ],
   note:"Hyvä esseeteema, joka yhdistää kirjan luvut."},
+/*__PP2L_START__*/
+{id:"pc_l_narsismi", title:"Narsismi: Harterin kirja vs. luento",
+  topicIds:["h9_narsismi_itsetunto","l_narsismi"],
+  dimensions:[
+    {label:"Näkökulma", values:{h9_narsismi_itsetunto:"[V] Kehityspsykologinen: narsismi erotetaan itsetunnosta, ja keskiössä ovat optimaalinen ja ehdollinen itsetunto.", l_narsismi:"[V] Kliininen ja persoonallisuuspsykologinen: grandioosinen ja haavoittuva narsismi sekä hierarkiamotivaatio."}},
+    {label:"Suhde muihin", values:{h9_narsismi_itsetunto:"[V] Narsismi sosiaalisena ansana: pitkäaikainen egosentrisyys vahingoittaa suhteita.", l_narsismi:"[V] Hierarkia ohjaa: muut ovat joko apuna huipulle pääsemisessä tai uhka."}},
+    {label:"Minäkäsitys", values:{h9_narsismi_itsetunto:"[V] Ehdollinen itsetunto vaihtelee hyväksynnän mukana.", l_narsismi:"[V] Grandioosinen on itseriittoinen. Haavoittuva tarvitsee muita vakautuakseen."}},
+    {label:"Kriittinen huomio", values:{h9_narsismi_itsetunto:"[V] Itsetuntoliikkeen kritiikki.", l_narsismi:"[V] Median narsismibuumi ja leimaamisen riski."}}
+  ],
+  note:"Hyvä esseeaihe, koska se yhdistää kirjan ja luennot."},
+/*__PP2L_END__*/
 ];
 
 const PP2_LIFECYCLE_STAGES = [
@@ -5610,6 +5835,24 @@ const PP2_MCQ_BANK = [
 {"id":"pm_m3_03","category":"m_hyvinvointi","book":"mml","question":"Mitkä kolme tekijää COM-B-malli asettaa käyttäytymisen edellytyksiksi?","options":["Autonomia, kompetenssi, yhteenkuuluvuus","Kognitio, organisaatio, merkitys","Kyvykkyys, mahdollisuus, motivaatio","Kontrolli, odotus, palaute"],"correctIndex":2,"optionNotes":["Väärin – nämä ovat SDT:n perustarpeet.","Väärin.","Oikein (Michie ym. 2011).","Väärin."]},
 {"id":"pm_m3_04","category":"m_hyvinvointi","book":"mml","question":"Mikä erottaa Vallerandin mallissa pakkomielteisen intohimon harmonisesta?","options":["Harmoniseen ei käytetä aikaa","Harmoninen liittyy jäykkään sinnikkyyteen","Pakkomielteisessä toimintaa ei arvosteta","Pakkomielteinen perustuu kontrolloituun sisäistämiseen ja on yhteydessä ristiriitaan muiden elämänalueiden kanssa"],"correctIndex":3,"optionNotes":["Väärin.","Väärin – jäykkä sinnikkyys liittyy pakkomielteiseen intohimoon.","Väärin – molemmissa toiminta koetaan arvokkaaksi.","Oikein (Vallerand ym. 2003)."]},
 {"id":"pm_m3_05","category":"m_hyvinvointi","book":"mml","question":"Mikä on hyväksymis- ja omistautumisterapian tavoite P. Lappalaisen väitöskirjan kuvauksen mukaan?","options":["Psykologinen joustavuus: kyky jatkaa tai muuttaa käyttäytymistä valittujen arvojen ohjaamana","Ulkoisten palkkioiden lisääminen","Itsetunnon kohottaminen","Kielteisten ajatusten poistaminen"],"correctIndex":0,"optionNotes":["Oikein.","Väärin.","Väärin.","Väärin – ajatusten kanssa toimitaan hyväksynnän ja defuusion avulla."]},
+/*__PP2L_START__*/
+{"id":"pm_l_01","category":"l_luennot","book":"luento","question":"Mikä McAdamsin tasoista sisältää motiivit, tavoitteet ja arvot, jotka ovat sidottuja aikaan, paikkaan ja rooliin?","options":["Temperamentti","Piirteet","Luonteenomaiset sopeumat","Narratiivinen identiteetti"],"correctIndex":2,"optionNotes":["Väärin – temperamentti ei ollut mallin taso.","Väärin – piirteet ovat suhteellisen tilanteesta riippumattomia adjektiivikuvauksia.","Oikein – luennoitsija kytki tämän tason motivaatiokirjaan.","Väärin – narratiivinen identiteetti on elämäntarina: kuka olen."]},
+{"id":"pm_l_02","category":"l_luennot","book":"luento","question":"Missä kehitysvaiheessa minä kertojana (author) eli oman elämäntarinan rakentaminen luennon mukaan alkaa?","options":["Vasta keski-iässä","Varhaislapsuudessa","Leikki-iässä","Nuoruudessa"],"correctIndex":3,"optionNotes":["Väärin.","Väärin – varhain kehittyy esiintyjä: miltä näytän muille.","Väärin – lapsuudessa kehittyy toimija: tavoitteet.","Oikein – nuoruudessa kysytään, millainen on minun elämäni tarina."]},
+{"id":"pm_l_03","category":"l_luennot","book":"luento","question":"Mikä on luennon mukaan Big Five -mallin keskeinen heikkous?","options":["Se ei perustu teoriaan, josta ulottuvuudet olisi johdettu","Siinä on vain kolme ulottuvuutta","Se mittaa vain psykiatrisia häiriöitä","Se ei toimi suurissa aineistoissa"],"correctIndex":0,"optionNotes":["Oikein – ulottuvuudet on löydetty faktorianalyysilla kielen adjektiiveista.","Väärin – ulottuvuuksia on viisi.","Väärin.","Väärin – se toimii suurissa aineistoissa teknisesti hyvin."]},
+{"id":"pm_l_04","category":"l_luennot","book":"luento","question":"Mitä HEXACO lisää Big Five -malliin?","options":["Älykkyyden","Rehellisyys–nöyryys-ulottuvuuden","Narsismin","Temperamentin"],"correctIndex":1,"optionNotes":["Väärin.","Oikein – HEXACO on kuusiulotteinen, ja tuloksen voi havainnollistaa kuusinapaisena kuviona.","Väärin.","Väärin."]},
+{"id":"pm_l_05","category":"l_luennot","book":"luento","question":"Mitä WEIRD tarkoittaa psykologisessa tutkimuksessa?","options":["Sosiaalisen median dataa","Poikkeavia tutkimustuloksia","Sitä, että valtaosa tutkimuksesta tehdään länsimaisissa, koulutetuissa, teollistuneissa, rikkaissa ja demokraattisissa väestöissä","Uutta persoonallisuustestiä"],"correctIndex":2,"optionNotes":["Väärin.","Väärin.","Oikein – tulokset eivät välttämättä yleisty muihin kulttuureihin; esimerkkinä Müller-Lyerin harha.","Väärin."]},
+{"id":"pm_l_06","category":"l_luennot","book":"luento","question":"Miksi persoonallisuushäiriöiden luokittelua ollaan muuttamassa ulottuvuuspohjaiseksi?","options":["Koska piirteitä ei voi mitata","Koska DSM on poistettu käytöstä","Koska häiriöitä ei enää esiinny","Koska erillisten luokkien luotettavuus on heikko: eri kliinikot antavat samasta tapauksesta eri diagnooseja"],"correctIndex":3,"optionNotes":["Väärin – piirteitä mitataan.","Väärin.","Väärin.","Oikein – lisäksi häiriöt esiintyvät usein yhdessä."]},
+{"id":"pm_l_07","category":"l_luennot","book":"luento","question":"Mitä uusien luokitusten A-taso arvioi?","options":["Persoonallisuuden toimintaa eli minää ja identiteettiä sekä ihmissuhteita","Pelkkiä piirteitä","Lapsuuden traumoja","Älykkyyttä"],"correctIndex":0,"optionNotes":["Oikein – B-taso arvioi piirteitä.","Väärin – piirteet ovat B-tasolla.","Väärin.","Väärin."]},
+{"id":"pm_l_08","category":"l_luennot","book":"luento","question":"Mitkä ovat interpersoonallisen kehämallin kaksi akselia?","options":["Introversio–ekstroversio ja neuroottisuus","Dominanssi–alistuvuus ja lämpö–kylmyys","Autonomia ja yhteenkuuluvuus","Itse ja muut"],"correctIndex":1,"optionNotes":["Väärin.","Oikein.","Väärin – nämä ovat itsemääräämisteorian perustarpeita.","Väärin – itse/muut ovat kiintymyksen nelikentän akselit."]},
+{"id":"pm_l_09","category":"l_luennot","book":"luento","question":"Mikä defenssi on luennon jaottelussa primitiivinen?","options":["Huumori","Ennakointi","Halkominen (täysin hyvä tai täysin paha)","Älyllistäminen"],"correctIndex":2,"optionNotes":["Väärin – kypsä defenssi.","Väärin – kypsä defenssi.","Oikein – samoin idealisointi ja projektiivinen identifikaatio.","Väärin – neuroottinen taso."]},
+{"id":"pm_l_10","category":"l_luennot","book":"luento","question":"Mikä kuvaa luennoitsijan mallissa haavoittuvaa narsismia?","options":["Epävakaa minäkäsitys, joka tarvitsee muita vakautuakseen, ja taipumus tulkita neutraalit tilanteet vihamielisiksi","Korkea empatia","Täysi riippumattomuus muista","Itseriittoinen minäkäsitys, joka ei heilahda muiden mielipiteiden mukaan"],"correctIndex":0,"optionNotes":["Oikein.","Väärin.","Väärin.","Väärin – tämä kuvaa grandioosista narsismia."]},
+{"id":"pm_l_11","category":"l_luennot","book":"luento","question":"Miten narsistinen motivaatio eroaa luennon mukaan itsemääräämisteorian perustarpeista?","options":["Narsismissa korostuu yhteenkuuluvuus","Perustarpeet ovat alisteisia hierarkialle: tärkeintä on olla huipulla","Narsismissa ei ole motivaatiota","Narsismi lisää autonomian tarvetta muiden kustannuksella"],"correctIndex":1,"optionNotes":["Väärin.","Oikein – huipulle voi pyrkiä suorittamalla tai sabotoimalla muita.","Väärin.","Väärin."]},
+{"id":"pm_l_12","category":"l_luennot","book":"luento","question":"Mitä Sally–Anne-tehtävä mittaa?","options":["Kielellistä kehitystä","Muistia","Mielen teoriaa: ymmärrystä siitä, että toisella voi olla eri tieto kuin itsellä","Älykkyyttä"],"correctIndex":2,"optionNotes":["Väärin.","Väärin.","Oikein.","Väärin."]},
+{"id":"pm_l_13","category":"l_luennot","book":"luento","question":"Mitä luennolla tarkoitettiin episteemisellä luottamuksella?","options":["Sokeaa luottamusta auktoriteettiin","Itseluottamusta","Luottamusta tieteeseen","Tilannetta, jossa koen toisen näkevän minut oikein, jolloin vuorovaikutus avautuu ja toiselta voi oppia"],"correctIndex":3,"optionNotes":["Väärin – haavoittuvassa narsismissa luottamus voi olla nimenomaan epäkriittistä.","Väärin.","Väärin.","Oikein."]},
+{"id":"pm_l_14","category":"l_luennot","book":"luento","question":"Mikä perfektionismin suunta tarkoittaa kokemusta, että muut tai yhteiskunta vaativat minulta paljon?","options":["Sosiaalisesti määrätty","Adaptiivinen","Itseen kohdistuva","Muihin kohdistuva"],"correctIndex":0,"optionNotes":["Oikein – luennon mukaan tämä muoto on kasvanut nuorilla.","Väärin – adaptiivisuus on eri ulottuvuus.","Väärin – siinä vaatimukset kumpuavat itsestä.","Väärin – siinä vaaditaan muilta."]},
+{"id":"pm_l_15","category":"l_luennot","book":"luento","question":"Mikä kuvaa luennon mukaan maladaptiivista perfektionismia?","options":["Haastavien tavoitteiden saavuttaminen onnistumisen ilolla","Epärealistiset tavoitteet, pahan välttäminen motiivina ja kyvyttömyys nauttia onnistumisesta","Joustavat rutiinit suoritukseen valmistautumisessa","Matalat standardit"],"correctIndex":1,"optionNotes":["Väärin – tämä on adaptiivista.","Oikein – lisäksi märehtiminen.","Väärin – joustavat rutiinit voivat olla hyödyllisiä.","Väärin."]},
+{"id":"pm_l_16","category":"l_luennot","book":"luento","question":"Mitkä ovat pakko-oireisen persoonallisuuden kaksi alatyyppiä luennon mukaan?","options":["Adaptiivinen ja maladaptiivinen","Introvertti ja ekstrovertti","Ahdistunut (itseen kohdistuva vaativuus) ja kontrolloiva (muihin kohdistuva vaativuus)","Grandioosinen ja haavoittuva"],"correctIndex":2,"optionNotes":["Väärin – nämä ovat perfektionismin muotoja.","Väärin.","Oikein – kontrolloivaan liittyy matalampi empatia ja suurempi konfliktien riski.","Väärin – nämä ovat narsismin muotoja."]},
+/*__PP2L_END__*/
 ];
 
 const PP2_TF_BANK = [
@@ -5657,6 +5900,20 @@ const PP2_TF_BANK = [
 {id:"pt_m3_01", category:"m_hyvinvointi", book:"mml", statement:"Liukkosen mukaan vahva minäorientaatio on ongelmallisinta, kun koettu pätevyys on matala ja tehtäväorientaatio heikko.", answer:true, explanation:"[V] Oikein (Liukkonen 2008)."},
 {id:"pt_m3_02", category:"m_hyvinvointi", book:"mml", statement:"Vallerandin mukaan vain harmoniseen intohimoon liittyy toiminnan kokeminen arvokkaaksi.", answer:false, explanation:"[V] Väärin. Molemmissa muodoissa toiminta koetaan arvokkaaksi; ero on sisäistämisen tavassa ja seurauksissa (Vallerand ym. 2003)."},
 {id:"pt_m3_03", category:"m_hyvinvointi", book:"mml", statement:"Hyväksymis- ja omistautumisterapiassa arvot ovat saavutettavia päätepisteitä.", answer:false, explanation:"[V] Väärin. Arvot ovat suuntia; konkreettiset tavoitteet ja teot johdetaan niistä (P. Lappalainen 2015)."},
+/*__PP2L_START__*/
+{id:"pt_l_01", category:"l_luennot", book:"luento", statement:"Luennoitsijan mukaan persoonallisuushäiriö pitäisi diagnosoida aina, kun piirteitä on havaittavissa.", answer:false, explanation:"[V] Väärin. Diagnoosi on perusteltu vain, jos piirteistä on haittaa itselle tai läheisille – jokaisella on piirteitä jonkin verran."},
+{id:"pt_l_02", category:"l_luennot", book:"luento", statement:"MBTI-tyyppitestien tutkimusnäyttö on luennon mukaan vahva, joten ne sopivat rekrytointiin.", answer:false, explanation:"[V] Väärin. Näyttö on heikkoa, ja kuvaukset sopisivat lähes kehen tahansa."},
+{id:"pt_l_03", category:"l_luennot", book:"luento", statement:"Big Five -rakenne toistuu luennon mukaan samanlaisena kaikissa kielissä ja kulttuureissa.", answer:false, explanation:"[V] Väärin. Rakenne ei toistu kaikkialla. Siksi on kehitetty mm. HEXACO ja tarkasteltu muita malleja."},
+{id:"pt_l_04", category:"l_luennot", book:"luento", statement:"Persoonallisuutta voidaan ennustaa pelkistä Facebook-tykkäyksistä.", answer:true, explanation:"[V] Oikein. Tätä hyödynsi mm. Cambridge Analytica poliittisessa mainonnassa."},
+{id:"pt_l_05", category:"l_luennot", book:"luento", statement:"Johdonmukainen käsitys itsestä yli ajan ennustaa toimintakykyä paremmin kuin pelkät piirteet.", answer:true, explanation:"[V] Oikein – näin luennoitsija perusteli identiteettitason (A-taso) merkitystä."},
+{id:"pt_l_06", category:"l_luennot", book:"luento", statement:"Defenssit ovat luennon mukaan vain persoonallisuushäiriöisten käytössä.", answer:false, explanation:"[V] Väärin. Kaikki defenssit ovat kaikkien käytössä, ja kuormitus voi heikentää joustavuutta. Ongelma on joustamattomuus."},
+{id:"pt_l_07", category:"l_luennot", book:"luento", statement:"Narsismi on luennon mukaan normatiivinen piirre, jota kaikilla on jonkin verran.", answer:true, explanation:"[V] Oikein. Se kuuluu myös kehitykseen, erityisesti nuoruuteen."},
+{id:"pt_l_08", category:"l_luennot", book:"luento", statement:"Grandioosisesti narsistiselta ihmiseltä puuttuu kyky lukea muiden mieltä.", answer:false, explanation:"[V] Väärin. Luennoitsijan mallissa kyky on tallella, mutta sitä voidaan käyttää esimerkiksi manipulointiin."},
+{id:"pt_l_09", category:"l_luennot", book:"luento", statement:"Kiintymys on luennon mukaan pysyvä yksilön ominaisuus, joka ei muutu.", answer:false, explanation:"[V] Väärin. Kiintymys nähdään vuorovaikutussuhteen ominaisuutena, ja se voi muuttua myönteisten kokemusten myötä."},
+{id:"pt_l_10", category:"l_luennot", book:"luento", statement:"Sama tunteiden säätelyn kehä, joka näkyy lapsen ja aikuisen välillä, voi toistua aikuisten parisuhteessa.", answer:true, explanation:"[V] Oikein. Toinen hakee läheisyyttä ja toinen etäisyyttä, eikä kumpikaan saa tunteitaan säädeltyä."},
+{id:"pt_l_11", category:"l_luennot", book:"luento", statement:"Sosiaalisesti määrätty perfektionismi on luennon mukaan vähentynyt nuorilla.", answer:false, explanation:"[V] Väärin – se on kasvanut."},
+{id:"pt_l_12", category:"l_luennot", book:"luento", statement:"Rutiinit voivat olla hyödyllisiä esimerkiksi urheilijan psyykkisessä valmistautumisessa, kunhan kontrolli ei ole jäykkää.", answer:true, explanation:"[V] Oikein. Ongelma syntyy, kun kontrolli muuttuu joustamattomaksi."},
+/*__PP2L_END__*/
 ];
 
 const PP2_SHORT_BANK = [
@@ -5712,6 +5969,20 @@ const PP2_SHORT_BANK = [
   modelAnswer:["[V] Tehtäväilmasto: osallistava päätöksenteko, eriyttäminen, virheet osa oppimista, yksityinen palaute kehittymisestä, heterogeeniset ryhmät.","[V] Minäilmasto: ohjaaja päättää, samat tehtävät kaikille, julkinen palaute, sosiaalinen vertailu, vain parhaat tärkeissä rooleissa.","[V] Tehtäväilmasto liittyy viihtymiseen ja oppimiseen, minäilmasto ahdistukseen ja matalaan motivaatioon (Liukkonen 2008)."]},
 {id:"ps_m3_02", category:"m_hyvinvointi", book:"mml", question:"Mitkä ovat hyväksymis- ja omistautumisterapian kuusi ydinprosessia?",
   modelAnswer:["[V] Arvot ja arvojen mukainen toiminta (sitoutumisen ja muutoksen prosessit).","[V] Havainnoiva minä, kontakti nykyhetkeen, hyväksyntä ja defuusio (tietoisuus- ja hyväksyntäprosessit).","[V] Tavoitteena psykologinen joustavuus."]},
+/*__PP2L_START__*/
+{id:"ps_l_01", category:"l_luennot", book:"luento", question:"Kuvaa McAdamsin kolme persoonallisuuden tasoa ja kerro, miten ne liittyvät kurssin kirjoihin.",
+  modelAnswer:["[V] Piirteet: millainen olen (adjektiivit, suhteellisen tilannesidonnaisuudesta vapaat).","[V] Luonteenomaiset sopeumat: motiivit, tavoitteet, arvot – sidottuja aikaan, paikkaan ja rooliin (motivaatiokirja).","[V] Narratiivinen identiteetti: elämäntarina, kuka olen (minän rakentuminen; Harterin nuoruusluku)."]},
+{id:"ps_l_02", category:"l_luennot", book:"luento", question:"Miksi persoonallisuushäiriöiden luokittelu on muuttumassa, ja mitä tasot A ja B tarkoittavat?",
+  modelAnswer:["[V] Erillisten luokkien reliabiliteetti on heikko ja häiriöt esiintyvät usein yhdessä.","[V] Siirrytään ulottuvuuksiin (DSM-5:n vaihtoehtoinen malli, ICD-11).","[V] A-taso: minä ja identiteetti sekä ihmissuhteet. B-taso: piirteet.","[V] Arviossa huomioidaan haitta, ikä ja kulttuuri."]},
+{id:"ps_l_03", category:"l_luennot", book:"luento", question:"Vertaa grandioosista ja haavoittuvaa narsismia luennoitsijan mallin mukaan.",
+  modelAnswer:["[V] Grandioosinen: itseriittoinen minäkäsitys, muiden mieli luetaan (jopa manipuloiden), häpeä ei juuri kosketa, ylimielisyys ja vihamielisyys.","[V] Haavoittuva: epävakaa minäkäsitys, joka tarvitsee muita; vihamielisyysvinouma; heikko mutta epäkriittinen luottamus; vetäytymisen ja lähestymisen vuorottelu.","[V] Yhteistä: hierarkia ohjaa motivaatiota."]},
+{id:"ps_l_04", category:"l_luennot", book:"luento", question:"Mitä mentalisaatio on, ja miten tunteiden säätely kehittyy vuorovaikutuksessa?",
+  modelAnswer:["[V] Mentalisaatio: kyky ymmärtää omaa ja toisen mieltä.","[V] Lapsen hätä aktivoi kiintymysjärjestelmän; aikuisen peilaus ja rauhoittaminen opettaa säätelyä.","[V] Jos aikuinen ei pysty peilaamaan, tunne voimistuu ja kiintymysjärjestelmä yliaktivoituu.","[V] Sama kehä voi toistua aikuisten parisuhteissa."]},
+{id:"ps_l_05", category:"l_luennot", book:"luento", question:"Nimeä perfektionismin kolme suuntaa ja kerro, mikä erottaa adaptiivisen maladaptiivisesta.",
+  modelAnswer:["[V] Itseen kohdistuva, muihin kohdistuva, sosiaalisesti määrätty.","[V] Adaptiivinen auttaa saavuttamaan haastavia tavoitteita.","[V] Maladaptiivinen: epärealistiset tavoitteet, pahan välttäminen, onnistumisesta ei nautita, märehtiminen."]},
+{id:"ps_l_06", category:"l_luennot", book:"luento", question:"Mitä WEIRD-ongelma tarkoittaa, ja miten se näkyi Big Five -tutkimuksessa?",
+  modelAnswer:["[V] Psykologian tieto tulee pääosin länsimaisista, koulutetuista, teollistuneista, rikkaista ja demokraattisista väestöistä.","[V] Big Five -rakenne ei toistu kaikissa kielissä.","[V] Ei-WEIRD-maissa piirteiden yhteys tuloihin vaihteli maittain – tunnollisuuden yhteys oli joissain jopa negatiivinen."]},
+/*__PP2L_END__*/
 ];
 
 const PP2_ESSAY_BANK = [
@@ -5891,6 +6162,41 @@ const PP2_ESSAY_BANK = [
     {label:"Yhteydet SDT:hen ja empiriaan", points:2},
     {label:"Rakenne", points:2}
   ]},
+/*__PP2L_START__*/
+{id:"pe_l_01", category:"l_luennot", book:"luento", maxPoints:15,
+  question:"Narsismi kirjassa ja luennoilla: vertaa Harterin (luku 9) näkemystä narsismista ja itsetunnosta luennolla esitettyyn grandioosisen ja haavoittuvan narsismin malliin.",
+  modelAnswerPoints:[
+    "[V] Harter: narsismi ja itsetunto on erotettava (korrelaatio noin .03); narsismi sosiaalisena ansana ja itsetuntoaddiktiona; optimaalinen vs. ehdollinen itsetunto.",
+    "[V] Luento: narsismi normatiivisena piirteenä ja osana kehitystä; Narkissos ja Ekho.",
+    "[V] Grandioosinen narsismi: itseriittoinen minäkäsitys, manipuloiva mielen lukeminen, häpeä ei kosketa.",
+    "[V] Haavoittuva narsismi: muiden varassa vakautuva minäkäsitys, vihamielisyysvinouma, epäkriittinen luottamus – muistuttaa Harterin ehdollista, peiliminäsuuntautunutta itsetuntoa [tulkinta].",
+    "[V] Motivaatio: hierarkia perustarpeiden (autonomia, kompetenssi, yhteenkuuluvuus) yläpuolella.",
+    "[V] Kriittinen huomio: median narsismibuumi ja leimaamisen riski."
+  ],
+  rubric:[
+    {label:"Harterin näkemys oikein", points:4},
+    {label:"Luennon kaksi narsismin muotoa", points:4},
+    {label:"Motivaationäkökulma (hierarkia vs. SDT)", points:3},
+    {label:"Vertailu ja kriittinen pohdinta", points:4}
+  ]},
+{id:"pe_l_02", category:"l_luennot", book:"luento", maxPoints:15,
+  question:"Miten persoonallisuutta voi kuvata ja mitata? Käsittele McAdamsin tasoja, Big Fivea ja sen rajoituksia sekä persoonallisuushäiriöiden ulottuvuuspohjaista luokittelua.",
+  modelAnswerPoints:[
+    "[V] McAdamsin kolme tasoa ja minä esiintyjänä, toimijana ja kertojana.",
+    "[V] Typologioiden (MBTI) kritiikki.",
+    "[V] Big Five: leksikaalinen tausta, faktorianalyysi, ateoreettisuus; ennustearvo ja sen rajat.",
+    "[V] Kulttuuri: rakenne ei toistu kaikkialla, HEXACO, WEIRD.",
+    "[V] Digitaaliset jalanjäljet ja eettiset kysymykset (Cambridge Analytica, EU-sääntely).",
+    "[V] Persoonallisuushäiriöt jatkumona: A-taso (minä, ihmissuhteet) ja B-taso (piirteet); haittakriteeri."
+  ],
+  rubric:[
+    {label:"McAdamsin tasot", points:3},
+    {label:"Big Five ja sen rajoitukset", points:4},
+    {label:"Kulttuuri ja etiikka", points:3},
+    {label:"Persoonallisuushäiriöiden ulottuvuusmalli", points:3},
+    {label:"Rakenne", points:2}
+  ]},
+/*__PP2L_END__*/
 ];
 
 const PP2_VIGNETTE_BANK = [
@@ -6017,6 +6323,26 @@ const PP2_VIGNETTE_BANK = [
     reasoning:"[V] Tehtäväilmasto liittyy viihtymiseen ja oppimiseen, minäilmasto ahdistukseen ja vähäiseen viihtymiseen; tehtäväilmasto → tehtävä-lähestymistavoitteet → viihtyminen (Jaakkola ym. 2016).",
     infoNeeded:["[V] Pelaajien koettu pätevyys ja orientaatiot.","[V] Autonomian ja yhteenkuuluvuuden kokemukset."]},
   rubric:[{label:"Tunnisti minäilmaston",points:3},{label:"Selitti reaktiot orientaation ja pätevyyden kautta",points:4},{label:"TARGET-pohjaiset muutokset",points:3}]},
+/*__PP2L_START__*/
+{id:"pv_l_01", category:"l_luennot", book:"luento", ageGroup:"aikuinen (35 v)", maxPoints:10,
+  vignette:"Tiimin uusi jäsen Antti tulkitsee kollegoiden neutraalit kommentit hyökkäyksiksi, loukkaantuu helposti ja vetäytyy, mutta hakee pian taas kollegoiden ihailua. Hänen itsetuntonsa näyttää heittelevän sen mukaan, miten muut häneen suhtautuvat.",
+  questions:["Miten tulkitset Antin käyttäytymisen luennon narsismimallin avulla?","Mitä yhteistä sillä on Harterin kuvaamaan itsetuntoon?","Miksi leimaamista kannattaa välttää?"],
+  modelAnswer:{
+    mostLikely:"[V] Haavoittuvan narsismin piirteet: epävakaa minäkäsitys, joka tarvitsee muita vakautuakseen, vihamielisyysvinouma neutraaleissa tilanteissa sekä vetäytymisen ja lähestymisen vuorottelu.",
+    differentials:[{name:"Grandioosinen narsismi", why:"[V] Grandioosinen minäkäsitys on itseriittoinen eikä heilahda muiden mielipiteiden mukaan – Antin minäkäsitys heilahtaa."},{name:"Ehdollinen itsetunto (Harter)", why:"[V] Harterin peiliminäsuuntautuneilla nuorilla itsetunto vaihteli hyväksynnän mukana – samankaltainen dynamiikka [tulkinta]."}],
+    reasoning:"[V] Narsismi on normatiivinen piirre. Ongelmaksi se muuttuu vasta, jos siitä on haittaa.",
+    infoNeeded:["[V] Onko kyse pysyvästä kaavasta vai tilanteesta?","[V] Aiheuttaako piirre haittaa Antille tai muille?"]},
+  rubric:[{label:"Tunnisti haavoittuvan narsismin piirteet",points:4},{label:"Kytki Harterin ehdolliseen itsetuntoon",points:3},{label:"Haittakriteeri ja leimaamisen välttäminen",points:3}]},
+{id:"pv_l_02", category:"l_luennot", book:"luento", ageGroup:"aikuinen (42 v)", maxPoints:10,
+  vignette:"Esihenkilö Riikka tekee listoja ja sääntöjä kaikesta, ei siedä muutoksia ja vaatii tiimiltä virheettömyyttä. Kun perhetilanne kriisiytyy, hän alkaa tehdä vielä enemmän töitä, nukkuu huonosti ja uupuu.",
+  questions:["Mitä luennon käsitteitä tilanteessa näkyy?","Miten kontrollin palauttamisen kehä etenee?","Mihin hoidossa kannattaisi keskittyä?"],
+  modelAnswer:{
+    mostLikely:"[V] Kontrolloiva, muihin kohdistuva vaativuus (pakko-oireisen persoonallisuuden kontrolloiva alatyyppi) ja maladaptiivinen perfektionismi.",
+    differentials:[{name:"Ahdistunut alatyyppi", why:"[V] Itseen kohdistuva vaativuus ja uniongelmat sopivat myös – alatyypit voivat sekoittua."},{name:"Adaptiivinen perfektionismi", why:"[V] Adaptiivinen auttaa saavuttamaan tavoitteita – tässä joustamattomuus aiheuttaa haittaa."}],
+    reasoning:"[V] Stressi johtaa kontrolliyrityksiin, jotka eivät auta, ja tunnetila muuttuu hallitsemattomaksi. Kontrollia yritetään palauttaa työn kautta, mikä johtaa uupumukseen.",
+    infoNeeded:["[V] Muut palautumisen ja tunteiden säätelyn keinot.","[V] Miten vaativuus näkyy tiimissä ja kotona?"]},
+  rubric:[{label:"Tunnisti alatyypin ja perfektionismin",points:4},{label:"Kuvasi kontrollin kehän",points:3},{label:"Hoidon suunta",points:3}]},
+/*__PP2L_END__*/
 ];
 
 const PP2_DIAGDRILL_BANK = [
@@ -6151,6 +6477,24 @@ const PP2_FLASHCARD_BANK = [
 {id:"pf_m3_03", category:"m_hyvinvointi", book:"mml", difficulty:"perus", front:"Harmoninen vs. pakkomielteinen intohimo?", back:"Autonominen vs. kontrolloitu sisäistäminen; pakkomielteiseen liittyy ristiriita muiden elämänalueiden kanssa ja jäykkä sinnikkyys."},
 {id:"pf_m3_04", category:"m_hyvinvointi", book:"mml", difficulty:"syventävä", front:"Psykologinen joustavuus?", back:"Kyky jatkaa tai muuttaa käyttäytymistä valittujen arvojen ohjaamana (HOT/ACT)."},
 {id:"pf_m3_05", category:"m_hyvinvointi", book:"mml", difficulty:"syventävä", front:"Gordonin mallin molemmat voittavat -menetelmä?", back:"Määritellään ristiriita ja osapuolten tarpeet ja ideoidaan ratkaisu yhdessä."},
+/*__PP2L_START__*/
+{id:"pf_l_01", category:"l_luennot", book:"luento", difficulty:"perus", front:"McAdamsin kolme tasoa?", back:"Piirteet – luonteenomaiset sopeumat (motiivit, tavoitteet, arvot) – narratiivinen identiteetti."},
+{id:"pf_l_02", category:"l_luennot", book:"luento", difficulty:"perus", front:"Minä esiintyjänä, toimijana ja kertojana?", back:"Actor (varhain: miltä näytän muille), agent (lapsuus: tavoitteet), author (nuoruus: elämäntarina)."},
+{id:"pf_l_03", category:"l_luennot", book:"luento", difficulty:"perus", front:"Big Fiven viisi ulottuvuutta?", back:"Neuroottisuus, ekstroversio, avoimuus, sovinnollisuus, tunnollisuus."},
+{id:"pf_l_04", category:"l_luennot", book:"luento", difficulty:"perus", front:"Big Fiven tärkein heikkous luennon mukaan?", back:"Se on ateoreettinen: ulottuvuudet löydettiin faktorianalyysilla, ei johdettu teoriasta."},
+{id:"pf_l_05", category:"l_luennot", book:"luento", difficulty:"perus", front:"HEXACO?", back:"Kuusiulotteinen malli: Big Five + rehellisyys–nöyryys."},
+{id:"pf_l_06", category:"l_luennot", book:"luento", difficulty:"perus", front:"WEIRD?", back:"Western, Educated, Industrialized, Rich, Democratic – psykologian tutkimuksen vinouma."},
+{id:"pf_l_07", category:"l_luennot", book:"luento", difficulty:"perus", front:"Persoonallisuushäiriöiden A- ja B-taso?", back:"A: minä/identiteetti ja ihmissuhteet. B: piirteet."},
+{id:"pf_l_08", category:"l_luennot", book:"luento", difficulty:"perus", front:"Interpersoonallisen kehän akselit?", back:"Dominanssi–alistuvuus ja lämpö–kylmyys."},
+{id:"pf_l_09", category:"l_luennot", book:"luento", difficulty:"syventävä", front:"Defenssien kolme tasoa esimerkein?", back:"Primitiiviset (halkominen, idealisointi, projektiivinen identifikaatio), neuroottiset (torjunta, reaktionmuodostus, älyllistäminen), kypsät (ennakointi, huumori)."},
+{id:"pf_l_10", category:"l_luennot", book:"luento", difficulty:"perus", front:"Grandioosinen vs. haavoittuva narsismi?", back:"Grandioosinen: itseriittoinen, mahtaileva. Haavoittuva: epävakaa minäkäsitys, joka tarvitsee muita, vihamielisyysvinouma."},
+{id:"pf_l_11", category:"l_luennot", book:"luento", difficulty:"syventävä", front:"Narsismi ja itsemääräämisteorian perustarpeet?", back:"Autonomia, kompetenssi ja yhteenkuuluvuus ovat alisteisia hierarkialle – tärkeintä on olla huipulla."},
+{id:"pf_l_12", category:"l_luennot", book:"luento", difficulty:"perus", front:"Mentalisaatio?", back:"Kyky ymmärtää omaa ja toisen mieltä."},
+{id:"pf_l_13", category:"l_luennot", book:"luento", difficulty:"perus", front:"Sally–Anne-tehtävä?", back:"Mielen teorian mittari: ymmärtääkö lapsi, että Sally etsii palloa sieltä, mihin hän sen jätti."},
+{id:"pf_l_14", category:"l_luennot", book:"luento", difficulty:"syventävä", front:"Episteeminen luottamus?", back:"Kun koen toisen näkevän minut oikein, vuorovaikutus avautuu ja toiselta voi oppia."},
+{id:"pf_l_15", category:"l_luennot", book:"luento", difficulty:"perus", front:"Perfektionismin kolme suuntaa?", back:"Itseen kohdistuva, muihin kohdistuva, sosiaalisesti määrätty."},
+{id:"pf_l_16", category:"l_luennot", book:"luento", difficulty:"syventävä", front:"Pakko-oireisen persoonallisuuden alatyypit?", back:"Ahdistunut (itseen kohdistuva vaativuus) ja kontrolloiva (muihin kohdistuva vaativuus)."},
+/*__PP2L_END__*/
 ];
 
 const PP2_DEVCHALLENGE_BANK = [
@@ -6182,7 +6526,8 @@ const PP2_CATEGORIES = [
   {id:"m_tavoitteet", name:"Motivaatio I: Henkilökohtaiset tavoitteet", description:"Tavoitteiden geneettinen perusta, tavoitteet ja hyvinvointi elämänkulussa sekä tavoitteiden mittaaminen."},
   {id:"m_oppiminen", name:"Motivaatio I: Oppimisen motivaatioteoriat", description:"Itsemääräämisteoria, odotusarvoteoria ja tavoiteorientaatiot."},
   {id:"m_tyo", name:"Motivaatio II: Motivaatio työssä", description:"Perustarpeet työssä, työn imu, työtavoitteet, digitalisoituva työ ja urasiirtymiin valmistautuminen."},
-  {id:"m_hyvinvointi", name:"Motivaatio III: Liikunta ja hyvinvointi", description:"Tunne- ja vuorovaikutusoppiminen, urheilun suoritusmotivaatio, käyttäytymismuutos, intohimo ja arvotyöskentely."}
+  {id:"m_hyvinvointi", name:"Motivaatio III: Liikunta ja hyvinvointi", description:"Tunne- ja vuorovaikutusoppiminen, urheilun suoritusmotivaatio, käyttäytymismuutos, intohimo ja arvotyöskentely."},
+  {id:"l_luennot", name:"Luennot 2.–3.10.2026: persoonallisuus, häiriöt ja narsismi", description:"Luentojen sisältö, jota kirjoissa ei ole: McAdamsin tasot, Big Five ja HEXACO, persoonallisuushäiriöiden uusi luokittelu, narsismi, mentalisaatio ja perfektionismi."}
 ];
 
 const PP2_OVERVIEW_GROUPS = [
@@ -6203,7 +6548,8 @@ const PP2_OVERVIEW_GROUPS = [
   {title:"Tenttikirja", filters:[
     {key:"harter", label:"Harter: The Construction of the Self"},
     {key:"mml", label:"Salmela-Aro & Nurmi: Mikä meitä liikuttaa"},
-    {key:"yhteys", label:"Missä minä ja motivaatio kohtaavat (molempien kirjojen yhteiset teemat)?"}
+    {key:"yhteys", label:"Missä minä ja motivaatio kohtaavat (molempien kirjojen yhteiset teemat)?"},
+    {key:"luento", label:"Luennot 2.–3.10.2026 (kirjojen ulkopuolinen sisältö)"}
   ]}
 ];
 
@@ -6264,7 +6610,7 @@ const PP2_COURSE = {
     title:"Persoonallisuuspsykologia II",
     lead:"PSYK3400 · 3 op · psykologian aineopinnot, Turun yliopiston avoin yliopisto. Suoritus: kirjallisuuden itsenäinen opiskelu ja sähköinen kirjatentti (EXAM), arvostelu 0–5.",
     disclaimerHtml:'<strong>Miten sisältöön voi luottaa?</strong> Sisältö on koottu niin, että jokainen väite perustuu joko luettuun lähteeseen tai on merkitty taustatiedoksi. <span class="mark mark-v">V</span> = varmistettu tässä luetusta lähteestä (esim. kustantajan julkaisema näyteluku, kirjan johdanto, kirjoittajan oma julkaisu tai teorian alkuperäislähde). <span class="mark mark-t">T</span> = yleisesti tunnettu taustatieto, jota ei ole tarkistettu tenttikirjasta. <span class="mark mark-x">ei löytynyt</span> = haettiin, mutta luotettavaa lähdettä ei löytynyt. <strong>Tenttikirjoja ei ole ollut käytettävissä kokonaisuudessaan</strong>: Harterin luvusta 2 ja motivaatiokirjan johdannosta sisältö on tarkistettu suoraan kirjan tekstistä. Harterin luvuissa 5–9 kirjan omaa tekstiä on nähty kustantajan Google Books -esikatselun lyhyinä hakuotteina (sivunumerot merkitty). Harterin luvut 1, 3 ja 4 sekä motivaatiokirjan luvut perustuvat kirjoittajien omiin julkaisuihin, kirja-arvioihin ja teorioiden alkuperäislähteisiin – kortin yläosan lähdetila kertoo, kumpaa kyseinen kortti on. Kunkin kortin alareunassa näkyvät lähteet, joihin kortti nojaa. Lue siis tenttikirjat – tämä sovellus auttaa jäsentämään ja harjoittelemaan.',
-    topicsStatLabel:"Teoriaosion aihekortit (molemmat kirjat)",
+    topicsStatLabel:"Teoriaosion aihekortit (kirjat ja luennot)",
     extraCardsHtml:'<div class="card"><h3>Opintojakson tavoitteet ja sisältö</h3><p class="small-muted"><span class="mark mark-v">V</span> Turun yliopiston opinto-oppaan (2024–2027) mukaan opiskelija syventää ymmärrystään persoonallisuudesta ja tutustuu erilaisiin tapoihin käsitteellistää persoonallisuuden rakenteet ja dynamiikka. Ensimmäisessä tenttikirjassa (Harter) käsitellään mm. minä-representaation kehittymistä eri ikävaiheissa, itsetuntoa ja fyysistä minäkäsitystä, itsetietoisuuden ja tunteiden välisiä yhteyksiä sekä sosiokulttuurisia näkemyksiä yksilön minästä. Toisen kirjan teemoja ovat motivaatiopsykologian kysymykset erityisesti hyvinvoinnin ja työelämän näkökulmasta sekä nykyiset motivaatioteoriat ja yksilön motivaation arviointi. Toteutus avoimessa yliopistossa 1.10.2026–25.4.2027.</p></div>'+
       '<div class="card"><h3>Mistä tenttikirjat?</h3><ul class="small-muted"><li><span class="mark mark-v">V</span> Harterin luku 2 on luettavissa ilmaiseksi kustantajan sivuilla (Guilford, näyteluku). Kirja on ostettavissa myös e-kirjana (PDF/ePub).</li><li><span class="mark mark-v">V</span> Mikä meitä liikuttaa on saatavilla e-kirjana (Ellibs) ainakin Jyväskylän yliopiston kirjaston kautta; kustantajan sivuilla on ilmainen sisällysluettelo ja johdanto.</li><li>Tarkista oma pääsysi Turun yliopiston kirjaston tai kunnankirjaston kautta (Finna).</li></ul></div>',
     howtoTitle:"Näin opiskelet kirjatenttiin",
@@ -6275,7 +6621,7 @@ const PP2_COURSE = {
       'Kirjoita <strong>Esseet</strong>-tilassa vastaus ensin itse ja pisteytä se vasta sitten rubriikilla – tämä vastaa kirjatentin tilannetta.',
       'Kertaa <strong>Flashcardeilla</strong> käsitteet ja tutkijat, ja tee lopuksi <strong>Harjoitustentti</strong>.'
     ],
-    coverageHtml:"Sovellus kattaa molempien tenttikirjojen kaikki luvut, jäsenneltynä {CATS} aihekokonaisuuteen: Harterin 9 lukua sekä motivaatiokirjan johdanto ja sen kolmen osan 16 lukua."
+    coverageHtml:"Sovellus kattaa molempien tenttikirjojen kaikki luvut, jäsenneltynä {CATS} aihekokonaisuuteen: Harterin 9 lukua sekä motivaatiokirjan johdanto ja sen kolmen osan 16 lukua. Lisäksi luentojen 2.–3.10.2026 sisältö (persoonallisuushäiriöt, narsismi, mentalisaatio, perfektionismi, Big Five) omana kokonaisuutenaan – se perustuu luentojen litterointeihin, ja luentojen painoarvo kirjatentissä kannattaa tarkistaa opettajalta."
   }
 };
 /*__PP2_DATA_END__*/
